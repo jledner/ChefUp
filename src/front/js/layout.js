@@ -9,6 +9,9 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import {LandingPage} from "./pages/landingpage";
+import {Login} from "./pages/login";
+import { SignUp } from "./pages/signup";
 
 //create your first component
 const Layout = () => {
@@ -17,13 +20,20 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div>
+		<div className="container">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
+
 						<Route exact path="/">
-							<Home />
+							<LandingPage />
+						</Route>
+						<Route exact path="/login">
+							<Login />
+						</Route>
+						<Route exact path="/signup">
+							<SignUp />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
