@@ -12,6 +12,7 @@ import { Footer } from "./component/footer";
 import {LandingPage} from "./pages/landingpage";
 import {Login} from "./pages/login";
 import { SignUp } from "./pages/signup";
+import {RecipeDetails} from "./pages/recipedetails";
 
 //create your first component
 const Layout = () => {
@@ -34,6 +35,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/signup">
 							<SignUp />
+						</Route>
+						<Route exact path="/recipename">
+							<RecipeDetails />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
