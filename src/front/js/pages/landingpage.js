@@ -35,9 +35,9 @@ export const LandingPage = (props) => {
                     consectetur ullam aliquam voluptatum. Soluta a unde
                     voluptatum.
                   </p>
-                  <span className="d-inline-block munch-later position-absolute">
+                  <button className="btn d-inline-block munch-later position-absolute">
                     <i class="fas fa-teeth-open"></i>
-                  </span>
+                  </button>
                 </div>
               </div>
             </div>

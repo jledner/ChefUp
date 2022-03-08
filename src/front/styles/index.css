@@ -34,7 +34,7 @@ header.landing-header img {
   border: 3px solid var(--secondary-bg-color);
 }
 
-.featured i {
+.featured button {
   background: var(--primary-color);
   padding: 10px;
   border-radius: 5px;
