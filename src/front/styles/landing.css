@@ -1,0 +1,53 @@
+header.landing-header {
+  height: 100vh;
+}
+div.landing-bg {
+  height: 50%;
+  background-image: url("https://images.unsplash.com/photo-1513135557534-682d53fd7046?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80");
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  border: 3px solid var(--secondary-bg-color);
+}
+.featured-card {
+  background: var(--alt-bg);
+  margin-top: -150px;
+  border-radius: 10px;
+}
+.featured-text {
+  margin-top: -100px;
+}
+
+.featured-card img {
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
+}
+
+.featured-main {
+  background: var(--secondary-bg-color);
+  background-image: url("https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=710&q=80");
+  /* background-image: url("../img/foods/pls.jpg"); */
+  background-position: center;
+  background-size: cover;
+  /* height: 300px; */
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  border: 3px solid var(--secondary-bg-color);
+}
+
+.featured button {
+  background: var(--primary-color);
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+.munch-later {
+  right: 30px;
+  top: 30px;
+}
