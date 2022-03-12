@@ -4,6 +4,7 @@ import { Card } from "../component/card";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
+import { FeaturedCard } from "../component/FeaturedCard";
 
 export const Tutorial = (props) => {
   return (
@@ -91,6 +92,7 @@ export const Tutorial = (props) => {
           <div className="carousel-caption d-none d-md-block">
             <h5>Third slide label</h5>
             <p>Some representative placeholder content for the third slide.</p>
+            <FeaturedCard img="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2020/04/Shrimp-Tacos-main-1.jpg" />
           </div>
         </div>
       </div>

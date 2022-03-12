@@ -1,4 +1,4 @@
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import React from "react";
 
 export const FeaturedCard = (props) => {
@@ -19,4 +19,8 @@ export const FeaturedCard = (props) => {
       </div>
     </div>
   );
+};
+
+FeaturedCard.propTypes = {
+  img: PropTypes.string,
 };
