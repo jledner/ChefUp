@@ -10,18 +10,6 @@ import { FeaturedCard } from "../component/FeaturedCard";
 export const LandingPage = (props) => {
   return (
     <div>
-      {/* <header className="landing-header position-relative mt-2">
-        <div className="landing-bg d-flex justify-content-center align-items-center">
-          <div className="featured-text">
-            <h1>ChefUp</h1>
-            <p>
-              Cool fancy line here (styling isn't finished, don't panic guys -
-              Wayne)
-            </p>
-          </div>
-        </div>
-        <FeaturedCard img={foodImg} />
-      </header> */}
       <header className="landing-header d-flex flex-column justify-content-center">
         <div className="row">
           <div className="col-12 col-xl-1"></div>
@@ -34,7 +22,7 @@ export const LandingPage = (props) => {
                   type="text"
                   class="form-control bg-transparent"
                   id="exampleFormControlInput1"
-                  placeholder="name@example.com"
+                  placeholder="Search for noms"
                 />
               </div>
               <div class="form-group">
@@ -58,6 +46,9 @@ export const LandingPage = (props) => {
           </div>
         </div>
       </header>
+      <section className="bg-dark">
+        {/* <FeaturedCard img={foodImg} /> */}
+      </section>
     </div>
   );
 };
