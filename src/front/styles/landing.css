@@ -1,7 +1,38 @@
 header.landing-header {
-  height: 100vh;
+  height: 50vh;
+  background-image: url("https://images.unsplash.com/photo-1513135557534-682d53fd7046?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80");
+  background-size: cover;
 }
-div.landing-bg {
+
+header form input,
+select {
+  border: 1px solid var(--primary-color) !important;
+  color: white !important;
+}
+header form input {
+  border-top-left-radius: 50px !important;
+  border-bottom-left-radius: 50px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+header form select {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+header form input::placeholder {
+  color: white !important;
+}
+
+header form button.btn-header {
+  background-color: var(--primary-color) !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-right-radius: 50px !important;
+  border-bottom-right-radius: 50px !important;
+}
+/* div.landing-bg {
   height: 50%;
   background-image: url("https://images.unsplash.com/photo-1513135557534-682d53fd7046?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80");
   background-size: cover;
@@ -29,10 +60,8 @@ div.landing-bg {
 .featured-main {
   background: var(--secondary-bg-color);
   background-image: url("https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=710&q=80");
-  /* background-image: url("../img/foods/pls.jpg"); */
   background-position: center;
   background-size: cover;
-  /* height: 300px; */
   border-radius: 30px;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
     rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
@@ -45,9 +74,4 @@ div.landing-bg {
   padding: 10px;
   border-radius: 5px;
   color: black;
-}
-
-.munch-later {
-  right: 30px;
-  top: 30px;
-}
+} */
