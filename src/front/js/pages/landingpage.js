@@ -11,6 +11,7 @@ export const LandingPage = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { store, setStore } = useContext(Context);
   let cuisine = store.cuisine;
+  console.log(cuisine);
   return (
     <div>
       <header className="landing-header d-flex flex-column justify-content-center p-5">
