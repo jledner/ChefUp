@@ -16,28 +16,28 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
       cuisine: [
         {
-          name: "Italian",
+          name: "italian",
         },
         {
-          name: "American",
+          name: "american",
         },
         {
-          name: "Mexican",
+          name: "mexican",
         },
         {
-          name: "Chinese",
+          name: "chinese",
         },
         {
-          name: "Cajun",
+          name: "cajun",
         },
         {
-          name: "Greek",
+          name: "greek",
         },
         {
-          name: "Japanese",
+          name: "japanese",
         },
         {
-          name: "European",
+          name: "european",
         },
       ],
     },
