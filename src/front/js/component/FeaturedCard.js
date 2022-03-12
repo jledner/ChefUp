@@ -3,17 +3,15 @@ import React from "react";
 
 export const FeaturedCard = (props) => {
   return (
-    <div className="featured d-flex justify-content-center">
-      <div className="card featured-card text-center">
-        <div className="card-body position-relative">
-          <img className="d-block" src={props.img} />
-          <div className="card-text featured-text position-absolute">
-            <p>
-              With supporting text below as a natural lead-in to additional
-              content.
-            </p>
-          </div>
-        </div>
+    <div class="card bg-dark text-white">
+      <img src={props.img} class="card-img" alt="..." />
+      <div class="card-img-overlay">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          This is a wider card with supporting text below as a natural lead-in
+          to additional content. This content is a little bit longer.
+        </p>
+        <p class="card-text">Last updated 3 mins ago</p>
       </div>
     </div>
   );

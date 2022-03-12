@@ -5,9 +5,12 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import foodImg from "../../img/foods/pls.jpg";
 import "../../styles/landing.css";
-import { FeaturedCard } from "../component/FeaturedCard";
+import { CategoryCard } from "../component/CategoryCard";
 
 export const LandingPage = (props) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const { store, setStore } = useContext(Context);
+  let cuisine = store.cuisine;
   return (
     <div>
       <header className="landing-header d-flex flex-column justify-content-center">
@@ -23,6 +26,8 @@ export const LandingPage = (props) => {
                   class="form-control bg-transparent"
                   id="exampleFormControlInput1"
                   placeholder="Search for noms"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
               <div class="form-group">
@@ -32,11 +37,8 @@ export const LandingPage = (props) => {
                   placeholder="hi"
                 >
                   <option>Categories</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                  <option>An Option</option>
+                  <option>Another Option</option>
                 </select>
               </div>
               <button className="btn btn-header">
@@ -46,8 +48,23 @@ export const LandingPage = (props) => {
           </div>
         </div>
       </header>
-      <section className="bg-dark">
-        {/* <FeaturedCard img={foodImg} /> */}
+      <section className="category px-5 py-5">
+        <div className="category-content">
+          <h2>Meals By Cuisine</h2>
+          <div className="row">
+            <ul>
+              <div className="row">
+                {cuisine.map((cuisine) => {
+                  return (
+                    <li className="col-lg-3 mb-1">
+                      <CategoryCard cuisine={cuisine} img={foodImg} />
+                    </li>
+                  );
+                })}
+              </div>
+            </ul>
+          </div>
+        </div>
       </section>
     </div>
   );

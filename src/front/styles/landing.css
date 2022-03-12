@@ -33,26 +33,19 @@ header form button.btn-header {
   border-bottom-right-radius: 50px !important;
 }
 
-.featured-card {
-  background: var(--alt-bg);
-  margin-top: -60px;
-  border-radius: 10px;
+section.category {
+  background: var(--secondary-bg-color);
 }
 
-.featured-card,
-.card-body {
-  padding: 0;
-}
-
-.featured-text {
-  top: 0;
-}
-
-.featured-card img {
-  object-fit: cover;
+section.category div.card img {
   height: 200px;
-  min-width: 400px;
+  object-fit: cover;
 }
+
+section.category .row li {
+  list-style: none;
+}
+
 /* div.landing-bg {
   height: 50%;
   background-image: url("https://images.unsplash.com/photo-1513135557534-682d53fd7046?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80");
