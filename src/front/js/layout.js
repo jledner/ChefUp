@@ -14,6 +14,7 @@ import { Login } from "./pages/login";
 import { SignUp } from "./pages/signup";
 import { RecipeDetails } from "./pages/recipedetails";
 import { Tutorial } from "./pages/tutorial";
+import { BrowsePage } from "./pages/browsepage";
 
 //create your first component
 const Layout = () => {
@@ -47,6 +48,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/tutorial">
               <Tutorial />
+            </Route>
+            <Route exact path="/browse">
+              <BrowsePage />
             </Route>
             <Route>
               <h1>Not found!</h1>
