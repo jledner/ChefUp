@@ -63,7 +63,7 @@ export const LandingPage = (props) => {
                 {cuisine.map((cuisine) => {
                   return (
                     <li className="col-6 col-md-3">
-                      <Link to={`/meals/${cuisine.name}`}>
+                      <Link to={`/meals/${cuisine.name}/browse`}>
                         <CategoryCard cuisine={cuisine} img={foodImg} />
                       </Link>
                     </li>
