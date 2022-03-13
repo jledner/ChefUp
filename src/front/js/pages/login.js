@@ -37,7 +37,8 @@ export const Login = props => {
           return response.json();
         }
       }).then(responseJSON => {
-        console.log(responseJSON.user)
+        console.log('response',responseJSON)
+        console.log('userinfo',responseJSON.user)
         sessionStorage.setItem("LoginFirstName", responseJSON.user.fname);
         sessionStorage.setItem("LoginLastName", responseJSON.user.lname);
         sessionStorage.setItem("LoginUserName", responseJSON.user.username);

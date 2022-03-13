@@ -38,9 +38,9 @@ export const ProfilePage = (props) => {
                     
                     <div class="col-3 offset-10">
                         <button type="button" class="btn btn-primary float-right" onClick={() => {
-                            //sessionStorage.clear()
+                            sessionStorage.clear()
                             console.log(currentUserInfo)
-                            //window.location.href = "/login";
+                            window.location.href = "/login";
                         }}>Fake Log Out Button</button>
                     </div>
                 </div>
