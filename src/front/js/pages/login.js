@@ -31,16 +31,24 @@ export const Login = props => {
         
         if (response.ok) {
           console.log(response);
+          
 
 
           return response.json();
         }
       }).then(responseJSON => {
-        console.log("response", responseJSON);
+        console.log('response',responseJSON)
+        console.log('userinfo',responseJSON.user)
+        sessionStorage.setItem("LoginFirstName", responseJSON.user.fname);
+        sessionStorage.setItem("LoginLastName", responseJSON.user.lname);
+        sessionStorage.setItem("LoginUserName", responseJSON.user.username);
+        sessionStorage.setItem("LoginEmail", responseJSON.user.email);
         if(responseJSON.status == 'ok'){
           
-          history.push({pathname: '/profilepage', UserInfo: responseJSON.user})
-          console.log(responseJSON)
+          
+          history.push({pathname: '/profilepage', UserInfo: responseJSON})
+          
+          
         }
         
       })
@@ -51,7 +59,7 @@ export const Login = props => {
 
   let HandleLogin = (e) => {
     e.preventDefault()
-
+    console.log(history.location)
     console.log('Login with this API uses POST method', UserName, Password)
     tryLogin()
 
