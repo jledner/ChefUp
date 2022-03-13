@@ -58,6 +58,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           name: "Flank Steak Sandwich",
           img: "https://i.guim.co.uk/img/media/fdcd34886d1d9aa696cbac74d1a3293aa4808895/0_680_6355_3814/master/6355.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=8b6d0cb3ca5aa21a21d485bef8f481ba",
         },
+        {
+          name: "Mar y Tierra",
+          img: "https://i.pinimg.com/originals/a1/0f/c0/a10fc083e8604ba604354599bced175f.jpg",
+        },
+        {
+          name: "Chicken Burrito",
+          img: "https://upload.wikimedia.org/wikipedia/commons/6/60/Burrito.JPG",
+        },
       ],
     },
     actions: {
