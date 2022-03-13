@@ -6,34 +6,37 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import foodImg from "../../img/foods/pls.jpg";
 import "../../styles/landing.css";
 import { CategoryCard } from "../component/CategoryCard";
+import { Card } from "../component/card";
 
 export const LandingPage = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { store, setStore } = useContext(Context);
   let cuisine = store.cuisine;
   console.log(cuisine);
+  let meals = store.meals;
+  console.log(meals);
   return (
     <div>
-      <header className="landing-header d-flex flex-column justify-content-center">
+      <header className="landing-header d-flex flex-column justify-content-center p-5">
         <div className="row">
           <div className="col-12 col-xl-1"></div>
           <div className="col-12 col-xl-6">
             <h1>Search thousands of quick, delicous meals on Chefup!</h1>
             <p>Nom nome nome nom...</p>
             <form className="d-flex">
-              <div class="form-group">
+              <div className="form-group">
                 <input
                   type="text"
-                  class="form-control bg-transparent"
+                  className="form-control bg-transparent"
                   id="exampleFormControlInput1"
                   placeholder="Search for noms"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <select
-                  class="form-control bg-transparent"
+                  className="form-control bg-transparent"
                   id="exampleFormControlSelect1"
                   placeholder="hi"
                 >
@@ -43,22 +46,41 @@ export const LandingPage = (props) => {
                 </select>
               </div>
               <button className="btn btn-header">
-                <i class="fas fa-search"></i>
+                <i className="fas fa-search"></i>
               </button>
             </form>
           </div>
         </div>
       </header>
+      <section className="Featured">
+        <div className="Featured-Content p-5">
+          <h2>Trending</h2>
+          <div className="row">
+            {meals
+              .filter((meal, i) => i <= 2)
+              .map((meal) => {
+                return <Card meal={meal} />;
+              })}
+          </div>
+        </div>
+      </section>
       <section className="category px-5 py-5">
         <div className="category-content">
           <h2>Meals By Cuisine</h2>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
+            delectus sint deleniti. Excepturi et vitae eum cumque nostrum
+            adipisci at.
+          </p>
           <div className="row">
             <ul>
-              <div className="row">
+              <div className="row gx-2 gy-2">
                 {cuisine.map((cuisine) => {
                   return (
-                    <li className="col-lg-3 mb-1">
-                      <CategoryCard cuisine={cuisine} img={foodImg} />
+                    <li className="col-6 col-md-3">
+                      <Link to={`/meals/${cuisine.name}/browse`}>
+                        <CategoryCard cuisine={cuisine} img={foodImg} />
+                      </Link>
                     </li>
                   );
                 })}

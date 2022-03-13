@@ -49,13 +49,13 @@ const Layout = () => {
             <Route exact path="/tutorial">
               <Tutorial />
             </Route>
-            <Route exact path="/browse">
+            <Route exact path="/meals/:cuisine/browse">
               <BrowsePage />
             </Route>
             <Route exact path="/profilepage">
               <ProfilePage />
             </Route>
-            
+
             <Route>
               <h1>Not found!</h1>
             </Route>

@@ -6,7 +6,7 @@ export const CategoryCard = (props) => {
       <div class="card bg-dark text-white">
         <img src={props.img} class="card-img" alt="..." />
         <div class="card-img-overlay">
-          <h5 class="card-title">{props.cuisine.name}</h5>
+          <h5>{props.cuisine.name}</h5>
         </div>
       </div>
     </div>
