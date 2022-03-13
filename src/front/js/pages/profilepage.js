@@ -11,9 +11,12 @@ export const ProfilePage = (props) => {
     const { store, setStore } = useContext(Context);
     let meals = store.meals;
     const history = useHistory()
+    let currentUserInfo = history.location.UserInfo.user
 
     return (
         <div>
+            <h1>Welcome {currentUserInfo.fname}</h1>
+            <br></br>
             <div className="row row-cols-1 row-cols-md-2 g-4">
                 {meals.map((meal) => {
                     return <Card meal={meal} />;
@@ -29,14 +32,14 @@ export const ProfilePage = (props) => {
               <Card image="https://i.guim.co.uk/img/media/fdcd34886d1d9aa696cbac74d1a3293aa4808895/0_680_6355_3814/master/6355.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=8b6d0cb3ca5aa21a21d485bef8f481ba" /> */}
             </div>
 
-
+              
             <div class="container mt-3">
                 <div class="row">
                     
                     <div class="col-3 offset-10">
                         <button type="button" class="btn btn-primary float-right" onClick={() => {
                             //sessionStorage.clear()
-                            console.log(history.location.UserInfo.user)
+                            console.log(currentUserInfo)
                             //window.location.href = "/login";
                         }}>Fake Log Out Button</button>
                     </div>
