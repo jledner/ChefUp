@@ -32,11 +32,26 @@ export const SignUp = props => {
       .then(response => {
         if (response.ok) {
           console.log(response);
-          history.push("/login")
+          sessionStorage.setItem("SignUpFirstName", SignUpInfo.SignUpFirstName);
+          sessionStorage.setItem("SignUpLastName", SignUpInfo.SignUpLastName);
+          sessionStorage.setItem("SignUpUserName", SignUpInfo.SignUpUserName);
+          sessionStorage.setItem("SignUpEmail", SignUpInfo.SignUpEmail);
+          sessionStorage.setItem("SignUpPassword", SignUpInfo.SignUpPassword);
+          console.log(sessionStorage.getItem("SignUpUserName"), sessionStorage.getItem("SignUpEmail"), sessionStorage.getItem("SignUpPassword"),)
+          //history.push("/login")
 
 
-          return response;
+          return response.json();
         }
+      }).then(responseJSON => {
+        console.log("response", responseJSON);
+         if(responseJSON.status == 'ok'){
+          
+           history.push({pathname: '/login', UserInfo: responseJSON})
+          
+          
+         }
+        
       })
       .catch(e => console.log(e, " THE ERROR"));
   }
@@ -110,12 +125,7 @@ export const SignUp = props => {
     console.log('Are the User Name, Email, and Password valid?', results)
     results === true ? console.log("And if the given data passed the logic check, I'm thinking we would put a POST method here?") : null;
     if (results == true) {
-      localStorage.setItem("SignUpFirstName", SignUpInfo.SignUpFirstName);
-      localStorage.setItem("SignUpLastName", SignUpInfo.SignUpLastName);
-      localStorage.setItem("SignUpUserName", SignUpInfo.SignUpUserName);
-      localStorage.setItem("SignUpEmail", SignUpInfo.SignUpEmail);
-      localStorage.setItem("SignUpPassword", SignUpInfo.SignUpPassword);
-      console.log(localStorage.getItem("SignUpUserName"), localStorage.getItem("SignUpEmail"), localStorage.getItem("SignUpPassword"),)
+
       PostToMeCall()
     }
 

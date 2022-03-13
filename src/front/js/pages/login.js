@@ -39,8 +39,9 @@ export const Login = props => {
         console.log("response", responseJSON);
         if(responseJSON.status == 'ok'){
           
-          history.push({pathname: '/profilepage', UserInfo: responseJSON.user})
-          console.log(responseJSON)
+          history.push({pathname: '/profilepage', UserInfo: responseJSON})
+          
+          
         }
         
       })
@@ -51,7 +52,7 @@ export const Login = props => {
 
   let HandleLogin = (e) => {
     e.preventDefault()
-
+    console.log(history.location)
     console.log('Login with this API uses POST method', UserName, Password)
     tryLogin()
 
