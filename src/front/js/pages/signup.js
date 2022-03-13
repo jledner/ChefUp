@@ -9,9 +9,9 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 export const SignUp = props => {
   let PostToMeCall = () => {
   
-    let sample = {"fname": "Bill Nye",
-    "lname": "Science Guy",
-    "username": "cat.chat@mecallapi.com",
+    let sample = {"fname": SignUpInfo.SignUpFirstName,
+    "lname": SignUpInfo.SignUpLastName,
+    
       "username": SignUpInfo.SignUpUserName,
     "email": SignUpInfo.SignUpEmail,
     "avatar": "https://www.mecallapi.com/users/cat.png"}
@@ -40,6 +40,8 @@ export const SignUp = props => {
 
     //The three keys below are linked to the values of the input fields username, email, and password in the JSX
     const [SignUpInfo, setSignUpInfo] = useState({
+      "SignUpFirstName": '',
+      "SignUpLastName": '',
       "SignUpUserName": '',
       "SignUpEmail"
         : '', 'SignUpPassword': ''
@@ -104,6 +106,8 @@ export const SignUp = props => {
       console.log('Are the User Name, Email, and Password valid?', results)
       results === true ? console.log("And if the given data passed the logic check, I'm thinking we would put a POST method here?"):null;
       if (results == true){
+      localStorage.setItem("SignUpFirstName", SignUpInfo.SignUpFirstName );
+      localStorage.setItem("SignUpLastName", SignUpInfo.SignUpLastName );
       localStorage.setItem("SignUpUserName", SignUpInfo.SignUpUserName );
       localStorage.setItem("SignUpEmail", SignUpInfo.SignUpEmail);
       localStorage.setItem("SignUpPassword", SignUpInfo.SignUpPassword);
@@ -179,6 +183,14 @@ export const SignUp = props => {
         {/* The divs with the labels "SignUpUserName","SignUpEmail, and "SignUpPassword" contain the ternary operators linked to
       linked to the useStates in lines 11-13 */}
         <form className="row g-3" onSubmit={HandleSubmit} noValidate >
+        <div className="col-md-6">
+            <label for="SignUpFirstName" className="form-label">First Name</label>
+            <input type="text" className="form-control" id="SignUpFirstName" value={SignUpInfo.SignUpFirstName} onChange={HandleChange} />
+          </div>
+          <div className="col-md-6">
+            <label for="SignUpLastName" className="form-label">Last Name</label>
+            <input type="text" className="form-control" id="SignUpLastName" value={SignUpInfo.SignUpLastName} onChange={HandleChange} />
+          </div>
           <div className="col-md-4">
             <label for="SignUpUserName" className="form-label">Username</label>
             <input type="text" className="form-control" id="SignUpUserName" value={SignUpInfo.SignUpUserName} onChange={HandleChange} />
