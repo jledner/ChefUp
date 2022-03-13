@@ -7,6 +7,14 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 
 
 export const SignUp = props => {
+  const [SignUpInfo, setSignUpInfo] = useState({
+    "SignUpFirstName": '',
+    "SignUpLastName": '',
+    "SignUpUserName": '',
+    "SignUpEmail"
+      : '', 'SignUpPassword': ''
+  })
+  
   const history = useHistory()
   let PostToMeCall = () => {
 
@@ -58,13 +66,7 @@ export const SignUp = props => {
 
 
   //The three keys below are linked to the values of the input fields username, email, and password in the JSX
-  const [SignUpInfo, setSignUpInfo] = useState({
-    "SignUpFirstName": '',
-    "SignUpLastName": '',
-    "SignUpUserName": '',
-    "SignUpEmail"
-      : '', 'SignUpPassword': ''
-  })
+  
 
   //The idea with these useStates is that they start out as true on render, and should remain true onSubmit if they pass the logic tests we give them.
   //If the user enters invalid data, these useStates become false and the corresponding error messages in the ternary operators located in the

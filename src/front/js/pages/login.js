@@ -31,13 +31,19 @@ export const Login = props => {
         
         if (response.ok) {
           console.log(response);
+          
 
 
           return response.json();
         }
       }).then(responseJSON => {
-        console.log("response", responseJSON);
+        console.log(responseJSON.user)
+        sessionStorage.setItem("LoginFirstName", responseJSON.user.fname);
+        sessionStorage.setItem("LoginLastName", responseJSON.user.lname);
+        sessionStorage.setItem("LoginUserName", responseJSON.user.username);
+        sessionStorage.setItem("LoginEmail", responseJSON.user.email);
         if(responseJSON.status == 'ok'){
+          
           
           history.push({pathname: '/profilepage', UserInfo: responseJSON})
           
