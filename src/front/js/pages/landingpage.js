@@ -6,12 +6,15 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import foodImg from "../../img/foods/pls.jpg";
 import "../../styles/landing.css";
 import { CategoryCard } from "../component/CategoryCard";
+import { Card } from "../component/card";
 
 export const LandingPage = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { store, setStore } = useContext(Context);
   let cuisine = store.cuisine;
   console.log(cuisine);
+  let meals = store.meals;
+  console.log(meals);
   return (
     <div>
       <header className="landing-header d-flex flex-column justify-content-center p-5">
@@ -49,6 +52,18 @@ export const LandingPage = (props) => {
           </div>
         </div>
       </header>
+      <section className="Featured">
+        <div className="Featured-Content p-5">
+          <h2>Trending</h2>
+          <div className="row">
+            {meals
+              .filter((meal, i) => i <= 2)
+              .map((meal) => {
+                return <Card meal={meal} />;
+              })}
+          </div>
+        </div>
+      </section>
       <section className="category px-5 py-5">
         <div className="category-content">
           <h2>Meals By Cuisine</h2>
