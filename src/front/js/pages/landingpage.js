@@ -10,11 +10,9 @@ import { Card } from "../component/card";
 
 export const LandingPage = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const { store, setStore } = useContext(Context);
+  const { store, actions } = useContext(Context);
   let cuisine = store.cuisine;
-  console.log(cuisine);
   let meals = store.meals;
-  console.log(meals);
   return (
     <div>
       <header className="landing-header d-flex flex-column justify-content-center p-5">
@@ -78,7 +76,10 @@ export const LandingPage = (props) => {
                 {cuisine.map((cuisine) => {
                   return (
                     <li className="col-6 col-md-3">
-                      <Link to={`/meals/${cuisine.name}/browse`}>
+                      <Link
+                        to={`/meals/cuisine/${cuisine.name}/browse`}
+                        onClick={() => actions.handleGetMealByCuisine(cuisine)}
+                      >
                         <CategoryCard cuisine={cuisine} img={foodImg} />
                       </Link>
                     </li>
