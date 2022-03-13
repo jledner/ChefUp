@@ -52,6 +52,10 @@ const Layout = () => {
             <Route exact path="/browse">
               <BrowsePage />
             </Route>
+            <Route exact path="/profilepageAfterLogin">
+              <profilepageAfterLogin />
+            </Route>
+            
             <Route>
               <h1>Not found!</h1>
             </Route>

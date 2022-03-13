@@ -39,7 +39,7 @@ export const Login = props => {
         console.log("response", responseJSON);
         if(responseJSON.status == 'ok'){
           
-          history.push('/signup')
+          history.push('/profilepageAfterLogin',{"test":'does it work?'})
           console.log(responseJSON)
         }
         
