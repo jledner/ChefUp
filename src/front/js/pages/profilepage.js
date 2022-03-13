@@ -1,19 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Card } from "../component/card";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { Link, useParams,useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
-import { Demo } from "../pages/demo";
+import { Demo } from "./demo";
 import { FeaturedCard } from "../component/FeaturedCard";
 
-export const profilepageAfterLogin = (props) => {
+export const ProfilePage = (props) => {
+    
     const history = useHistory()
-
 
     return (
         <div>
-            <h1>This will be a basic profile page once logged in</h1>
+            <button onClick={()=>{console.log(history.location)}}>click to see UserInfo after opening console</button>
+           <h1></h1> 
+
             
            
         </div>
