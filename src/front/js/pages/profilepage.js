@@ -41,7 +41,7 @@ export const ProfilePage = (props) => {
                             sessionStorage.clear()
                             console.log(currentUserInfo)
                             window.location.href = "/login";
-                        }}>Fake Log Out Button</button>
+                        }}>"Log Out" Button</button>
                     </div>
                 </div>
 
