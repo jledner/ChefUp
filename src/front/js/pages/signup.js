@@ -3,7 +3,40 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
+
+
+
 export const SignUp = props => {
+  let PostToMeCall = () => {
+  
+    let sample = {"fname": "Bill Nye",
+    "lname": "Science Guy",
+    "username": "cat.chat@mecallapi.com",
+      "username": SignUpInfo.SignUpUserName,
+    "email": SignUpInfo.SignUpEmail,
+    "avatar": "https://www.mecallapi.com/users/cat.png"}
+    
+  
+  
+    fetch("https://www.mecallapi.com/api/users/create", {
+            
+            method: "POST",
+            body: JSON.stringify(sample),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+            .then(response => {
+              if (response.ok) {
+                console.log(response);
+              
+  
+                return response;
+              }
+            })
+            .catch(e => console.log(e, " THE ERROR"));
+          }
+  
 
     //The three keys below are linked to the values of the input fields username, email, and password in the JSX
     const [SignUpInfo, setSignUpInfo] = useState({
@@ -69,7 +102,16 @@ export const SignUp = props => {
     //just a placeholder name for this function at the moment. 
     let POSTMethodMaybe = (results) => {
       console.log('Are the User Name, Email, and Password valid?', results)
-      results === true ? console.log("And if the given data passed the logic check, I'm thinking we would put a POST method here?") : null
+      results === true ? console.log("And if the given data passed the logic check, I'm thinking we would put a POST method here?"):null;
+      if (results == true){
+      localStorage.setItem("SignUpUserName", SignUpInfo.SignUpUserName );
+      localStorage.setItem("SignUpEmail", SignUpInfo.SignUpEmail);
+      localStorage.setItem("SignUpPassword", SignUpInfo.SignUpPassword);
+      console.log(localStorage.getItem("SignUpUserName"),localStorage.getItem("SignUpEmail"),localStorage.getItem("SignUpPassword"),)
+      PostToMeCall()
+    }
+
+      
     }
   
   
@@ -242,8 +284,13 @@ export const SignUp = props => {
             </select>
   
           </div>
-          <div className="col-12">
+          <div className="col-6">
             <button type="submit" className="btn btn-primary" >Sign Up</button>
+          </div>
+          <div className="col-6">
+          <Link to="/login">
+            <button className="btn btn-primary">Test button to Login</button>
+          </Link>
           </div>
         </form>
       </>
