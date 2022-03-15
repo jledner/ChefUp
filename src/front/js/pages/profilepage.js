@@ -14,12 +14,15 @@ export const ProfilePage = (props) => {
     let currentUserInfo = history.location.UserInfo.user
 
     return (
+      
         <div>
             <h1>Welcome {currentUserInfo.fname}</h1>
+           
             <br></br>
             <div className="row row-cols-1 row-cols-md-2 g-4">
                 {meals.map((meal) => {
-                    return <Card meal={meal} />;
+                    return <Card meal={meal} />;  {/* loggedin = maybe pass a second prop as a true/false boolean
+                that renders two different "add to cart buttons"*/}
                 })}
                 {/* <Card
                 image="https://www.jocooks.com/wp-content/uploads/2020/06/chicken-gyros-1-14.jpg"
