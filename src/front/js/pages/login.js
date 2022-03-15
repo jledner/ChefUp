@@ -11,9 +11,9 @@ export const Login = props => {
   let tryLogin = () => {
 
     let sample = {
-      
-        "username": UserName,
-        "password": Password
+      //changed from UserName and Password useStates so that login is always successful
+        "username": 'diego.greene@mecallapi.com',
+        "password": 'mecallapi'
     
     }
 
@@ -88,6 +88,7 @@ export const Login = props => {
                 <div class="mb-3">
                   <input type="text" class="form-control" id="Username" aria-describedby="emailHelp"
                     placeholder="User Name" value={UserName} onChange={(e) => { setUserName(e.target.value) }} />
+                    <p style={{color:'black'}}>The username is now set to "diego.greene@mecallapi.com" and login will never fail unless the internet goes out</p>
                 </div>
                 <div class="mb-3">
                   <input type="password" class="form-control" id="password" placeholder="password" value={Password} onChange={(e) => { 
