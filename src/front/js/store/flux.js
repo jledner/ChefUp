@@ -97,9 +97,23 @@ const getState = ({ getStore, getActions, setStore }) => {
         //reset the global store
         setStore({ demo: demo });
       },
+      // getMealByCuisine: async (cuisine) => {
+      // working on fetching with offset and stuff.
+      //   const meals = [];
+      //   let offset = 0;
+      //   let totalResult;
+      //   let url = `https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true$apiKey=63c77d2857624c45a6a65b2ec5df33e0&offset=${offset}`;
+      //   do {
+      //     fetch(url).then((response) => {
+      //       if (response.ok) response.json();
+      //       else throw new Error("idek bro");
+
+      //     });
+      //   } while ();
+      // },
       handleGetMealByCuisine: (cuisine) => {
         fetch(
-          `https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine.name}&number=10&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0`
+          `https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=1000`
         )
           .then((response) => {
             if (response.ok) return response.json();
