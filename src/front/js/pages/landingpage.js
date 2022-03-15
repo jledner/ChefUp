@@ -78,7 +78,9 @@ export const LandingPage = (props) => {
                     <li className="col-6 col-md-3">
                       <Link
                         to={`/meals/cuisine/${cuisine.name}/browse`}
-                        onClick={() => actions.handleGetMealByCuisine(cuisine)}
+                        onClick={async () =>
+                          await actions.handleGetMealByCuisine(cuisine)
+                        }
                       >
                         <CategoryCard cuisine={cuisine} img={foodImg} />
                       </Link>
