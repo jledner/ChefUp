@@ -40,6 +40,7 @@ export const ProfilePage = (props) => {
                         <button type="button" class="btn btn-primary float-right" onClick={() => {
                             sessionStorage.clear()
                             console.log(currentUserInfo)
+                            console.log(history.location)
                             window.location.href = "/login";
                         }}>"Log Out" Button</button>
                     </div>

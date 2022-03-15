@@ -59,8 +59,8 @@ export const Login = props => {
 
   let HandleLogin = (e) => {
     e.preventDefault()
-    console.log(history.location)
-    console.log('Login with this API uses POST method', UserName, Password)
+    
+    console.log('Login with this API uses POST method along with username and password being ', UserName, Password)
     tryLogin()
 
     
@@ -69,10 +69,7 @@ export const Login = props => {
   return (
 
     <div>
-      <h1>This will be the login page. Maybe make it a modal linked to a button
-
-
-      </h1>
+     
       <div class="container">
         <div class="row">
           <div class="col-md-6 offset-md-3">

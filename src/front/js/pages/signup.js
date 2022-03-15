@@ -16,6 +16,9 @@ export const SignUp = props => {
   })
   
   const history = useHistory()
+
+  //Sends a Post Request to the MeCall API to create a new user account. While the API is limited in
+  //functionality, it helps to understand clearer the flow of the app
   let PostToMeCall = () => {
 
     let sample = {
@@ -125,7 +128,7 @@ export const SignUp = props => {
   //just a placeholder name for this function at the moment. 
   let POSTMethodMaybe = (results) => {
     console.log('Are the User Name, Email, and Password valid?', results)
-    results === true ? console.log("And if the given data passed the logic check, I'm thinking we would put a POST method here?") : null;
+    results === true ? console.log("Once the given data passes the logic check, a POST request is sent to MeCallAPI") : null;
     if (results == true) {
 
       PostToMeCall()
@@ -160,7 +163,7 @@ export const SignUp = props => {
     //and an error message is displayed for the user.
     setIsPasswordVerified(passwordVerifier(SignUpInfo.SignUpPassword))
 
-    //checks if the given username is a valid length and does not contain blank spaces. Ideally, it returns 4 "true" booleans.
+    //checks if the given username is a valid length and does not contain blank spaces. Ideally, it returns 5 "true" booleans.
     setIsUserNameVerified(SignUpInfo.SignUpUserName != '' &&
       //endsWith and startsWith are probably overkill given the function "checksForBlankSpaces" but I guess the extra checks don't hurt
       !SignUpInfo.SignUpUserName.endsWith(' ') &&
