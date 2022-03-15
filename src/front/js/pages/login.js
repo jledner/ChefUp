@@ -11,9 +11,9 @@ export const Login = props => {
   let tryLogin = () => {
 
     let sample = {
-      
-        "username": UserName,
-        "password": Password
+      //changed from UserName and Password useStates so that login is always successful
+        "username": 'diego.greene@mecallapi.com',
+        "password": 'mecallapi'
     
     }
 
@@ -39,6 +39,9 @@ export const Login = props => {
       }).then(responseJSON => {
         console.log('response',responseJSON)
         console.log('userinfo',responseJSON.user)
+        //found this info about sessionStorage and decided to mess around with it. Don't think we'll need it
+        //but it adds an extra way to pass data around the app
+        //more info here: https://www.w3schools.com/jsref/prop_win_sessionstorage.asp
         sessionStorage.setItem("LoginFirstName", responseJSON.user.fname);
         sessionStorage.setItem("LoginLastName", responseJSON.user.lname);
         sessionStorage.setItem("LoginUserName", responseJSON.user.username);
@@ -88,6 +91,7 @@ export const Login = props => {
                 <div class="mb-3">
                   <input type="text" class="form-control" id="Username" aria-describedby="emailHelp"
                     placeholder="User Name" value={UserName} onChange={(e) => { setUserName(e.target.value) }} />
+                    <p style={{color:'black'}}>The username is now set to "diego.greene@mecallapi.com" and login will never fail unless the internet goes out</p>
                 </div>
                 <div class="mb-3">
                   <input type="password" class="form-control" id="password" placeholder="password" value={Password} onChange={(e) => { 

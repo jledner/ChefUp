@@ -19,7 +19,7 @@ export const SignUp = props => {
 
   //Sends a Post Request to the MeCall API to create a new user account. While the API is limited in
   //functionality, it helps to understand clearer the flow of the app
-  let PostToMeCall = () => {
+  let PostToMeCallAPI = () => {
 
     let sample = {
       "fname": SignUpInfo.SignUpFirstName,
@@ -43,13 +43,17 @@ export const SignUp = props => {
       .then(response => {
         if (response.ok) {
           console.log(response);
+          //found this info about sessionStorage and decided to mess around with it. Don't think we'll need it
+          //but it adds an extra way to pass data around the app
+          //more info here: https://www.w3schools.com/jsref/prop_win_sessionstorage.asp
           sessionStorage.setItem("SignUpFirstName", SignUpInfo.SignUpFirstName);
           sessionStorage.setItem("SignUpLastName", SignUpInfo.SignUpLastName);
           sessionStorage.setItem("SignUpUserName", SignUpInfo.SignUpUserName);
           sessionStorage.setItem("SignUpEmail", SignUpInfo.SignUpEmail);
           sessionStorage.setItem("SignUpPassword", SignUpInfo.SignUpPassword);
-          console.log(sessionStorage.getItem("SignUpUserName"), sessionStorage.getItem("SignUpEmail"), sessionStorage.getItem("SignUpPassword"),)
-          //history.push("/login")
+
+          //How to access the data if needed: console.log(sessionStorage.getItem("SignUpUserName"))
+          
 
 
           return response.json();
@@ -57,7 +61,8 @@ export const SignUp = props => {
       }).then(responseJSON => {
         console.log("response", responseJSON);
          if(responseJSON.status == 'ok'){
-          
+           //if the signup request to the API goes through ok, then our app takes us to the login page
+           //StarWars blog reading list
            history.push({pathname: '/login', UserInfo: responseJSON})
           
           
@@ -68,7 +73,6 @@ export const SignUp = props => {
   }
 
 
-  //The three keys below are linked to the values of the input fields username, email, and password in the JSX
   
 
   //The idea with these useStates is that they start out as true on render, and should remain true onSubmit if they pass the logic tests we give them.
@@ -121,21 +125,13 @@ export const SignUp = props => {
 
 
     }
-    //If the user gives us a username with no blank spaces, the function "checksForBlankSpaces" should return a boolean of "true."
+    //If the user gives us a username with no blank spaces, the function "checksForBlankSpaces" should return a boolean 
+    //of "true." Also checks that the length is at least 6 characters
     return blankSpacesforUsername == 0 && givenUserName.length >= 6
 
   }
-  //just a placeholder name for this function at the moment. 
-  let POSTMethodMaybe = (results) => {
-    console.log('Are the User Name, Email, and Password valid?', results)
-    results === true ? console.log("Once the given data passes the logic check, a POST request is sent to MeCallAPI") : null;
-    if (results == true) {
-
-      PostToMeCall()
-    }
-
-
-  }
+  
+  
 
 
 
@@ -144,8 +140,20 @@ export const SignUp = props => {
     console.log('The chosen key is: ', e.target.id)
     console.log('the key will be updated with the following info: ', e.target.value)
     //The target ids in the JSX were set to the key values in the SignUpInfo object so that the line below could be a bit more abstract.
-    // e.target.id should always result in either SignUpUserName, SignUpEmail, or SignUpPassword.
+    // e.target.id should always result in either SignUpUserName, SignUpEmail, SignUpPassword, SignUpFirstName, or
+    //SignUpLastName
     setSignUpInfo({ ...SignUpInfo, [e.target.id]: e.target.value })
+
+  }
+
+  let VerifyGivenData = (results) => {
+    console.log('Are the User Name, Email, and Password valid?', results)
+    results === true ? console.log("Once the given data passes the logic check, a POST request is sent to MeCallAPI") : null;
+    if (results == true) {
+
+      PostToMeCallAPI()
+    }
+
 
   }
 
@@ -171,9 +179,8 @@ export const SignUp = props => {
       SignUpInfo.SignUpUserName.length >= 6 &&
       checksForBlankSpaces(SignUpInfo.SignUpUserName)
     )
-    //just a placeholdername for this function right now, but every time the submit button is clicked we could try and validate the given data
     //goal is to be able to have all these expressions evaluate to true, confirming that the username, email, and password are entered correctly
-    POSTMethodMaybe(
+    VerifyGivenData(
 
       //Checks the email format
       emailregex.test(SignUpInfo.SignUpEmail) &&

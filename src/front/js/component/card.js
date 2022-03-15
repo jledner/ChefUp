@@ -2,7 +2,9 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 
-export const Card = (props) => (
+export const Card = (props) => {
+  
+  return (
   <div className="col">
     <div className="card bg-dark text-white">
       <img
@@ -35,8 +37,8 @@ export const Card = (props) => (
         Add to Cart
       </button>
     </div>
-  </div>
-);
+  </div>)
+};
 
 Card.propTypes = {
   img: PropTypes.string,
