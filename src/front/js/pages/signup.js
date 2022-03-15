@@ -43,7 +43,7 @@ export const SignUp = props => {
       .then(response => {
         if (response.ok) {
           console.log(response);
-          //found this info and decided to mess around with it. Don't think we'll need it
+          //found this info about sessionStorage and decided to mess around with it. Don't think we'll need it
           //but it adds an extra way to pass data around the app
           //more info here: https://www.w3schools.com/jsref/prop_win_sessionstorage.asp
           sessionStorage.setItem("SignUpFirstName", SignUpInfo.SignUpFirstName);

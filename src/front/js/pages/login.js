@@ -39,6 +39,9 @@ export const Login = props => {
       }).then(responseJSON => {
         console.log('response',responseJSON)
         console.log('userinfo',responseJSON.user)
+        //found this info about sessionStorage and decided to mess around with it. Don't think we'll need it
+        //but it adds an extra way to pass data around the app
+        //more info here: https://www.w3schools.com/jsref/prop_win_sessionstorage.asp
         sessionStorage.setItem("LoginFirstName", responseJSON.user.fname);
         sessionStorage.setItem("LoginLastName", responseJSON.user.lname);
         sessionStorage.setItem("LoginUserName", responseJSON.user.username);
