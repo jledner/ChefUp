@@ -9,7 +9,8 @@ import { FeaturedCard } from "../component/FeaturedCard";
 
 export const ProfilePage = (props) => {
     const { store, setStore } = useContext(Context);
-    let meals = store.meals;
+    let MealsInCart = store.MealsInCart;
+    let meals = store.meals
     const history = useHistory()
     let currentUserInfo = history.location.UserInfo.user
 
@@ -51,6 +52,7 @@ export const ProfilePage = (props) => {
 
 
             </div>
+
 
 
             

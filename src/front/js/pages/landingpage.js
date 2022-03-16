@@ -13,7 +13,8 @@ export const LandingPage = (props) => {
   const { store, actions } = useContext(Context);
   let cuisine = store.cuisine;
   let meals = store.meals;
-  const [MealsInCart, setMealsinCart] = useState(store.MealsInCart)
+  let MealsInCart = store.MealsInCart
+  //const [MealsInCart, setMealsinCart] = useState(store.MealsInCart)
   
   return (
     <div>
@@ -95,11 +96,12 @@ export const LandingPage = (props) => {
         </div>
       </section>
 
+      
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
       data-bs-target="#staticBackdrop" onClick={()=>{
         console.log(MealsInCart)
       }} >
-        Testing something minor - Jeff
+        Testing something minor with cart idea - Jeff
       </button>
 
 
@@ -107,13 +109,13 @@ export const LandingPage = (props) => {
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title text-dark" id="staticBackdropLabel">Modal title</h5>
+              <h5 class="modal-title text-dark" id="staticBackdropLabel">Your Cart</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <div class="container-fluid">
                 {MealsInCart.map((meal, index) => {
-                  return <Card meal={meal} MealInCart={true} IndexOfMeal={index} />
+                  return <Card meal={meal} IsMealInCart={true} IndexOfMeal={index} />
                 }
                 )}
               </div>

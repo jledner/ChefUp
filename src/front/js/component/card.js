@@ -9,7 +9,7 @@ export const Card = (props) => {
   const { store, actions } = useContext(Context);
   let MealsInCart = store.MealsInCart
 
-  if (props.MealInCart == true){
+  if (props.IsMealInCart == true){
   return (
   <div className="col m-5">
     <div className="card bg-dark text-white">
@@ -41,7 +41,6 @@ export const Card = (props) => {
       </div>
       <button type="button" className="btn btn-light" onClick={()=>{
         actions.deleteAMeal(props.IndexOfMeal)
-        console.log(props.IndexOfMeal)
         console.log(MealsInCart)
       }}>
         Remove from Cart
