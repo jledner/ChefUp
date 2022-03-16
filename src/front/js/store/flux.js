@@ -69,18 +69,15 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
 
       MealsInCart: [
-        
         {
           name: "Chicken Gyro",
           img: "https://www.jocooks.com/wp-content/uploads/2020/06/chicken-gyros-1-14.jpg",
         },
-        
-        
+
         {
           name: "Mar y Tierra",
           img: "https://i.pinimg.com/originals/a1/0f/c0/a10fc083e8604ba604354599bced175f.jpg",
         },
-        
       ],
     },
     actions: {
@@ -113,8 +110,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ demo: demo });
       },
 
-      handleGetMealByCuisine: (cuisine) => {
-        fetch(
+      handleGetMealByCuisine: async (cuisine) => {
+        await fetch(
           `https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`
         )
           .then((response) => {
@@ -129,19 +126,19 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
       },
 
-      AddMealToCart:(index)=>{
+      AddMealToCart: (index) => {
         const storecopy = getStore();
-        storecopy.MealsInCart.push(storecopy.meals[index])
-        console.log(storecopy.MealsInCart)
-        return setStore({store:storecopy})
+        storecopy.MealsInCart.push(storecopy.meals[index]);
+        console.log(storecopy.MealsInCart);
+        return setStore({ store: storecopy });
       },
 
       deleteAMeal: (index) => {
-				const storecopy = getStore();
-				storecopy.MealsInCart.splice(index,1)
-				
-				return setStore({store:storecopy})
-			},
+        const storecopy = getStore();
+        storecopy.MealsInCart.splice(index, 1);
+
+        return setStore({ store: storecopy });
+      },
     },
   };
 };
