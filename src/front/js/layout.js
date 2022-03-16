@@ -28,9 +28,7 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar />
           <Switch>
-            <Route exact path="/">
-              <LandingPage />
-            </Route>
+            <Route exact path="/" component={LandingPage} />
             <Route exact path="/login">
               <Login />
             </Route>
@@ -49,9 +47,11 @@ const Layout = () => {
             <Route exact path="/tutorial">
               <Tutorial />
             </Route>
-            <Route exact path="/meals/cuisine/:cuisine/browse">
-              <BrowsePage />
-            </Route>
+            <Route
+              exact
+              path="/meals/cuisine/:cuisine/browse"
+              component={BrowsePage}
+            />
             <Route exact path="/browse">
               <BrowsePage />
             </Route>

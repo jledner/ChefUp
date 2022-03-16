@@ -9,6 +9,7 @@ import { CategoryCard } from "../component/CategoryCard";
 import { Card } from "../component/card";
 
 export const LandingPage = (props) => {
+  console.log(props);
   const [searchQuery, setSearchQuery] = useState("");
   const { store, actions } = useContext(Context);
   let cuisine = store.cuisine;
@@ -75,15 +76,18 @@ export const LandingPage = (props) => {
               <div className="row gx-2 gy-2">
                 {cuisine.map((cuisine) => {
                   return (
-                    <li className="col-6 col-md-3">
-                      <Link
-                        to={`/meals/cuisine/${cuisine.name}/browse`}
-                        onClick={async () =>
-                          await actions.handleGetMealByCuisine(cuisine)
+                    <li
+                      className="col-6 col-md-3"
+                      onClick={async () => {
+                        if (!localStorage[cuisine.name]) {
+                          await actions.handleGetMealByCuisine(cuisine);
                         }
-                      >
-                        <CategoryCard cuisine={cuisine} img={foodImg} />
-                      </Link>
+                        props.history.push(
+                          `/meals/cuisine/${cuisine.name}/browse`
+                        );
+                      }}
+                    >
+                      <CategoryCard cuisine={cuisine} img={foodImg} />
                     </li>
                   );
                 })}

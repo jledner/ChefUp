@@ -10,9 +10,10 @@ import { Card } from "../component/card";
 export const BrowsePage = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { store, setStore } = useContext(Context);
-  let cuisine = store.cuisine;
-  console.log(cuisine);
-  let meals = store.meals;
+  const params = useParams();
+  let meals = params.cuisine
+    ? JSON.parse(localStorage.getItem(params.cuisine))
+    : null;
   console.log(meals);
   return (
     <div>
@@ -52,17 +53,21 @@ export const BrowsePage = (props) => {
         <div className="category-content">
           <h2>Browse Meals</h2>
           <div className="row">
-            <ul>
-              <div className="row">
-                {meals.map((meal) => {
-                  return (
-                    <li className="col-lg-3 mb-1">
-                      <Card meal={meal} />
-                    </li>
-                  );
-                })}
-              </div>
-            </ul>
+            {meals.length > 0 ? (
+              <ul>
+                <div className="row">
+                  {meals.map((meal) => {
+                    return (
+                      <li className="col-lg-3 mb-1">
+                        <Card meal={meal} />
+                      </li>
+                    );
+                  })}
+                </div>
+              </ul>
+            ) : (
+              <div>no results :(</div>
+            )}
           </div>
         </div>
       </section>
