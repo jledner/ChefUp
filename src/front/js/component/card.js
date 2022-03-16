@@ -102,20 +102,7 @@ export const Card = (props) => {
     return (
       <div className="col">
         <div className="card bg-dark text-white">
-          <img
-            src={props.meal.img}
-            className="card-img-top"
-            alt="..."
-            style={{
-              minWidth: "20em",
-              maxWidth: "20em",
-              minHeight: "10em",
-              maxHeight: "10em",
-              objectFit: "cover",
-              margin: "auto",
-              padding: "0",
-            }}
-          />
+          <img src={props.meal.image} className="card-img-top" alt="..." />
           <div className="card-body">
             <h5 className="card-title">{props.meal.title}</h5>
             <p className="card-text" style={{ margin: "0", padding: "0" }}>
