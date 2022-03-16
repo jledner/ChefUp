@@ -67,6 +67,21 @@ const getState = ({ getStore, getActions, setStore }) => {
           img: "https://upload.wikimedia.org/wikipedia/commons/6/60/Burrito.JPG",
         },
       ],
+
+      MealsInCart: [
+        
+        {
+          name: "Chicken Gyro",
+          img: "https://www.jocooks.com/wp-content/uploads/2020/06/chicken-gyros-1-14.jpg",
+        },
+        
+        
+        {
+          name: "Mar y Tierra",
+          img: "https://i.pinimg.com/originals/a1/0f/c0/a10fc083e8604ba604354599bced175f.jpg",
+        },
+        
+      ],
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -113,6 +128,20 @@ const getState = ({ getStore, getActions, setStore }) => {
             );
           });
       },
+
+      AddMealToCart:(index)=>{
+        const storecopy = getStore();
+        storecopy.MealsInCart.push(storecopy.meals[index])
+        console.log(storecopy.MealsInCart)
+        return setStore({store:storecopy})
+      },
+
+      deleteAMeal: (index) => {
+				const storecopy = getStore();
+				storecopy.MealsInCart.splice(index,1)
+				
+				return setStore({store:storecopy})
+			},
     },
   };
 };

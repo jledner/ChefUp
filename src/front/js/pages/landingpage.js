@@ -14,6 +14,9 @@ export const LandingPage = (props) => {
   const { store, actions } = useContext(Context);
   let cuisine = store.cuisine;
   let meals = store.meals;
+  let MealsInCart = store.MealsInCart
+  //const [MealsInCart, setMealsinCart] = useState(store.MealsInCart)
+  
   return (
     <div>
       <header className="landing-header d-flex flex-column justify-content-center p-5">
@@ -96,6 +99,9 @@ export const LandingPage = (props) => {
           </div>
         </div>
       </section>
+
+      
+     
     </div>
   );
 };
