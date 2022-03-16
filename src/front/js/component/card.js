@@ -1,10 +1,15 @@
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
 
 export const Card = (props) => {
+  //passed props are meal={meal} MealInCart={true} IndexOfMeal={index}
+  const { store, actions } = useContext(Context);
+  let MealsInCart = store.MealsInCart
 
-  if (props.MealCardsInCart == true){
+  if (props.MealInCart == true){
   return (
   <div className="col m-5">
     <div className="card bg-dark text-white">
@@ -34,7 +39,11 @@ export const Card = (props) => {
           Price: $5.99
         </p>
       </div>
-      <button type="button" className="btn btn-light">
+      <button type="button" className="btn btn-light" onClick={()=>{
+        actions.deleteAMeal(props.IndexOfMeal)
+        console.log(props.IndexOfMeal)
+        console.log(MealsInCart)
+      }}>
         Remove from Cart
       </button>
     </div>

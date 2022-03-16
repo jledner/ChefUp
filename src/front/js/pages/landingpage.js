@@ -13,6 +13,8 @@ export const LandingPage = (props) => {
   const { store, actions } = useContext(Context);
   let cuisine = store.cuisine;
   let meals = store.meals;
+  const [MealsInCart, setMealsinCart] = useState(store.MealsInCart)
+  
   return (
     <div>
       <header className="landing-header d-flex flex-column justify-content-center p-5">
@@ -93,33 +95,37 @@ export const LandingPage = (props) => {
         </div>
       </section>
 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Testing something minor - Jeff
-            </button>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+      data-bs-target="#staticBackdrop" onClick={()=>{
+        console.log(MealsInCart)
+      }} >
+        Testing something minor - Jeff
+      </button>
 
 
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-dark" id="staticBackdropLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                            {meals.map((meal) => {
-                                 return <Card meal={meal} MealCardsInCart = {true}/>}
-                            )}
-                            </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            
-                        </div>
-                    </div>
-                </div>
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-dark" id="staticBackdropLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                {MealsInCart.map((meal, index) => {
+                  return <Card meal={meal} MealInCart={true} IndexOfMeal={index} />
+                }
+                )}
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
