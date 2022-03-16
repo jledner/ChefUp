@@ -133,6 +133,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      AddMealToCart:(index)=>{
+        const storecopy = getStore();
+        storecopy.MealsInCart.push(storecopy.meals[index])
+        console.log(storecopy.MealsInCart)
+        return setStore({store:storecopy})
+      },
+
       deleteAMeal: (index) => {
 				const storecopy = getStore();
 				storecopy.MealsInCart.splice(index,1)
