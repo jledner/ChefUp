@@ -85,7 +85,7 @@ return (
       console.log(MealsInCart)
       actions.AddMealToCart(props.IndexOfEachMealCard)
     }}>
-      Add to Cart(need to add functionality)
+      Add to Cart(working on functionality)
     </button>
   </div>
 </div>)}

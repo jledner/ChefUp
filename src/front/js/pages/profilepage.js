@@ -7,19 +7,21 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { Demo } from "./demo";
 import { FeaturedCard } from "../component/FeaturedCard";
 
+//Lines 16 and 21 commented out to work on the page easier. I think uncommenting them is important
+//when we work on styling.
 export const ProfilePage = (props) => {
     const { store, setStore } = useContext(Context);
     let MealsInCart = store.MealsInCart;
     let meals = store.meals
     const history = useHistory()
-    let currentUserInfo = history.location.UserInfo.user
+    //let currentUserInfo = history.location.UserInfo.user
 
     return (
 
         <div>
-            <h1>Welcome {currentUserInfo.fname}</h1>
+            {/* <h1>Welcome {currentUserInfo.fname}</h1> */}
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+            <button type="button" className="btn btn-primary" data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop" onClick={() => {
                     console.log(MealsInCart)
                 }} >
@@ -27,17 +29,17 @@ export const ProfilePage = (props) => {
             </button>
 
 
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title text-dark" id="staticBackdropLabel">Your Cart</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h5 className="modal-title text-dark" id="staticBackdropLabel">Your Cart</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="container-fluid">
                                 {MealsInCart.map((meal, index) => {
-                                    return <Card meal={meal} IsMealInCart={true} IndexOfMeal={index} />
+                                    return <Card meal={meal} IsMealInCart={true} IndexOfMeal={index}  key={index}/>
                                 }
                                 )}
                             </div>
@@ -54,7 +56,7 @@ export const ProfilePage = (props) => {
             <br></br>
             <div className="row row-cols-1 row-cols-md-2 g-4">
                 {meals.map((meal, index) => {
-                    return <Card meal={meal} IsUserLoggedIn={true} IndexOfEachMealCard={index} />; {/* loggedin = maybe pass a second prop as a true/false boolean
+                    return <Card meal={meal} IsUserLoggedIn={true} IndexOfEachMealCard={index} key={index}/>; {/* loggedin = maybe pass a second prop as a true/false boolean
                 that renders two different "add to cart buttons"*/}
                 })}
                 {/* <Card
@@ -69,14 +71,14 @@ export const ProfilePage = (props) => {
             </div>
 
 
-            <div class="container mt-3">
-                <div class="row">
+            <div className="container mt-3">
+                <div className="row">
 
-                    <div class="col-3 offset-10">
-                        <button type="button" class="btn btn-primary float-right" onClick={() => {
+                    <div className="col-3 offset-10">
+                        <button type="button" className="btn btn-primary float-right" onClick={() => {
                             sessionStorage.clear()
-                            console.log(currentUserInfo)
-                            console.log(history.location)
+                            // console.log(currentUserInfo)
+                            // console.log(history.location)
                             window.location.href = "/login";
                         }}>"Log Out" Button</button>
                     </div>
