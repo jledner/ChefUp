@@ -53,7 +53,7 @@ export const BrowsePage = (props) => {
         <div className="category-content">
           <h2>Browse Meals</h2>
           <div className="row">
-            {meals.length > 0 ? (
+            {meals && meals.length > 0 ? (
               <ul>
                 <div className="row">
                   {meals.map((meal) => {

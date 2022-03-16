@@ -14,9 +14,9 @@ export const LandingPage = (props) => {
   const { store, actions } = useContext(Context);
   let cuisine = store.cuisine;
   let meals = store.meals;
-  let MealsInCart = store.MealsInCart
+  let MealsInCart = store.MealsInCart;
   //const [MealsInCart, setMealsinCart] = useState(store.MealsInCart)
-  
+
   return (
     <div>
       <header className="landing-header d-flex flex-column justify-content-center p-5">
@@ -57,13 +57,13 @@ export const LandingPage = (props) => {
       <section className="Featured">
         <div className="Featured-Content p-5">
           <h2>Trending</h2>
-          <div className="row">
+          {/* <div className="row">
             {meals
               .filter((meal, i) => i <= 2)
               .map((meal) => {
                 return <Card meal={meal} />;
               })}
-          </div>
+          </div> */}
         </div>
       </section>
       <section className="category px-5 py-5">
@@ -99,9 +99,6 @@ export const LandingPage = (props) => {
           </div>
         </div>
       </section>
-
-      
-     
     </div>
   );
 };
