@@ -29,15 +29,13 @@ const Layout = () => {
           <Navbar />
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <SignUp />
-            </Route>
-            <Route exact path="/recipename">
-              <RecipeDetails />
-            </Route>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route
+              exact
+              path="/meals/details/:mealid"
+              component={RecipeDetails}
+            />
             <Route exact path="/demo">
               <Demo />
             </Route>
@@ -47,11 +45,7 @@ const Layout = () => {
             <Route exact path="/tutorial">
               <Tutorial />
             </Route>
-            <Route
-              exact
-              path="/meals/cuisine/:cuisine/browse"
-              component={BrowsePage}
-            />
+            <Route exact path="/meals/browse/:query" component={BrowsePage} />
             <Route exact path="/browse">
               <BrowsePage />
             </Route>

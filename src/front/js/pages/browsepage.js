@@ -12,9 +12,8 @@ export const BrowsePage = (props) => {
   const { store, setStore } = useContext(Context);
   const params = useParams();
   const [meals, setMeals] = useState(
-    params.cuisine ? JSON.parse(localStorage.getItem(params.cuisine)) : null
+    params.query ? JSON.parse(localStorage.getItem(params.query)) : null
   );
-  console.log(meals);
   return (
     <div>
       <header className="landing-header-small d-flex flex-column justify-content-center">

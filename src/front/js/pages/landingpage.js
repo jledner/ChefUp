@@ -36,18 +36,17 @@ export const LandingPage = (props) => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
-              <div className="form-group">
-                <select
-                  className="form-control bg-transparent"
-                  id="exampleFormControlSelect1"
-                  placeholder="hi"
-                >
-                  <option>Categories</option>
-                  <option>An Option</option>
-                  <option>Another Option</option>
-                </select>
-              </div>
-              <button className="btn btn-header">
+              <button
+                className="btn btn-header"
+                onClick={async (e) => {
+                  e.preventDefault();
+                  await actions.getMeals(
+                    `https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`,
+                    searchQuery
+                  );
+                  props.history.push(`/meals/browse/${searchQuery}`);
+                }}
+              >
                 <i className="fas fa-search"></i>
               </button>
             </form>
@@ -83,11 +82,12 @@ export const LandingPage = (props) => {
                       className="col-6 col-md-3"
                       onClick={async () => {
                         if (!localStorage[cuisine.name]) {
-                          await actions.handleGetMealByCuisine(cuisine);
+                          await actions.getMeals(
+                            `https://api.spoonacular.com/recipes/complexSearch?&cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`,
+                            cuisine.name
+                          );
                         }
-                        props.history.push(
-                          `/meals/cuisine/${cuisine.name}/browse`
-                        );
+                        props.history.push(`/meals/browse/${cuisine.name}`);
                       }}
                     >
                       <CategoryCard cuisine={cuisine} img={foodImg} />

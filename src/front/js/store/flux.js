@@ -110,6 +110,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ demo: demo });
       },
 
+      getMeals: async (url, query) => {
+        await fetch(url)
+          .then((response) => {
+            if (response.ok) return response.json();
+            else throw new Error("help");
+          })
+          .then((response) => {
+            localStorage.setItem(`${query}`, JSON.stringify(response.results));
+          });
+      },
       handleGetMealByCuisine: async (cuisine) => {
         await fetch(
           `https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`
