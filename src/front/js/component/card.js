@@ -106,7 +106,7 @@ export const Card = (props) => {
           <div className="card-body">
             <h5 className="card-title">{props.meal.title}</h5>
             <p className="card-text" style={{ margin: "0", padding: "0" }}>
-              {props.meal.readyInMinutes}
+              Prep Time: {props.meal.readyInMinutes}
             </p>
             <p className="card-text" style={{ margin: "0", padding: "0" }}>
               {props.meal.nutrition.nutrients[0].name}{" "}

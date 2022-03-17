@@ -14,9 +14,6 @@ export const BrowsePage = (props) => {
   const [meals, setMeals] = useState(
     params.cuisine ? JSON.parse(localStorage.getItem(params.cuisine)) : null
   );
-  // let meals = params.cuisine
-  //   ? JSON.parse(localStorage.getItem(params.cuisine))
-  //   : null;
   console.log(meals);
   return (
     <div>

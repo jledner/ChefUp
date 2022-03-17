@@ -4,13 +4,20 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 
-export const RecipeDetails = props => {
-
-
-    return (
-
-            <div>
-            <h1>This will be the details page for each recipe card</h1>
-            </div>
-    )
-}
+export const RecipeDetails = (props) => {
+  return (
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          This is a wider card with supporting text below as a natural lead-in
+          to additional content. This content is a little bit longer.
+        </p>
+        <p class="card-text">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </p>
+      </div>
+      <img class="card-img-bottom" src="..." alt="Card image cap" />
+    </div>
+  );
+};
