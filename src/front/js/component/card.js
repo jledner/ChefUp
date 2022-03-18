@@ -10,7 +10,7 @@ export const Card = (props) => {
   if (props.IsMealInCart == true) {
     //passed props are meal={meal} MealInCart={true} IndexOfMeal={index}
     return (
-      <div className="col m-5">
+      <div className="col-4 m-5">
         <div className="card bg-dark text-white">
           <img
             src={props.meal.img}

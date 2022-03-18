@@ -30,14 +30,14 @@ export const ProfilePage = (props) => {
 
 
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 className="modal-title text-dark" id="staticBackdropLabel">Your Cart</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="container-fluid">
+                            <div class="d-flex flex-wrap justify-content-around">
                                 {MealsInCart.map((meal, index) => {
                                     return <Card meal={meal} IsMealInCart={true} IndexOfMeal={index}  key={index}/>
                                 }
