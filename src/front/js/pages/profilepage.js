@@ -37,7 +37,7 @@ export const ProfilePage = (props) => {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="d-flex flex-wrap justify-content-around">
+                            <div class="d-flex flex-wrap d-flex justify-content-between">
                                 {MealsInCart.map((meal, index) => {
                                     return <Card meal={meal} IsMealInCart={true} IndexOfMeal={index}  key={index}/>
                                 }
