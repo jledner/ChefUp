@@ -49,7 +49,7 @@ const Layout = () => {
             <Route exact path="/browse">
               <BrowsePage />
             </Route>
-            <Route exact path="/profilepage">
+            <Route exact path="/profilepage/:theuser">
               <ProfilePage />
             </Route>
 
