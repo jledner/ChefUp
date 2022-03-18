@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { Card } from "../component/card";
+import { TutorialCard } from "../component/TutorialCard";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
@@ -54,8 +54,8 @@ export const Tutorial = (props) => {
               </em>
             </h5>
             <div className="row row-cols-1 row-cols-md-2 g-4">
-              {meals.slice(0, 4).map((meal) => {
-                return <Card meal={meal} />;
+              {meals.slice(0, 4).map((meal, i) => {
+                return <TutorialCard key={i} meal={meal} />;
               })}
             </div>
           </div>

@@ -15,6 +15,7 @@ import { RecipeDetails } from "./pages/recipedetails";
 import { Tutorial } from "./pages/tutorial";
 import { BrowsePage } from "./pages/browsepage";
 import { ProfilePage } from "./pages/profilepage.js";
+import { GroceryList } from "./pages/grocerylist";
 
 //create your first component
 const Layout = () => {
@@ -51,6 +52,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/profilepage/:theuser">
               <ProfilePage />
+            </Route>
+            <Route exact path="/grocerylist">
+              <GroceryList />
             </Route>
 
             <Route>
