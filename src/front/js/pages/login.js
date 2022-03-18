@@ -12,6 +12,8 @@ export const Login = props => {
 
     let sample = {
       //changed from UserName and Password useStates so that login is always successful
+      //every time "login" is clicked on the login page, this info is sent over and with the way the
+      //API is set up the login info below never times out
         "username": 'diego.greene@mecallapi.com',
         "password": 'mecallapi'
     
@@ -48,7 +50,8 @@ export const Login = props => {
         sessionStorage.setItem("LoginEmail", responseJSON.user.email);
         if(responseJSON.status == 'ok'){
           
-          
+          //I believe this line below would have to be moved to inside the "HandleLogin function"
+          //if we wanted to skip over the Login API completely, but that could be down the road if needed
           history.push({pathname: `/profilepage/${responseJSON.user.fname}`, UserInfo: responseJSON})
           
           
@@ -115,4 +118,3 @@ export const Login = props => {
   )
 }
 
-//<button onClick={() => this.props.history.push("/login")}>Take me to login</button>
