@@ -7122,7 +7122,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((response) => {
             localStorage.setItem(`${query}`, JSON.stringify(response.results));
           });
-        setStore({ mealResults: JSON.parse(localStorage.getItem(query)) });
+        await setStore({
+          mealResults: JSON.parse(localStorage.getItem(query)),
+        });
       },
 
       AddMealToCart: (index) => {
