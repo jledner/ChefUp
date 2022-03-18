@@ -13,6 +13,7 @@ export const LandingPage = (props) => {
   console.log(props);
   const [searchQuery, setSearchQuery] = useState("");
   const { store, actions } = useContext(Context);
+  const trending = store.trending;
   let cuisine = store.cuisine;
   let meals = store.meals;
   let MealsInCart = store.MealsInCart;
@@ -24,13 +25,11 @@ export const LandingPage = (props) => {
       <section className="Featured">
         <div className="Featured-Content p-5">
           <h2>Trending</h2>
-          {/* <div className="row">
-            {meals
-              .filter((meal, i) => i <= 2)
-              .map((meal) => {
-                return <Card meal={meal} />;
-              })}
-          </div> */}
+          <div className="row">
+            {trending.map((meal) => {
+              return <Card meal={meal} />;
+            })}
+          </div>
         </div>
       </section>
       <section className="category px-5 py-5">
