@@ -49,7 +49,7 @@ export const Login = props => {
         if(responseJSON.status == 'ok'){
           
           
-          history.push({pathname: '/profilepage', UserInfo: responseJSON})
+          history.push({pathname: `/profilepage/${responseJSON.user.fname}`, UserInfo: responseJSON})
           
           
         }
