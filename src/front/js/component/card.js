@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 //The Card component is used twice by Jeff in the profilepage view, but with two minor modifications
 export const Card = (props) => {
@@ -10,8 +11,9 @@ export const Card = (props) => {
   let MealsInCart = store.MealsInCart;
 
   // 1) Section for cards to be rendered for the meals in the users' cart
-  if (props.IsMealInCart == true) {//If IsMealInCart={true} is set as a prop, only this section is used
-   
+  if (props.IsMealInCart == true) {
+    //If IsMealInCart={true} is set as a prop, only this section is used
+
     //passed props are meal={meal}(from the map) MealInCart={true} IndexOfMeal={index}
     return (
       <div className="col-4 m-5">
@@ -58,12 +60,13 @@ export const Card = (props) => {
       </div>
     );
   }
-//End of  Section for cards to be rendered for the meals in the users' cart
+  //End of  Section for cards to be rendered for the meals in the users' cart
 
-// 2) Section for meal cards that are displayed to the logged in user.
+  // 2) Section for meal cards that are displayed to the logged in user.
 
-  if (props.IsUserLoggedIn == true) {//If IsUserLoggedIn={true} is set as a prop, only this section is used
-    
+  if (props.IsUserLoggedIn == true) {
+    //If IsUserLoggedIn={true} is set as a prop, only this section is used
+
     //passed props are  meal={meal}(from the map) IsUserLoggedIn={true} IndexOfEachMealCard = {index}
     return (
       <div className="col m-5">
@@ -110,17 +113,31 @@ export const Card = (props) => {
         </div>
       </div>
     );
-  } 
-//End of Section for meal cards that are displayed only to the logged in user.
-  
-  else {//If the Card component is used without MealInCart={true} or IsUserLoggedIn={true} set they get
+  }
+  //End of Section for meal cards that are displayed only to the logged in user.
+  else {
+    //If the Card component is used without MealInCart={true} or IsUserLoggedIn={true} set they get
     //this Card layout. Basically, visitors who try and "Add to Cart" should be redirected to sign up I think
     return (
       <div className="col">
         <div className="card bg-dark text-white">
-          <img src={props.meal.image} className="card-img-top" alt="..." />
+          <Link
+            to={{
+              pathname: `/meals/details/${props.meal.id}`,
+              state: { meal: props.meal },
+            }}
+          >
+            <img src={props.meal.image} className="card-img-top" alt="..." />
+          </Link>
           <div className="card-body">
-            <h5 className="card-title">{props.meal.title}</h5>
+            <Link
+              to={{
+                pathname: `/meals/details/${props.meal.id}`,
+                state: { meal: props.meal },
+              }}
+            >
+              <h5 className="card-title">{props.meal.title}</h5>
+            </Link>
             <p className="card-text" style={{ margin: "0", padding: "0" }}>
               Prep Time: {props.meal.readyInMinutes}
             </p>
