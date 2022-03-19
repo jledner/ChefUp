@@ -8,11 +8,6 @@ import { Link } from "react-router-dom";
 //The Card component is used twice by Jeff in the profilepage view, but with two minor modifications
 export const Card = (props) => {
   const { store, actions } = useContext(Context);
-
-  const [isInCart, setIsInCart] = useState(
-    store.cart.map((meal) => meal.id).includes(props.meal.id)
-  );
-
   return (
     <div className="col">
       <div className="card bg-dark text-white">
@@ -51,13 +46,12 @@ export const Card = (props) => {
             }`}
           </p>
         </div>
-        {!isInCart ? (
+        {!store.cart.map((meal) => meal.id).includes(props.meal.id) ? (
           <button
             type="button"
             className="btn btn-light"
             onClick={() => {
               actions.AddMealToCart(props.meal);
-              setIsInCart(true);
             }}
           >
             Add to Cart
@@ -68,7 +62,6 @@ export const Card = (props) => {
             className="btn btn-light"
             onClick={() => {
               actions.deleteAMeal(props.meal.id);
-              setIsInCart(false);
             }}
           >
             Remove from Cart
