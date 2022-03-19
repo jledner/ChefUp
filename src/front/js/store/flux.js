@@ -7156,11 +7156,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ cart: cart });
       },
 
-      deleteAMeal: (index) => {
-        const storecopy = getStore();
-        storecopy.MealsInCart.splice(index, 1);
-
-        return setStore({ store: storecopy });
+      deleteAMeal: (mealID) => {
+        const store = getStore();
+        let removed = store.cart.filter((meal) => meal.id != mealID);
+        let cart = removed;
+        setStore({ cart: cart });
       },
 
       // AddMealToCart: (index) => {

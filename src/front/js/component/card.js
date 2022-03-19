@@ -67,7 +67,7 @@ export const Card = (props) => {
             type="button"
             className="btn btn-light"
             onClick={() => {
-              actions.deleteAMeal(props.IndexOfMeal);
+              actions.deleteAMeal(props.meal.id);
               setIsInCart(false);
             }}
           >

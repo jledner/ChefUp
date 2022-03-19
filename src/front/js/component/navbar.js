@@ -4,7 +4,6 @@ import { Context } from "../store/appContext";
 import { Card } from "./card";
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
-  const mealsInCart = store.mealsInCart;
   console.log(store);
   return (
     <nav className="navbar navbar-light bg-light">
@@ -63,7 +62,7 @@ export const Navbar = () => {
           aria-hidden="true"
         >
           <div class="modal-dialog modal-xl">
-            <div class="modal-content">
+            <div class="modal-content text-black">
               <div class="modal-header">
                 <h5 className="modal-title text-dark" id="staticBackdropLabel">
                   Your Cart
@@ -76,10 +75,10 @@ export const Navbar = () => {
                 ></button>
               </div>
               <div class="modal-body">
-                <div class="d-flex flex-wrap d-flex justify-content-between">
-                  {/* {mealsInCart.map((meal, index) => {
-                    return <div>hello</div>;
-                  })} */}
+                <div class="d-flex d-flex">
+                  {store.cart.map((meal, index) => {
+                    return <Card meal={meal} />;
+                  })}
                 </div>
               </div>
               <div class="modal-footer">
