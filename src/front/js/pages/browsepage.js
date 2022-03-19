@@ -15,7 +15,6 @@ export const BrowsePage = (props) => {
     params.query ? JSON.parse(localStorage.getItem(params.query)) : null
   );
   console.log(meals);
-  console.log(store);
   return (
     <div>
       <header className="landing-header-small d-flex flex-column justify-content-center">
