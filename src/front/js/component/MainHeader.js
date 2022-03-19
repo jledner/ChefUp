@@ -28,12 +28,10 @@ export const MainHeader = (props) => {
               className="btn btn-header"
               onClick={async (e) => {
                 e.preventDefault();
-                if (!localStorage[searchQuery]) {
-                  await actions.getMeals(
-                    `https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&maxReadyTime=30&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`,
-                    searchQuery
-                  );
-                }
+                await actions.getMeals(
+                  `https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&maxReadyTime=30&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`,
+                  searchQuery
+                );
                 history.push(`/meals/browse/${searchQuery}`);
               }}
             >

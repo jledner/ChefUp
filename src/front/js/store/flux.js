@@ -7114,17 +7114,26 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       getMeals: async (url, query) => {
-        await fetch(url)
-          .then((response) => {
-            if (response.ok) return response.json();
-            else throw new Error("help");
-          })
-          .then((response) => {
-            localStorage.setItem(`${query}`, JSON.stringify(response.results));
+        if (!localStorage[query]) {
+          await fetch(url)
+            .then((response) => {
+              if (response.ok) return response.json();
+              else throw new Error("help");
+            })
+            .then((response) => {
+              localStorage.setItem(
+                `${query}`,
+                JSON.stringify(response.results)
+              );
+            });
+          await setStore({
+            mealResults: JSON.parse(localStorage.getItem(query)),
           });
-        await setStore({
-          mealResults: JSON.parse(localStorage.getItem(query)),
-        });
+        } else {
+          setStore({
+            mealResults: JSON.parse(localStorage.getItem(query)),
+          });
+        }
       },
 
       AddMealToCart: (index) => {
@@ -7145,3 +7154,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 };
 
 export default getState;
+
+// getMeals: async (url, query) => {
+//   await fetch(url)
+//     .then((response) => {
+//       if (response.ok) return response.json();
+//       else throw new Error("help");
+//     })
+//     .then((response) => {
+//       localStorage.setItem(`${query}`, JSON.stringify(response.results));
+//     });
+//   await setStore({
+//     mealResults: JSON.parse(localStorage.getItem(query)),
+//   });
+// },

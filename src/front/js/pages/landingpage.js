@@ -48,12 +48,10 @@ export const LandingPage = (props) => {
                     <li
                       className="col-6 col-md-3"
                       onClick={async () => {
-                        if (!localStorage[cuisine.name]) {
-                          await actions.getMeals(
-                            `https://api.spoonacular.com/recipes/complexSearch?&cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`,
-                            cuisine.name
-                          );
-                        }
+                        await actions.getMeals(
+                          `https://api.spoonacular.com/recipes/complexSearch?&cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`,
+                          cuisine.name
+                        );
                         props.history.push(`/meals/browse/${cuisine.name}`);
                       }}
                     >
@@ -69,3 +67,16 @@ export const LandingPage = (props) => {
     </div>
   );
 };
+
+// if (!localStorage[cuisine.name]) {
+//   await actions.getMeals(
+//     `https://api.spoonacular.com/recipes/complexSearch?&cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`,
+//     cuisine.name
+//   );
+// } else {
+//   setStore({
+//     mealResults: JSON.parse(
+//       localStorage.getItem(cuisine.name)
+//     ),
+//   });
+// }
