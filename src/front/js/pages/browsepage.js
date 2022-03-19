@@ -59,7 +59,7 @@ export const BrowsePage = (props) => {
                   {store.mealResults.map((meal) => {
                     return (
                       <li className="col-lg-3 mb-1">
-                        <Card meal={meal} IsMealInCart={false} />
+                        <Card meal={meal} />
                       </li>
                     );
                   })}
