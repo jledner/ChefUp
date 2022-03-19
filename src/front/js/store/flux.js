@@ -7082,6 +7082,18 @@ const getState = ({ getStore, getActions, setStore }) => {
           img: "https://i.pinimg.com/originals/a1/0f/c0/a10fc083e8604ba604354599bced175f.jpg",
         },
       ],
+      excludedIngredients: [
+        "14412",
+        "10014412",
+        "20081",
+        "19335",
+        "4053",
+        "1004513",
+        "4582",
+        "4513",
+        "1002030",
+        "2047",
+      ],
     },
     actions: {
       // Use getActions to call a function within a fuction

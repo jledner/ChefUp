@@ -6,6 +6,9 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { MainHeader } from "../component/MainHeader";
 
 export const RecipeDetails = (props) => {
+  const { store } = useContext(Context);
+  const excludedIngredients = store.excludedIngredients;
+  console.log(excludedIngredients);
   const location = useLocation();
   const meal = location.state.meal;
   console.log(meal);
@@ -35,9 +38,14 @@ export const RecipeDetails = (props) => {
                 <p className="card-text">
                   <h6>Ingredients</h6>
                   <ul>
-                    {ingredients.map((ingredient) => (
-                      <li>{ingredient.name}</li>
-                    ))}
+                    {ingredients
+                      .filter(
+                        (ingredient) =>
+                          !excludedIngredients.includes(`${ingredient.id}`)
+                      )
+                      .map((ingredient) => {
+                        return <li>{ingredient.name}</li>;
+                      })}
                   </ul>
                 </p>
                 <p className="card-text">
