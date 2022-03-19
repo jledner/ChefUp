@@ -146,6 +146,10 @@ export const Card = (props) => {
               {props.meal.nutrition.nutrients[0].amount}
             </p>
             <p className="card-text" style={{ margin: "0", padding: "0" }}>
+              Servings: {props.meal.servings}
+            </p>
+            <p className="card-text" style={{ margin: "0", padding: "0" }}>
+              Price per serving:{" "}
               {`$${
                 (Math.floor(props.meal.pricePerServing) / 100) *
                 props.meal.servings
