@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      isLoggedIn: true,
       message: null,
       demo: [
         {
@@ -7070,6 +7071,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
       ],
       mealResults: [],
+      cart: [],
 
       MealsInCart: [
         {
