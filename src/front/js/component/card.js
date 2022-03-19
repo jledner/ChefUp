@@ -146,7 +146,10 @@ export const Card = (props) => {
               {props.meal.nutrition.nutrients[0].amount}
             </p>
             <p className="card-text" style={{ margin: "0", padding: "0" }}>
-              Price: $5.99
+              {`$${
+                (Math.floor(props.meal.pricePerServing) / 100) *
+                props.meal.servings
+              }`}
             </p>
           </div>
           {/* Thinking of wrapping this in a link tag that redirects to the Sign Up page - Jeff */}
