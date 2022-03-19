@@ -6,7 +6,7 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { MainHeader } from "../component/MainHeader";
 
 export const RecipeDetails = (props) => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const excludedIngredients = store.excludedIngredients;
   console.log(excludedIngredients);
   const location = useLocation();
@@ -25,8 +25,22 @@ export const RecipeDetails = (props) => {
               <button className="btn btn-primary mb-3">
                 <i class="fas fa-heart"></i>
               </button>
-              <button className="btn btn-primary">
-                <i class="fas fa-cart-plus"></i>
+              <button
+                className="btn btn-primary"
+                onClick={
+                  !store.cart.map((cartMeal) => cartMeal.id).includes(meal.id)
+                    ? () => actions.AddMealToCart(meal)
+                    : () => actions.deleteAMeal(meal.id)
+                }
+              >
+                <i
+                  class="fas fa-cart-plus"
+                  style={
+                    !store.cart.map((cartMeal) => cartMeal.id).includes(meal.id)
+                      ? { color: "green" }
+                      : { color: "red" }
+                  }
+                ></i>
               </button>
             </div>
           </div>
