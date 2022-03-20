@@ -54,3 +54,7 @@ section.category .row li {
 section.Featured {
   background-color: var(--alt-bg) !important;
 }
+
+li.cuisine-li:hover {
+  cursor: pointer;
+}

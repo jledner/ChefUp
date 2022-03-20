@@ -10,11 +10,6 @@ import { Card } from "../component/card";
 export const BrowsePage = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { store } = useContext(Context);
-  const params = useParams();
-  const [meals, setMeals] = useState(
-    params.query ? JSON.parse(localStorage.getItem(params.query)) : null
-  );
-  console.log(meals);
   return (
     <div>
       <header className="landing-header-small d-flex flex-column justify-content-center">

@@ -46,7 +46,7 @@ export const LandingPage = (props) => {
                 {cuisine.map((cuisine) => {
                   return (
                     <li
-                      className="col-6 col-md-3"
+                      className="col-6 col-md-3 cuisine-li"
                       onClick={async () => {
                         await actions.getMeals(
                           `https://api.spoonacular.com/recipes/complexSearch?&cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`,
