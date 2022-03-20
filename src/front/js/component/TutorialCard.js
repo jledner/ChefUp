@@ -36,7 +36,7 @@ export const TutorialCard = (props) => {
         </div>
 
         <button type="button" className="btn btn-light">
-          Add to Cart(functional I think)
+          Add to Cart
         </button>
       </div>
     </div>
