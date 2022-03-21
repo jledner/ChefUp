@@ -5,12 +5,12 @@ import { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
-//The Card component is used twice by Jeff in the profilepage view, but with two minor modifications
+
 export const Card = (props) => {
   const { store, actions } = useContext(Context);
   return (
     <div className="col">
-      <div className="card bg-dark text-white">
+      <div className="card h-100 bg-dark text-white">
         <Link
           to={{
             pathname: `/meals/details/${props.meal.id}`,
