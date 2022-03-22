@@ -11,23 +11,29 @@ export const GroceryList = () => {
   console.log(store);
   const [mealIngredients, setMealIngredients] = useState([]);
 
+  function isNotHousehold(value) {
+    if (
+      value != "14412" &&
+      value != "4053" &&
+      value != "10719335" &&
+      value != "4513" &&
+      value != "10014412" &&
+      value != "4053" &&
+      value != "1002030" &&
+      value != "20081" &&
+      value != "1004513" &&
+      value != "1012047" &&
+      value != "19335" &&
+      value != "4582" &&
+      value != "2047" &&
+      value != "1102047"
+    ) {
+      return value;
+    }
+  }
+
   store.trending.forEach((meal, i) => {
-    let mealIngred = meal.nutrition.ingredients.filter((ingredient) => {
-      ingredient.id != "14412" &&
-        ingredient.id != "4053" &&
-        ingredient.id != "10719335" &&
-        ingredient.id != "4513" &&
-        ingredient.id != "10014412" &&
-        ingredient.id != "4053" &&
-        ingredient.id != "1002030" &&
-        ingredient.id != "20081" &&
-        ingredient.id != "1004513" &&
-        ingredient.id != "1012047" &&
-        ingredient.id != "19335" &&
-        ingredient.id != "4582" &&
-        ingredient.id != "2047" &&
-        ingredient.id != "1102047";
-    });
+    let mealIngred = meal.nutrition.ingredients.filter((isNotHousehold) => {});
     setMealIngredients(mealIngred);
   });
 
