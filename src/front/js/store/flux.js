@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      isLoggedIn: true,
       message: null,
       demo: [
         {
@@ -7070,17 +7071,29 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
       ],
       mealResults: [],
+      cart: [],
 
-      MealsInCart: [
-        {
-          name: "Chicken Gyro",
-          img: "https://www.jocooks.com/wp-content/uploads/2020/06/chicken-gyros-1-14.jpg",
-        },
-
-        {
-          name: "Mar y Tierra",
-          img: "https://i.pinimg.com/originals/a1/0f/c0/a10fc083e8604ba604354599bced175f.jpg",
-        },
+      mealsInCart: [
+        // {
+        //   name: "Chicken Gyro",
+        //   img: "https://www.jocooks.com/wp-content/uploads/2020/06/chicken-gyros-1-14.jpg",
+        // },
+        // {
+        //   name: "Mar y Tierra",
+        //   img: "https://i.pinimg.com/originals/a1/0f/c0/a10fc083e8604ba604354599bced175f.jpg",
+        // },
+      ],
+      excludedIngredients: [
+        "14412",
+        "10014412",
+        "20081",
+        "19335",
+        "4053",
+        "1004513",
+        "4582",
+        "4513",
+        "1002030",
+        "2047",
       ],
     },
     actions: {
@@ -7114,34 +7127,71 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       getMeals: async (url, query) => {
-        await fetch(url)
-          .then((response) => {
-            if (response.ok) return response.json();
-            else throw new Error("help");
-          })
-          .then((response) => {
-            localStorage.setItem(`${query}`, JSON.stringify(response.results));
+        const store = getStore();
+        if (!localStorage[query]) {
+          await fetch(url)
+            .then((response) => {
+              if (response.ok) return response.json();
+              else throw new Error("help");
+            })
+            .then((response) => {
+              localStorage.setItem(
+                `${query}`,
+                JSON.stringify(response.results)
+              );
+            });
+          await setStore({
+            mealResults: JSON.parse(localStorage.getItem(query)),
           });
-        await setStore({
-          mealResults: JSON.parse(localStorage.getItem(query)),
-        });
+        } else {
+          setStore({
+            mealResults: JSON.parse(localStorage.getItem(query)),
+          });
+        }
       },
 
-      AddMealToCart: (index) => {
-        const storecopy = getStore();
-        storecopy.MealsInCart.push(storecopy.meals[index]);
-        console.log(storecopy.MealsInCart);
-        return setStore({ store: storecopy });
+      AddMealToCart: (meal) => {
+        const store = getStore();
+        let cart = [...store.cart, meal];
+        setStore({ cart: cart });
       },
 
-      deleteAMeal: (index) => {
-        const storecopy = getStore();
-        storecopy.MealsInCart.splice(index, 1);
-
-        return setStore({ store: storecopy });
+      deleteAMeal: (mealID) => {
+        const store = getStore();
+        let removed = store.cart.filter((meal) => meal.id != mealID);
+        let cart = removed;
+        setStore({ cart: cart });
       },
+
+      // AddMealToCart: (index) => {
+      //   const storecopy = getStore();
+      //   storecopy.MealsInCart.push(storecopy.meals[index]);
+      //   console.log(storecopy.MealsInCart);
+      //   return setStore({ store: storecopy });
+      // },
+
+      // deleteAMeal: (index) => {
+      //   const storecopy = getStore();
+      //   storecopy.MealsInCart.splice(index, 1);
+
+      //   return setStore({ store: storecopy });
+      // },
     },
   };
 };
 
 export default getState;
+
+// getMeals: async (url, query) => {
+//   await fetch(url)
+//     .then((response) => {
+//       if (response.ok) return response.json();
+//       else throw new Error("help");
+//     })
+//     .then((response) => {
+//       localStorage.setItem(`${query}`, JSON.stringify(response.results));
+//     });
+//   await setStore({
+//     mealResults: JSON.parse(localStorage.getItem(query)),
+//   });
+// },

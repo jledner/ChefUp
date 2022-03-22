@@ -10,11 +10,6 @@ import { Card } from "../component/card";
 export const BrowsePage = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { store } = useContext(Context);
-  const params = useParams();
-  const [meals, setMeals] = useState(
-    params.query ? JSON.parse(localStorage.getItem(params.query)) : null
-  );
-  console.log(meals);
   return (
     <div>
       <header className="landing-header-small d-flex flex-column justify-content-center">
@@ -52,25 +47,49 @@ export const BrowsePage = (props) => {
       <section className="category px-5 py-5">
         <div className="category-content">
           <h2>Browse Meals</h2>
-          <div className="row">
+          {/* <div className="row"> */}
             {store.mealResults && store.mealResults.length > 0 ? (
-              <ul>
-                <div className="row">
+              
+                <div className="row row-cols-4 gy-5">
                   {store.mealResults.map((meal) => {
                     return (
-                      <li className="col-lg-3 mb-1">
+                      
                         <Card meal={meal} />
-                      </li>
+                      
                     );
                   })}
                 </div>
-              </ul>
+              
             ) : (
               <div>no results :(</div>
             )}
-          </div>
+          {/* </div> */}
         </div>
       </section>
     </div>
   );
 };
+
+
+let previouscode = ` <section className="category px-5 py-5">
+<div className="category-content">
+  <h2>Browse Meals</h2>
+  <div className="row">
+    {store.mealResults && store.mealResults.length > 0 ? (
+      <ul>
+        <div className="row">
+          {store.mealResults.map((meal) => {
+            return (
+              <li className="col-lg-3 mb-1">
+                <Card meal={meal} />
+              </li>
+            );
+          })}
+        </div>
+      </ul>
+    ) : (
+      <div>no results :(</div>
+    )}
+  </div>
+</div>
+</section>`
