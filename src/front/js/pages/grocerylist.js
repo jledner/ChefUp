@@ -12,25 +12,21 @@ export const GroceryList = () => {
   const [mealIngredients, setMealIngredients] = useState([]);
 
   store.trending.forEach((meal, i) => {
-    let mealIngred = meal.nutrition.ingredients.map((ingredient, index) => {
-      if (
-        ingredient[index].id != "14412" &&
-        ingredient[index].id != "4053" &&
-        ingredient[index].id != "10719335" &&
-        ingredient[index].id != "4513" &&
-        ingredient[index].id != "10014412" &&
-        ingredient[index].id != "4053" &&
-        ingredient[index].id != "1002030" &&
-        ingredient[index].id != "20081" &&
-        ingredient[index].id != "1004513" &&
-        ingredient[index].id != "1012047" &&
-        ingredient[index].id != "19335" &&
-        ingredient[index].id != "4582" &&
-        ingredient[index].id != "2047" &&
-        ingredient[index].id != "1102047"
-      ) {
-        return ingredient;
-      }
+    let mealIngred = meal.nutrition.ingredients.filter((ingredient) => {
+      ingredient.id != "14412" &&
+        ingredient.id != "4053" &&
+        ingredient.id != "10719335" &&
+        ingredient.id != "4513" &&
+        ingredient.id != "10014412" &&
+        ingredient.id != "4053" &&
+        ingredient.id != "1002030" &&
+        ingredient.id != "20081" &&
+        ingredient.id != "1004513" &&
+        ingredient.id != "1012047" &&
+        ingredient.id != "19335" &&
+        ingredient.id != "4582" &&
+        ingredient.id != "2047" &&
+        ingredient.id != "1102047";
     });
     setMealIngredients(mealIngred);
   });
