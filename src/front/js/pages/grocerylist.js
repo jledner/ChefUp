@@ -32,19 +32,28 @@ export const GroceryList = () => {
   //   setMealIngredients(mealIngred);
   // });
   let ingred = [];
-  store.trending.forEach((meal, i) => {
+
+  store.cart.forEach((meal, i) => {
     let filtered = meal.nutrition.ingredients.filter((ingredient) => {
+      // console.log(!store.excludedIngredients.includes(`${ingredient.id}`));
       return !store.excludedIngredients.includes(`${ingredient.id}`);
     });
-    ingred.push(filtered);
+    filtered.map((ingredient, index) => {
+      ingred.push(ingredient);
+    });
   });
-  setMealIngredients(ingred);
+  // setMealIngredients(ingred);
 
   return (
     <div className="container">
       <h1>Grocery List</h1>
       <ul className="list-group">
-        {mealIngredients.map((ingredient) => `<li>${ingredient.name}</li>`)}
+        {ingred.map((ingredient) => (
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {ingredient.name}
+            <span class="badge bg-primary rounded-pill">{`${ingredient.amount} ${ingredient.unit}`}</span>
+          </li>
+        ))}
       </ul>
       <br />
       <Link to="/">
@@ -54,8 +63,7 @@ export const GroceryList = () => {
   );
 };
 
-{
-  /* 
+/* 
 {store.trending.forEach((item, i) => {
           store.trending[i].nutrition.ingredients.map((item, index) => {
             console.log(store.trending[i].nutrition.ingredients[index]);
@@ -115,4 +123,3 @@ export const GroceryList = () => {
             }
           });
         })} */
-}
