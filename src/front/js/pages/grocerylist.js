@@ -9,13 +9,51 @@ import "../../styles/landing.css";
 export const GroceryList = () => {
   const { store, actions } = useContext(Context);
   console.log(store);
+  const [mealIngredients, setMealIngredients] = useState([]);
+
+  store.trending.forEach((meal, i) => {
+    let mealIngred = meal.nutrition.ingredients.map((ingredient, index) => {
+      if (
+        ingredient[index].id != "14412" &&
+        ingredient[index].id != "4053" &&
+        ingredient[index].id != "10719335" &&
+        ingredient[index].id != "4513" &&
+        ingredient[index].id != "10014412" &&
+        ingredient[index].id != "4053" &&
+        ingredient[index].id != "1002030" &&
+        ingredient[index].id != "20081" &&
+        ingredient[index].id != "1004513" &&
+        ingredient[index].id != "1012047" &&
+        ingredient[index].id != "19335" &&
+        ingredient[index].id != "4582" &&
+        ingredient[index].id != "2047" &&
+        ingredient[index].id != "1102047"
+      ) {
+        return ingredient;
+      }
+    });
+    setMealIngredients(mealIngred);
+  });
 
   return (
     <div className="container">
+      <h1>Grocery List</h1>
       <ul className="list-group">
-        <h1>Grocery List</h1>
-        {store.trending.forEach((item, i) => {
+        {mealIngredients.map((ingredient) => `<li>${ingredient.name}</li>`)}
+      </ul>
+      <br />
+      <Link to="/">
+        <button className="btn btn-primary">Back home</button>
+      </Link>
+    </div>
+  );
+};
+
+{
+  /* 
+{store.trending.forEach((item, i) => {
           store.trending[i].nutrition.ingredients.map((item, index) => {
+            console.log(store.trending[i].nutrition.ingredients[index]);
             console.log(store.trending[i].nutrition.ingredients[index]);
             if (
               store.trending[i].nutrition.ingredients[index].id != "14412" &&
@@ -32,7 +70,7 @@ export const GroceryList = () => {
               store.trending[i].nutrition.ingredients[index].id != "4582" &&
               store.trending[i].nutrition.ingredients[index].id != "2047" &&
               store.trending[i].nutrition.ingredients[index].id != "1102047"
-            ) {
+            ){
               return (
                 <li
                   key={index}
@@ -42,28 +80,16 @@ export const GroceryList = () => {
                   <span>
                     {store.trending[i].nutrition.ingredients[index].name}
                   </span>
-                  <span
-                    style={{
-                      padding: "0 30px",
-                    }}
-                  >
+                  <span>
                     Amount:
                     <span>
-                      {
-                        store.trending[i].extendedIngredients[index].measures.us
-                          .amount
-                      }
+                      {store.trending[i].extendedIngredients[index].amount}
                     </span>
                     <span>
-                      {
-                        store.trending[i].extendedIngredients[index].measures.us
-                          .unitLong
-                      }
+                      {store.trending[i].extendedIngredients[index].unit}
                     </span>
                   </span>
-                  {/* <Link to={"/single/" + index}>
-                <span>Link to: {item.title}</span>
-              </Link> */}
+                  }
                   {
                     // Conditional render example
                     // Check to see if the background is orange, if so, display the message
@@ -83,12 +109,5 @@ export const GroceryList = () => {
               );
             }
           });
-        })}
-      </ul>
-      <br />
-      <Link to="/">
-        <button className="btn btn-primary">Back home</button>
-      </Link>
-    </div>
-  );
-};
+        })} */
+}
