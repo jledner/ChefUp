@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
-
+//We'll come back to this and the Login page later 3-22-22 - Jeff
 export const Login = props => {
   const [UserName, setUserName] = useState('')
   const [Password, setLoginPassword] = useState('')
@@ -84,6 +84,7 @@ export const Login = props => {
             <div class="card my-5">
 
               <form class="card-body cardbody-color p-lg-5" onSubmit={HandleLogin}>
+              <h3 style={{ color: 'orange'}}>Login Page to be used later</h3>
 
                 <div class="text-center">
                   <img src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"

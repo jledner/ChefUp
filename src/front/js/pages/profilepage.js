@@ -7,28 +7,27 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { Demo } from "./demo";
 import { FeaturedCard } from "../component/FeaturedCard";
 
-
+//We changed up our approach so perhaps we will come back to the login page later on 3/22/22 - Jeff
 export const ProfilePage = (props) => {
     const { store, setStore } = useContext(Context);
     let MealsInCart = store.MealsInCart;
     let meals = store.meals
     const history = useHistory()
-    //let currentUserInfo = history.location.UserInfo.user was commented out to work on the page a bit 
-    //easier. It's used with the commented out h1 tag in the JSX to display the logged in user's first name
-    //let currentUserInfo = history.location.UserInfo.user
+   
+    let currentUserInfo = history.location.UserInfo.user
 
     return (
 
         <div>
-            {/*Can uncomment later, but this displays <h1>Welcome {currentUserInfo.fname}</h1> */}
 
-            {/* Modal section for cart. When the cart button is clicked and the modal is opened, it shows what
-            meals are in the users' cart. The key thing to take note of here is the IsMealInCart={true} prop 
-            used with the Card component inside the "modal-body." See Card component notes if needed. */}
+             <h1>Welcome {currentUserInfo.fname}</h1>
+             <h3 style={{ color: 'orange'}}>Login Page to be used later</h3>
+
+            
             <button type="button" className="btn btn-primary" data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop" onClick={() => {
                     console.log(MealsInCart)
-                }} >Testing Cart{'('+MealsInCart.length+')'}
+                }} >Testing Cart
                 <i class="fas fa-shopping-cart"></i>
                 
             </button>
@@ -43,10 +42,10 @@ export const ProfilePage = (props) => {
                         </div>
                         <div class="modal-body">
                             <div class="d-flex flex-wrap d-flex justify-content-between">
-                                {MealsInCart.map((meal, index) => {
+                                {/* {MealsInCart.map((meal, index) => {
                                     return <Card meal={meal} IsMealInCart={true} IndexOfMeal={index}  key={index}/>
                                 }
-                                )}
+                                )} */}
                             </div>
 
                         </div>
@@ -59,13 +58,11 @@ export const ProfilePage = (props) => {
             </div>
             {/* End of the Modal section for cart*/}
             <br></br>
-            {/* "Meal display" section. It shows what meals are available for the logged in user to choose
-                from. The key thing to take note of here is the IsUserLoggedIn={true} prop used with
-                the Card component.See Card component notes if needed. */}
+            
             <div className="row row-cols-1 row-cols-md-2 g-4">
-                {meals.map((meal, index) => {
+                {/* {meals.map((meal, index) => {
                     return <Card meal={meal} IsUserLoggedIn={true} IndexOfEachMealCard={index} key={index}/>; 
-                })}
+                })} */}
                 {/* <Card
                 image="https://www.jocooks.com/wp-content/uploads/2020/06/chicken-gyros-1-14.jpg"
                 name="Chicken Gyro"
