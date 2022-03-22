@@ -11,24 +11,31 @@ export const GroceryList = () => {
   console.log(store);
   const [mealIngredients, setMealIngredients] = useState([]);
 
+  // store.trending.forEach((meal, i) => {
+  //   let mealIngred = meal.nutrition.ingredients.filter((ingredient) => {
+  //     ingredient.id != "14412" &&
+  //       ingredient.id != "4053" &&
+  //       ingredient.id != "10719335" &&
+  //       ingredient.id != "4513" &&
+  //       ingredient.id != "10014412" &&
+  //       ingredient.id != "4053" &&
+  //       ingredient.id != "1002030" &&
+  //       ingredient.id != "20081" &&
+  //       ingredient.id != "1004513" &&
+  //       ingredient.id != "1012047" &&
+  //       ingredient.id != "19335" &&
+  //       ingredient.id != "4582" &&
+  //       ingredient.id != "2047" &&
+  //       ingredient.id != "1102047";
+  //   });
+  //   setMealIngredients(mealIngred);
+  // });
+  let ingred = [];
   store.trending.forEach((meal, i) => {
-    let mealIngred = meal.nutrition.ingredients.filter((ingredient) => {
-      ingredient.id != "14412" &&
-        ingredient.id != "4053" &&
-        ingredient.id != "10719335" &&
-        ingredient.id != "4513" &&
-        ingredient.id != "10014412" &&
-        ingredient.id != "4053" &&
-        ingredient.id != "1002030" &&
-        ingredient.id != "20081" &&
-        ingredient.id != "1004513" &&
-        ingredient.id != "1012047" &&
-        ingredient.id != "19335" &&
-        ingredient.id != "4582" &&
-        ingredient.id != "2047" &&
-        ingredient.id != "1102047";
+    let filtered = meal.nutrition.ingredients.filter((ingredient) => {
+      return !store.excludedIngredients.includes(`${ingredient.id}`);
     });
-    setMealIngredients(mealIngred);
+    ingred.push(filtered);
   });
 
   return (
