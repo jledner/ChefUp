@@ -7,6 +7,9 @@ import foodImg from "../../img/foods/pls.jpg";
 import "../../styles/landing.css";
 import { Card } from "../component/card";
 
+
+//my adjustment was made under the h2 that says "Browse Meals." The previous code used was assigned
+//to a variable at the very, very bottom of this page in case it is needed - Jeff 3/21/22
 export const BrowsePage = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { store } = useContext(Context);
