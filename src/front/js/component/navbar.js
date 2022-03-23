@@ -36,9 +36,12 @@ export const Navbar = () => {
             <button className="btn btn-primary">Grocery List</button>
           </Link>
         </div>
-        {/* Modal section for cart. When the cart button is clicked and the modal is opened, it shows what
-            meals are in the users' cart. The key thing to take note of here is the IsMealInCart={true} prop 
-            used with the Card component inside the "modal-body." See Card component notes if needed. */}
+        <div className="ml-auto">
+          <Link to="/randommeals">
+            <button className="btn btn-primary">To Random Meals Page(in progress)</button>
+          </Link>
+        </div>
+       
         <button
           type="button"
           className="btn btn-primary"
