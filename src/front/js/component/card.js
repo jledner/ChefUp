@@ -43,10 +43,14 @@ export const Card = (props) => {
             Servings: {props.meal.servings}
           </p>
           <p className="card-text" style={{ margin: "0", padding: "0" }}>
-            Price per serving:{" "}
+            Price:{" "}
             {`$${
-              (Math.floor(props.meal.pricePerServing) / 100) *
-              props.meal.servings
+              Math.round(
+                ((Math.floor(props.meal.pricePerServing) / 100) *
+                  props.meal.servings +
+                  Number.EPSILON) *
+                  100
+              ) / 100
             }`}
           </p>
         </div>
