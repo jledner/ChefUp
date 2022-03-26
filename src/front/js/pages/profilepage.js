@@ -21,7 +21,7 @@ export const ProfilePage = (props) => {
 
   return (
     <div>
-      <MainHeader />
+      <MainHeader sizeClass={"landing-header-small"} />
       <h1>Welcome {currentUserInfo.name}</h1>
       <h3 style={{ color: "orange" }}>Login Page to be used later</h3>
 
