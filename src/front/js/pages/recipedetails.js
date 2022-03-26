@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { MainHeader } from "../component/MainHeader";
 import { FavoriteButton } from "../component/favoritebutton";
+import Fraction from "fraction.js";
 
 export const RecipeDetails = (props) => {
   // const [isFavorite, setFavorite] = useState(
@@ -60,7 +61,15 @@ export const RecipeDetails = (props) => {
                           !excludedIngredients.includes(`${ingredient.id}`)
                       )
                       .map((ingredient) => {
-                        return <li>{ingredient.name}</li>;
+                        let amount = new Fraction(ingredient.amount); //converts decimal to a franction.
+                        return (
+                          <li>
+                            <span>{`${amount.toFraction(true)} ${
+                              ingredient.unit
+                            } `}</span>
+                            {ingredient.name}
+                          </li>
+                        );
                       })}
                   </ul>
                 </p>

@@ -87,7 +87,7 @@ export const Navbar = () => {
               </div>
               <div class="modal-body">
                 {/* <div class="row row-cols-3 gy-4"> */}
-                <div class="row">
+                <div class="row gy-3">
                   {store.cart.map((meal, index) => {
                     return <CartCard meal={meal} />;
                   })}

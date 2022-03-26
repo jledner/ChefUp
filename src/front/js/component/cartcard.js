@@ -6,6 +6,7 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/card-main.css";
 import { FavoriteButton } from "./favoritebutton";
+import Fraction from "fraction.js";
 
 export const CartCard = (props) => {
   const { store, actions } = useContext(Context);
@@ -45,9 +46,12 @@ export const CartCard = (props) => {
                     );
                   })
                   .map((ingredient) => {
+                    let amount = new Fraction(ingredient.amount);
                     return (
                       <li className="col-4">
-                        <span className="ingredient-amounts">{`${ingredient.amount} ${ingredient.unit} `}</span>
+                        <span className="ingredient-amounts">{`${amount.toFraction(
+                          true
+                        )} ${ingredient.unit} `}</span>
                         <span>{`${ingredient.name}`}</span>
                       </li>
                     );
