@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Card } from "./card";
+import { CartCard } from "./cartcard";
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   console.log(store);
@@ -87,7 +88,7 @@ export const Navbar = () => {
               <div class="modal-body">
                 <div class="row row-cols-3 gy-4">
                   {store.cart.map((meal, index) => {
-                    return <Card meal={meal} />;
+                    return <CartCard meal={meal} />;
                   })}
                 </div>
               </div>

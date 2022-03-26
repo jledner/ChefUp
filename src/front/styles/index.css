@@ -18,3 +18,9 @@ header.landing-header-small {
   height: 30vh;
   background-size: auto;
 }
+
+.cart-card img {
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
