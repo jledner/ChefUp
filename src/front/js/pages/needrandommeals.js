@@ -12,8 +12,8 @@ import { FeaturedCard } from "../component/FeaturedCard";
  Jeff, i made a dummy mealPrefs object. I assume we would have something like this structure in our backend/db. 
 */
 const mealPrefs = {
-  diet: ["paleo"],
-  intolerances: ["dairy", "something"],
+  diet: ["vegetarian"],
+  intolerances: ["Dairy", "Shellfish"],
 };
 //function to generate the prefs string. it will looks something like '&diet=vegan,paleo&intolerances=dairy,something' with the above data.
 let generateMealPrefString = (prefs) => {
@@ -46,7 +46,8 @@ export const NeedRandomMeals = (props) => {
   const [UrlTags, setUrlTags] = useState([]); //As boxes are checked, tags are added to this list
   const [resultsfromfetch, setresultsfromfetch] = useState(); //the results from the fetch are assigned here and then mapped over in the JSX for
   //demo purposes.
-
+  const { store, actions } = useContext(Context);
+  const history = useHistory();
   let UrlTagsHandler = (e) => {
     //I believe each checkbox that we create will receive this function. When a box is checked in the
     //JSX this function adds that tag to the URLTags list. If unchecked, this function
@@ -56,44 +57,50 @@ export const NeedRandomMeals = (props) => {
       : setUrlTags(UrlTags.filter((tag) => tag != e.target.id));
   };
 
-  let SubmitCheckboxForm = (e) => {
+  let  SubmitCheckboxForm = async (e) => {
     e.preventDefault();
     console.log("submit works");
+    console.log(`https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${prefString}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`)
+    await actions.getMeals(
+      `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${prefString}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`,
+      'preftest'
+    );
+    history.push(`/meals/browse/preftest`);
     //On Submit,the loop below goes through the list in URLTags and adds each string to the variable
     //strForURL. If it reaches the end of the list, it adds the string without a comma at the end but
     //otherwise it is adding a string with a comma until it reaches the end.
     //e.g... dessert,vegetarian,vegan
-    for (let i = 0; i < UrlTags.length; i++) {
-      i == UrlTags.length - 1
-        ? (strForURL = strForURL + UrlTags[i])
-        : (strForURL = strForURL + UrlTags[i] + ",");
-    }
+    // for (let i = 0; i < UrlTags.length; i++) {
+    //   i == UrlTags.length - 1
+    //     ? (strForURL = strForURL + UrlTags[i])
+    //     : (strForURL = strForURL + UrlTags[i] + ",");
+    // }
     console.log("strForURL is", strForURL);
     //below is a sample of the URL that is being logged
-    console.log(
-      `https://api.spoonacular.com/recipes/random?limitLicense=true&tags=${strForURL}&number=20&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67`
-    );
-    fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${prefString}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`
-    )
-      .then((response) => {
-        if (response.ok) {
-          console.log("Successful fetch");
-        } else {
-          console.log("Check the response", response);
-        }
+    // console.log(
+    //   `https://api.spoonacular.com/recipes/random?limitLicense=true&tags=${prefString}&number=20&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67`
+    // );
+    // fetch(
+    //   `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${prefString}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`
+    // )
+    //   .then((response) => {
+    //     if (response.ok) {
+    //       console.log("Successful fetch");
+    //     } else {
+    //       console.log("Check the response", response);
+    //     }
 
-        return response.json();
-      })
-      .then((jsonResponse) => {
-        console.log(jsonResponse);
-        //Below updates the state Hook with the JSON data from the parameters given to the URL
-        setresultsfromfetch(jsonResponse);
-        //Below "resets" the variable so that a different search can be done. I think this will be
-        //a temporary variable
-        strForURL = "";
-      })
-      .catch((error) => console.log("Error", error));
+    //     return response.json();
+    //   })
+    //   .then((jsonResponse) => {
+    //     console.log(jsonResponse);
+    //     //Below updates the state Hook with the JSON data from the parameters given to the URL
+    //     setresultsfromfetch(jsonResponse);
+    //     //Below "resets" the variable so that a different search can be done. I think this will be
+    //     //a temporary variable
+    //     strForURL = "";
+    //   })
+    //   .catch((error) => console.log("Error", error));
   };
 
   console.log(UrlTags);
@@ -153,9 +160,9 @@ export const NeedRandomMeals = (props) => {
             it will show a list of the 20, random recipes*/}
       <ol class="list-group list-group-numbered">
         {resultsfromfetch ? (
-          resultsfromfetch.recipes.map((recipe) => (
-            <li class="list-group-item">{recipe.title}</li>
-          ))
+          resultsfromfetch.results.map((meal) => {
+            return <Card meal={meal} />;
+          })
         ) : (
           <div>resultsfromfetch variable is empty right now</div>
         )}
@@ -163,3 +170,16 @@ export const NeedRandomMeals = (props) => {
     </>
   );
 };
+let gg = `{trending.map((meal) => {
+  return <Card meal={meal} />;
+})}`
+
+let ogcode = `  <ol class="list-group list-group-numbered">
+{resultsfromfetch ? (
+  resultsfromfetch.recipes.map((recipe) => (
+    <li class="list-group-item">{recipe.title}</li>
+  ))
+) : (
+  <div>resultsfromfetch variable is empty right now</div>
+)}
+</ol>`
