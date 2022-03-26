@@ -4,13 +4,30 @@ import React, { Component } from "react";
 import { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-
+import "../../styles/card-main.css";
 
 export const Card = (props) => {
   const { store, actions } = useContext(Context);
   return (
     <div className="col">
-      <div className="card h-100 bg-dark text-white">
+      <div className="card h-100 bg-dark text-white position-relative">
+        <div className="fav position-absolute">
+          <button
+            className="btn btn-primary mb-3"
+            onClick={() => actions.addFavoriteMeal(props.meal)}
+          >
+            <i
+              class="fas fa-heart"
+              style={
+                !store.user.favorites
+                  .map((favorite) => favorite.id)
+                  .includes(props.meal.id)
+                  ? { color: "white" }
+                  : { color: "hotpink" }
+              }
+            ></i>
+          </button>
+        </div>
         <Link
           to={{
             pathname: `/meals/details/${props.meal.id}`,
