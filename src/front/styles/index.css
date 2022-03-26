@@ -24,3 +24,7 @@ header.landing-header-small {
   max-width: 100%;
   object-fit: cover;
 }
+
+.cart-ingredients-list {
+  list-style: none;
+}
