@@ -15,6 +15,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           initial: "white",
         },
       ],
+      user: {
+        name: "User",
+        mealPrefs: {
+          diet: ["paleo"],
+          intolerances: ["dairy"],
+        },
+      },
       cuisine: [
         {
           name: "italian",
