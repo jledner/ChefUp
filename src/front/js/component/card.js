@@ -5,6 +5,7 @@ import { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/card-main.css";
+import { FavoriteButton } from "./favoritebutton";
 
 export const Card = (props) => {
   const { store, actions } = useContext(Context);
@@ -12,7 +13,7 @@ export const Card = (props) => {
     <div className="col">
       <div className="card h-100 bg-dark text-white position-relative">
         <div className="fav position-absolute">
-          <button
+          {/* <button
             className="btn btn-primary mb-3"
             onClick={() => actions.addFavoriteMeal(props.meal)}
           >
@@ -26,7 +27,8 @@ export const Card = (props) => {
                   : { color: "hotpink" }
               }
             ></i>
-          </button>
+          </button> */}
+          <FavoriteButton meal={props.meal} />
         </div>
         <Link
           to={{
