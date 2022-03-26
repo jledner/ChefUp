@@ -8,6 +8,7 @@ import { Demo } from "./demo";
 import { FeaturedCard } from "../component/FeaturedCard";
 import avatar from "../../img/avatar.png";
 import "../../styles/profile.css";
+import { MainHeader } from "../component/MainHeader";
 
 //We changed up our approach so perhaps we will come back to the login page later on 3/22/22 - Jeff
 export const ProfilePage = (props) => {
@@ -20,6 +21,7 @@ export const ProfilePage = (props) => {
 
   return (
     <div>
+      <MainHeader />
       <h1>Welcome {currentUserInfo.name}</h1>
       <h3 style={{ color: "orange" }}>Login Page to be used later</h3>
 
@@ -119,12 +121,12 @@ export const ProfilePage = (props) => {
         </div>
         {/* End of the Log Out Button section */}
       </div>
-      <section>
+      <section className="main">
         <div className="user-profile">
           <div className="row">
             <div className="col-4">
               <div className="profile-nav bg-dark p-3">
-                <div className="profile-nav-head d-flex flex-wrap justify-content-center align-content-center align-items-center">
+                <div className="profile-nav-head d-flex flex-wrap justify-content-center align-content-center align-items-center mb-3">
                   <div className="avatar">
                     <img src={avatar} alt="" className="img-responsive" />
                   </div>
@@ -166,7 +168,7 @@ export const ProfilePage = (props) => {
                 </div>
               </div>
             </div>
-            <div className="col-8">
+            <div className="col-8 bg-dark">
               <div class="tab-content" id="v-pills-tabContent">
                 <div
                   class="tab-pane fade show active"
@@ -182,7 +184,11 @@ export const ProfilePage = (props) => {
                   role="tabpanel"
                   aria-labelledby="v-pills-profile-tab"
                 >
-                  the other
+                  <div className="row">
+                    {store.user.favorites.length > 0
+                      ? store.user.favorites.map((fav) => <Card meal={fav} />)
+                      : "You have no favorites"}
+                  </div>
                 </div>
                 <div
                   class="tab-pane fade"

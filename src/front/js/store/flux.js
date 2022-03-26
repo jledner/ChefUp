@@ -16,11 +16,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
       ],
       user: {
+        id: 1,
         name: "User",
         mealPrefs: {
           diet: ["paleo"],
           intolerances: ["dairy"],
         },
+        favorites: [],
       },
       cuisine: [
         {
@@ -7180,6 +7182,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         let removed = store.cart.filter((meal) => meal.id != mealID);
         let cart = removed;
         setStore({ cart: cart });
+      },
+
+      addFavoriteMeal: (meal, userID) => {
+        const store = getStore();
+        let user = store.user;
+        let favorites = user.favorites;
+        setStore({ user: { favorites: [...favorites, meal] } });
+      },
+      removeFavoriteMeal: (meal, userID) => {
+        const store = getStore();
+        let user = store.user;
+        let removed = user.favorites.filter((fav) => fav.id != meal.id);
+        setStore({ user: { favorites: removed } });
       },
 
       // AddMealToCart: (index) => {

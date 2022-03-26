@@ -38,10 +38,17 @@ export const Navbar = () => {
         </div>
         <div className="ml-auto">
           <Link to="/randommeals">
-            <button className="btn btn-primary">To Random Meals Page(in progress)</button>
+            <button className="btn btn-primary">
+              To Random Meals Page(in progress)
+            </button>
           </Link>
         </div>
-       
+        <div className="ml-auto">
+          <Link to="/profilepage/user">
+            <button className="btn btn-primary">Profile</button>
+          </Link>
+        </div>
+
         <button
           type="button"
           className="btn btn-primary"

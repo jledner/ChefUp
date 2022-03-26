@@ -6,6 +6,9 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { MainHeader } from "../component/MainHeader";
 
 export const RecipeDetails = (props) => {
+  // const [isFavorite, setFavorite] = useState(
+  //   store.user.favorites.includes(meal)
+  // );
   const { store, actions } = useContext(Context);
   const excludedIngredients = store.excludedIngredients;
   console.log(excludedIngredients);
@@ -22,8 +25,20 @@ export const RecipeDetails = (props) => {
         <div className="row">
           <div className="col-2">
             <div className="d-flex flex-column align-items-center">
-              <button className="btn btn-primary mb-3">
-                <i class="fas fa-heart"></i>
+              <button
+                className="btn btn-primary mb-3"
+                onClick={() => actions.addFavoriteMeal(meal)}
+              >
+                <i
+                  class="fas fa-heart"
+                  style={
+                    !store.user.favorites
+                      .map((favorite) => favorite.id)
+                      .includes(meal.id)
+                      ? { color: "white" }
+                      : { color: "hotpink" }
+                  }
+                ></i>
               </button>
               <button
                 className="btn btn-primary"
