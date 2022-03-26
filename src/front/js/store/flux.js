@@ -7188,13 +7188,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         const store = getStore();
         let user = store.user;
         let favorites = user.favorites;
-        setStore({ user: { favorites: [...favorites, meal] } });
+        setStore({ user: { ...user, favorites: [...favorites, meal] } });
       },
       removeFavoriteMeal: (meal, userID) => {
         const store = getStore();
         let user = store.user;
         let removed = user.favorites.filter((fav) => fav.id != meal.id);
-        setStore({ user: { favorites: removed } });
+        setStore({ user: { ...user, favorites: removed } });
       },
 
       // AddMealToCart: (index) => {
