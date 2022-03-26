@@ -1,8 +1,9 @@
 div.profile-nav-head div.avatar {
-  max-width: 70px;
+  max-width: 80px;
   height: auto;
 }
 div.profile-nav-head div.avatar img {
   width: 100%;
   border-radius: 50%;
+  border: 3px solid var(--primary-color);
 }

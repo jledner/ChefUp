@@ -126,8 +126,8 @@ export const ProfilePage = (props) => {
           <div className="row">
             <div className="col-4">
               <div className="profile-nav bg-dark p-3">
-                <div className="profile-nav-head d-flex flex-wrap justify-content-center align-content-center align-items-center mb-3">
-                  <div className="avatar">
+                <div className="profile-nav-head d-flex flex-wrap  align-content-center align-items-center mb-3">
+                  <div className="avatar me-3">
                     <img src={avatar} alt="" className="img-responsive" />
                   </div>
                   <h2>Hi, {currentUserInfo.name}</h2>
