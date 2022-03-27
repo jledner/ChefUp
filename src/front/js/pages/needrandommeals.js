@@ -20,7 +20,7 @@ export const NeedRandomMeals = (props) => {
   const { store, actions } = useContext(Context);
   const history = useHistory();
   let UrlTagsHandler = (e) => {
-     //I believe each checkbox that we create will receive this function. When a box is checked in the
+    //I believe each checkbox that we create will receive this function. When a box is checked in the
     //JSX this function adds that tag to the URLTags list. If unchecked, this function
     //removes that tag from the URLTags list.
     e.target.checked
@@ -28,232 +28,237 @@ export const NeedRandomMeals = (props) => {
       : setUrlTags(UrlTags.filter((tag) => tag != e.target.id));
   };
 
-  let  SubmitCheckboxForm = async (e) => {
+  let SubmitCheckboxForm = async (e) => {
     e.preventDefault();
     console.log("submit works");
-    let diets = ['vegetarian', 'Vegan', 'Dairy Free', 'Gluten Free']
-    let intolerances = ['Peanut', 'Soy', 'Sulfite', 'Egg']
-    let URLforIntolerances = 'intolerances='
-    let URLforDiets = 'diet='
-    for(let checkedboxes of UrlTags){
-      
-      for(let items of intolerances){
-        if(checkedboxes==items){
-          URLforIntolerances += checkedboxes+','
-        }
-      }
-    }
-    for(let checkedboxes of UrlTags){
-      
-      for(let items of diets){
-        if(checkedboxes==items){
-          URLforDiets += checkedboxes+','
-        }
-      }
-    }
-    // console.log(URLforIntolerances)
-    // let result = URLforIntolerances.substring(0,URLforIntolerances.length-1);
-    // console.log(result)
+    let diets = ['vegetarian', 'vegan', 'dairy', 'gluten']
+    let intolerances = ['peanut', 'soy', 'sulfite', 'egg']
+    let URLforIntolerances = '&intolerances='
+    let URLforDiets = '&diet='
+    for (let checkedboxes of UrlTags) {
 
-    console.log(URLforDiets)
-    let result = URLforDiets.substring(0,URLforDiets.length-1);
-    console.log(result)
-    
-  
+      for (let items of intolerances) {
+        if (checkedboxes == items) {
+          URLforIntolerances += checkedboxes + ','
+        }
+      }
+    }
+    for (let checkedboxes of UrlTags) {
+
+      for (let items of diets) {
+        if (checkedboxes == items) {
+          URLforDiets += checkedboxes + ','
+        }
+      }
+    }
+
+    let noFinalCommaIntolerances = URLforIntolerances.substring(0, URLforIntolerances.length - 1);
+    console.log(noFinalCommaIntolerances)
+
+
+    let noFinalCommaDiet = URLforDiets.substring(0, URLforDiets.length - 1);
+    console.log(noFinalCommaDiet)
+    console.log(
+      `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaDiet}${noFinalCommaIntolerances}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`
+
+    );
+    await actions.getMeals(
+      `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaDiet}${noFinalCommaIntolerances}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`,
+     'suggestions'
+     )
+     history.push(`/meals/browse/preftest`);
     //below is a sample of the URL that is being logged
-    // console.log(
-    //   `https://api.spoonacular.com/recipes/random?limitLicense=true&tags=${prefString}&number=20&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67`
-    // );
+
     // fetch(
-    //   `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${prefString}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`
+    //   `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaDiet}${noFinalCommaIntolerances}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`
     // )
-    //   .then((response) => {
-    //     if (response.ok) {
-    //       console.log("Successful fetch");
-    //     } else {
-    //       console.log("Check the response", response);
-    //     }
+    //     .then((response) => {
+    //       if (response.ok) {
+    //         console.log("Successful fetch");
+    //       } else {
+    //         console.log("Check the response", response);
+    //       }
 
-    //     return response.json();
-    //   })
-    //   .then((jsonResponse) => {
-    //     console.log(jsonResponse);
-    //     //Below updates the state Hook with the JSON data from the parameters given to the URL
-    //     setresultsfromfetch(jsonResponse);
-    //     //Below "resets" the variable so that a different search can be done. I think this will be
-    //     //a temporary variable
-    //     strForURL = "";
-    //   })
-    //   .catch((error) => console.log("Error", error));
-  };
+    //       return response.json();
+    //     })
+    //     .then((jsonResponse) => {
+    //       console.log(jsonResponse);
+    //       //Below updates the state Hook with the JSON data from the parameters given to the URL
+    //       //setresultsfromfetch(jsonResponse);
+    //       //Below "resets" the variable so that a different search can be done. I think this will be
+    //       //a temporary variable
 
-  console.log(UrlTags);
-  console.log(strForURL);
-  return (
-    <>
-      <h1> example = '&diet=vegan,paleo&intolerances=dairy,something'</h1>
-      <h3>
-        Diets
-      </h3>
-
-      <form
-        onSubmit={(e) => {
-          SubmitCheckboxForm(e);
-        }}
-      >
-        <div class="form-check">
-          <input
-          name="diet"
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="Vegetarian"
-            onChange={(e) => {
-              console.log(e.target.id);
-              UrlTagsHandler(e);
-            }}
-          />
-          <label class="form-check-label" for="Vegetarian">
-            Vegetarian
-          </label>
-        </div>
-        <div class="form-check">
-          <input
-          name="diet"
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="Vegan"
-            onChange={(e) => {
-              console.log(e.target.id);
-              UrlTagsHandler(e);
-            }}
-          />
-          <label class="form-check-label" for="Vegan">
-            Vegan
-          </label>
-        </div>
-        <div class="form-check">
-          <input
-          name="diet"
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="Dairy Free"
-            onChange={(e) => {
-              console.log(e.target.id);
-              UrlTagsHandler(e);
-            }}
-          />
-          <label class="form-check-label" for="Dairy Free">
-            Dairy Free
-          </label>
-        </div>
-        <div class="form-check">
-          <input
-          name="diet"
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="Gluten Free"
-            onChange={(e) => {
-              console.log(e.target.id);
-              UrlTagsHandler(e);
-            }}
-          />
-          <label class="form-check-label" for="Gluten Free">
-            Gluten Free
-          </label>
-        </div>
+    //     })
+    //     .catch((error) => console.log("Error", error));
+    // };
+  }
+    console.log(UrlTags);
+    console.log(strForURL);
+    return (
+      <>
+        <h1> example = '&diet=vegan,paleo&intolerances=dairy,something'</h1>
         <h3>
-        Intolerances
-      </h3>
-        <div class="form-check">
-          <input
-          name="diet"
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="Egg"
-            onChange={(e) => {
-              console.log(e.target.id);
-              UrlTagsHandler(e);
-            }}
-          />
-          <label class="form-check-label" for="Egg">
-            Egg
-          </label>
-        </div>
-        <div class="form-check">
-          <input
-          name="diet"
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="Sulfite"
-            onChange={(e) => {
-              console.log(e.target.id);
-              UrlTagsHandler(e);
-            }}
-          />
-          <label class="form-check-label" for="Sulfite">
-            Sulfite
-          </label>
-        </div>
-        <div class="form-check">
-          <input
-          name="diet"
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="Soy"
-            onChange={(e) => {
-              console.log(e.target.id);
-              UrlTagsHandler(e);
-            }}
-          />
-          <label class="form-check-label" for="Soy">
-            Soy
-          </label>
-        </div>
-        <div class="form-check">
-          <input
-          name="diet"
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="Peanut"
-            onChange={(e) => {
-              console.log(e.target.id);
-              UrlTagsHandler(e);
-            }}
-          />
-          <label class="form-check-label" for="Peanut">
-            Peanut 
-          </label>
-        </div>
+          Diets
+        </h3>
 
-        <button type="submit" class="btn btn-primary">
-          {" "}
-          On Submit, you'll see a list of random recipes depending on what boxes
-          were checked
-        </button>
-      </form>
+        <form
+          onSubmit={(e) => {
+            SubmitCheckboxForm(e);
+          }}
+        >
+          <div class="form-check">
+            <input
+              name="diet"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="vegetarian"
+              onChange={(e) => {
+                console.log(e.target.id);
+                UrlTagsHandler(e);
+              }}
+            />
+            <label class="form-check-label" for="vegetarian">
+              Vegetarian
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              name="diet"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="vegan"
+              onChange={(e) => {
+                console.log(e.target.id);
+                UrlTagsHandler(e);
+              }}
+            />
+            <label class="form-check-label" for="vegan">
+              Vegan
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              name="diet"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="dairy"
+              onChange={(e) => {
+                console.log(e.target.id);
+                UrlTagsHandler(e);
+              }}
+            />
+            <label class="form-check-label" for="dairy">
+              Dairy
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              name="diet"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="gluten"
+              onChange={(e) => {
+                console.log(e.target.id);
+                UrlTagsHandler(e);
+              }}
+            />
+            <label class="form-check-label" for="gluten">
+              Gluten
+            </label>
+          </div>
+          <h3>
+            Intolerances
+          </h3>
+          <div class="form-check">
+            <input
+              name="diet"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="egg"
+              onChange={(e) => {
+                console.log(e.target.id);
+                UrlTagsHandler(e);
+              }}
+            />
+            <label class="form-check-label" for="egg">
+              Egg
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              name="diet"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="sulfite"
+              onChange={(e) => {
+                console.log(e.target.id);
+                UrlTagsHandler(e);
+              }}
+            />
+            <label class="form-check-label" for="sulfite">
+              Sulfite
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              name="diet"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="soy"
+              onChange={(e) => {
+                console.log(e.target.id);
+                UrlTagsHandler(e);
+              }}
+            />
+            <label class="form-check-label" for="soy">
+              Soy
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              name="diet"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="peanut"
+              onChange={(e) => {
+                console.log(e.target.id);
+                UrlTagsHandler(e);
+              }}
+            />
+            <label class="form-check-label" for="peanut">
+              Peanut
+            </label>
+          </div>
 
-      {/* If the resultsfromfetch hook is empty then a message below the button is shown. Once populated
+          <button type="submit" class="btn btn-primary">
+            {" "}
+            On Submit, you'll see a list of random recipes depending on what boxes
+            were checked
+          </button>
+        </form>
+
+        {/* If the resultsfromfetch hook is empty then a message below the button is shown. Once populated
             it will show a list of the 20, random recipes*/}
-      <ol class="list-group list-group-numbered">
-        {resultsfromfetch ? (
-          resultsfromfetch.results.map((meal) => {
-            return <Card meal={meal} />;
-          })
-        ) : (
-          <div>resultsfromfetch variable is empty right now</div>
-        )}
-      </ol>
-    </>
-  );
-};
+        <ol class="list-group list-group-numbered">
+          {resultsfromfetch ? (
+            resultsfromfetch.results.map((meal) => {
+              return <Card meal={meal} />;
+            })
+          ) : (
+            <div>resultsfromfetch variable is empty right now</div>
+          )}
+        </ol>
+      </>
+    );
+  }
 
 
 let ogcode = `  <ol class="list-group list-group-numbered">
@@ -269,8 +274,8 @@ let ogcode = `  <ol class="list-group list-group-numbered">
 //Waynes code below
 
 //dummy meal prefs to test randomMeal
-/* 
- Jeff, i made a dummy mealPrefs object. I assume we would have something like this structure in our backend/db. 
+/*
+ Jeff, i made a dummy mealPrefs object. I assume we would have something like this structure in our backend/db.
 */
 // const mealPrefs = {
 //   diet: ["vegetarian"],
@@ -311,4 +316,4 @@ let ogcode = `  <ol class="list-group list-group-numbered">
 //       `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${prefString}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`,
 //       'preftest'
 //     );
-//     history.push(`/meals/browse/preftest`);
+//     history.push(`/meals/browse/preftest`);////////
