@@ -13,44 +13,49 @@ import { FeaturedCard } from "../component/FeaturedCard";
 
 
 export const NeedRandomMeals = (props) => {
-  const [UrlTags, setUrlTags] = useState([]); //As boxes are checked, tags are added to this list
-  const [resultsfromfetch, setresultsfromfetch] = useState(); //the results from the fetch are assigned here and then mapped over in the JSX for
-  //demo purposes.
+  const [UrlParams, setUrlParams] = useState([]); //As boxes are checked, params are added to this list
+  
   const { store, actions } = useContext(Context);
   const history = useHistory();
-  let UrlTagsHandler = (e) => {
-    //I believe each checkbox that we create will receive this function. When a box is checked in the
-    //JSX this function adds that tag to the URLTags list. If unchecked, this function
-    //removes that tag from the URLTags list.
+  let UrlParamsHandler = (e) => {
+    //Each checkbox that we create will receive this function. When a box is checked in the
+    //JSX this function adds that param to URLParams using e.target.id . If unchecked, this function
+    //removes that tag from the URLParams array.
     e.target.checked
-      ? setUrlTags([...UrlTags, e.target.id])
-      : setUrlTags(UrlTags.filter((tag) => tag != e.target.id));
+      ? setUrlParams([...UrlParams, e.target.id])
+      : setUrlParams(UrlParams.filter((tag) => tag != e.target.id));
   };
 
   let SubmitCheckboxForm = async (e) => {
     e.preventDefault();
     console.log("submit works");
+    //"master lists" of diets and intolerances. These can easily be modified
     let diets = ['vegetarian', 'vegan', 'lacto-vegetarian', 'ovo-vegetarian',]
-    let intolerances = ['peanut', 'soy', 'sulfite', 'sesame','dairy']
+    let intolerances = ['peanut', 'soy', 'sulfite', 'sesame','dairy','gluten']
     let URLforIntolerances = '&intolerances='
     let URLforDiets = '&diet='
-    for (let checkedboxes of UrlTags) {
 
-      for (let items of intolerances) {
-        if (checkedboxes == items) {
-          URLforIntolerances += checkedboxes + ','
+    //goes through each checkedbox that was added to URLParams hook
+    for (let checkedbox of UrlParams) {
+      //goes through each intolerance in the intolerances array
+      for (let anIntolerance of intolerances) {
+        //if a match if found, the match is concatenated to URLforIntolerances
+        if (checkedbox == anIntolerance) {
+          URLforIntolerances += checkedbox + ','
         }
       }
     }
-    for (let checkedboxes of UrlTags) {
-
-      for (let items of diets) {
-        if (checkedboxes == items) {
-          URLforDiets += checkedboxes + ','
+    //goes through each checkedbox that was added to URLParams hook
+    for (let chosenbox of UrlParams) {
+      //goes through each diet in the diets array
+      for (let diet of diets) {
+         //if a match if found, the match is concatenated to URLforDiets
+        if (chosenbox == diet) {
+          URLforDiets += chosenbox + ','
         }
       }
     }
-
+    //substring() removes the trailing comma for both strings below that will be used as URLs
     let noFinalCommaInIntolerancesURL = URLforIntolerances.substring(0, URLforIntolerances.length - 1);
     console.log(noFinalCommaInIntolerancesURL)
 
@@ -63,39 +68,21 @@ export const NeedRandomMeals = (props) => {
     );
     await actions.getMeals(
       `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaInDietURL}${noFinalCommaInIntolerancesURL}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`,
-     'suggestions'//!!!this is the offender that messes with your search results!!!
+      'UrlParams: '+noFinalCommaInIntolerancesURL+noFinalCommaInDietURL
      )
-     history.push(`/meals/browse/preftest`);
-    //below is a sample of the URL that is being logged
+     history.push(`/meals/browse/test`);
 
-    // fetch(
-    //   `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaDiet}${noFinalCommaIntolerances}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`
-    // )
-    //     .then((response) => {
-    //       if (response.ok) {
-    //         console.log("Successful fetch");
-    //       } else {
-    //         console.log("Check the response", response);
-    //       }
-
-    //       return response.json();
-    //     })
-    //     .then((jsonResponse) => {
-    //       console.log(jsonResponse);
-    //       //Below updates the state Hook with the JSON data from the parameters given to the URL
-    //       //setresultsfromfetch(jsonResponse);
-    //       //Below "resets" the variable so that a different search can be done. I think this will be
-    //       //a temporary variable
-
-    //     })
-    //     .catch((error) => console.log("Error", error));
-    // };
   }
-    console.log(UrlTags);
+    console.log(UrlParams);
     
+    //for the JSX below each input id is set to either a diet or intolerance. When checked, the id
+    //is added to the UrlParams to be used later in the URL to fetch the meals
     return (
       <>
-        <h1> exampleURL  = '&diet=vegetarian&intolerances=dairy,peanut'</h1>
+        <h1>Framework in place. Test it out with the console open preferably</h1>
+        <h2>Code will probably be modified later. Page was coded this way for the time being to give us a
+          clear idea of what we want it to do.  - Jeff 3/27/22
+        </h2>
         <h3>
           Diets
         </h3>
@@ -111,14 +98,15 @@ export const NeedRandomMeals = (props) => {
               class="form-check-input"
               type="checkbox"
               value=""
-              id="vegetarian"
+              id="vegetarian" //each input id is set to to either a diet or intolerance
               onChange={(e) => {
                 console.log(e.target.id);
-                UrlTagsHandler(e);
+                UrlParamsHandler(e);
               }}
             />
-            <label class="form-check-label" for="vegetarian">
+            <label class="form-check-label" for="vegetarian">{/*the value after for= must match the id in inputtag*/}
               Vegetarian
+              {/* Each piece of text is set to match the id in the input located in the same div */}
             </label>
           </div>
           <div class="form-check">
@@ -130,7 +118,7 @@ export const NeedRandomMeals = (props) => {
               id="vegan"
               onChange={(e) => {
                 console.log(e.target.id);
-                UrlTagsHandler(e);
+                UrlParamsHandler(e);
               }}
             />
             <label class="form-check-label" for="vegan">
@@ -146,7 +134,7 @@ export const NeedRandomMeals = (props) => {
               id="ovo-vegetarian"
               onChange={(e) => {
                 console.log(e.target.id);
-                UrlTagsHandler(e);
+                UrlParamsHandler(e);
               }}
             />
             <label class="form-check-label" for="ovo-vegetarian">
@@ -162,7 +150,7 @@ export const NeedRandomMeals = (props) => {
               id="lacto-vegetarian"
               onChange={(e) => {
                 console.log(e.target.id);
-                UrlTagsHandler(e);
+                UrlParamsHandler(e);
               }}
             />
             <label class="form-check-label" for="lacto-vegetarian">
@@ -182,7 +170,7 @@ export const NeedRandomMeals = (props) => {
               id="sesame"
               onChange={(e) => {
                 console.log(e.target.id);
-                UrlTagsHandler(e);
+                UrlParamsHandler(e);
               }}
             />
             <label class="form-check-label" for="sesame">
@@ -198,7 +186,7 @@ export const NeedRandomMeals = (props) => {
               id="sulfite"
               onChange={(e) => {
                 console.log(e.target.id);
-                UrlTagsHandler(e);
+                UrlParamsHandler(e);
               }}
             />
             <label class="form-check-label" for="sulfite">
@@ -214,7 +202,7 @@ export const NeedRandomMeals = (props) => {
               id="soy"
               onChange={(e) => {
                 console.log(e.target.id);
-                UrlTagsHandler(e);
+                UrlParamsHandler(e);
               }}
             />
             <label class="form-check-label" for="soy">
@@ -230,7 +218,7 @@ export const NeedRandomMeals = (props) => {
               id="peanut"
               onChange={(e) => {
                 console.log(e.target.id);
-                UrlTagsHandler(e);
+                UrlParamsHandler(e);
               }}
             />
             <label class="form-check-label" for="peanut">
@@ -247,46 +235,42 @@ export const NeedRandomMeals = (props) => {
               id="dairy"
               onChange={(e) => {
                 console.log(e.target.id);
-                UrlTagsHandler(e);
+                UrlParamsHandler(e);
               }}
             />
             <label class="form-check-label" for="dairy">
             Dairy
             </label>
           </div>
+          <div class="form-check">
+            <input
+              name="diet"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="gluten"
+              onChange={(e) => {
+                console.log(e.target.id);
+                UrlParamsHandler(e);
+              }}
+            />
+            <label class="form-check-label" for="gluten">
+            Gluten
+            </label>
+          </div>
 
           <button type="submit" class="btn btn-primary">
             {" "}
-            On Submit, you'll see a list of random recipes depending on what boxes
-            were checked
+            Once preferences are chosen, click me to be taken to browse page.
           </button>
         </form>
 
-        {/* If the resultsfromfetch hook is empty then a message below the button is shown. Once populated
-            it will show a list of the 20, random recipes*/}
-        <ol class="list-group list-group-numbered">
-          {resultsfromfetch ? (
-            resultsfromfetch.results.map((meal) => {
-              return <Card meal={meal} />;
-            })
-          ) : (
-            <div>resultsfromfetch variable is empty right now</div>
-          )}
-        </ol>
+        
       </>
     );
   }
 
 
-let ogcode = `  <ol class="list-group list-group-numbered">
-{resultsfromfetch ? (
-  resultsfromfetch.recipes.map((recipe) => (
-    <li class="list-group-item">{recipe.title}</li>
-  ))
-) : (
-  <div>resultsfromfetch variable is empty right now</div>
-)}
-</ol>`
 
 //Waynes code below
 
