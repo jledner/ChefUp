@@ -9,9 +9,8 @@ import { FeaturedCard } from "../component/FeaturedCard";
 
 
 
-//   "https://api.spoonacular.com/recipes/random?limitLicense=true&tags=${strForURL}&number=20&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67";
 
-let strForURL = ""; //empty string that is populated with parameters to pass to the URL
+
 
 export const NeedRandomMeals = (props) => {
   const [UrlTags, setUrlTags] = useState([]); //As boxes are checked, tags are added to this list
@@ -31,8 +30,8 @@ export const NeedRandomMeals = (props) => {
   let SubmitCheckboxForm = async (e) => {
     e.preventDefault();
     console.log("submit works");
-    let diets = ['vegetarian', 'vegan', 'dairy', 'gluten']
-    let intolerances = ['peanut', 'soy', 'sulfite', 'egg']
+    let diets = ['vegetarian', 'vegan', 'lacto-vegetarian', 'ovo-vegetarian',]
+    let intolerances = ['peanut', 'soy', 'sulfite', 'sesame','dairy']
     let URLforIntolerances = '&intolerances='
     let URLforDiets = '&diet='
     for (let checkedboxes of UrlTags) {
@@ -52,19 +51,19 @@ export const NeedRandomMeals = (props) => {
       }
     }
 
-    let noFinalCommaIntolerances = URLforIntolerances.substring(0, URLforIntolerances.length - 1);
-    console.log(noFinalCommaIntolerances)
+    let noFinalCommaInIntolerancesURL = URLforIntolerances.substring(0, URLforIntolerances.length - 1);
+    console.log(noFinalCommaInIntolerancesURL)
 
 
-    let noFinalCommaDiet = URLforDiets.substring(0, URLforDiets.length - 1);
-    console.log(noFinalCommaDiet)
+    let noFinalCommaInDietURL = URLforDiets.substring(0, URLforDiets.length - 1);
+    console.log(noFinalCommaInDietURL)
     console.log(
-      `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaDiet}${noFinalCommaIntolerances}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`
+      `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaInDietURL}${noFinalCommaInIntolerancesURL}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`
 
     );
     await actions.getMeals(
-      `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaDiet}${noFinalCommaIntolerances}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`,
-     'suggestions'
+      `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaInDietURL}${noFinalCommaInIntolerancesURL}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`,
+     'suggestions'//!!!this is the offender that messes with your search results!!!
      )
      history.push(`/meals/browse/preftest`);
     //below is a sample of the URL that is being logged
@@ -93,10 +92,10 @@ export const NeedRandomMeals = (props) => {
     // };
   }
     console.log(UrlTags);
-    console.log(strForURL);
+    
     return (
       <>
-        <h1> example = '&diet=vegan,paleo&intolerances=dairy,something'</h1>
+        <h1> exampleURL  = '&diet=vegetarian&intolerances=dairy,peanut'</h1>
         <h3>
           Diets
         </h3>
@@ -144,14 +143,14 @@ export const NeedRandomMeals = (props) => {
               class="form-check-input"
               type="checkbox"
               value=""
-              id="dairy"
+              id="ovo-vegetarian"
               onChange={(e) => {
                 console.log(e.target.id);
                 UrlTagsHandler(e);
               }}
             />
-            <label class="form-check-label" for="dairy">
-              Dairy
+            <label class="form-check-label" for="ovo-vegetarian">
+              Ovo-Vegetarian(excludes dairy)
             </label>
           </div>
           <div class="form-check">
@@ -160,16 +159,17 @@ export const NeedRandomMeals = (props) => {
               class="form-check-input"
               type="checkbox"
               value=""
-              id="gluten"
+              id="lacto-vegetarian"
               onChange={(e) => {
                 console.log(e.target.id);
                 UrlTagsHandler(e);
               }}
             />
-            <label class="form-check-label" for="gluten">
-              Gluten
+            <label class="form-check-label" for="lacto-vegetarian">
+            Lacto-Vegetarian(exludes eggs)
             </label>
           </div>
+          
           <h3>
             Intolerances
           </h3>
@@ -179,14 +179,14 @@ export const NeedRandomMeals = (props) => {
               class="form-check-input"
               type="checkbox"
               value=""
-              id="egg"
+              id="sesame"
               onChange={(e) => {
                 console.log(e.target.id);
                 UrlTagsHandler(e);
               }}
             />
-            <label class="form-check-label" for="egg">
-              Egg
+            <label class="form-check-label" for="sesame">
+            Sesame
             </label>
           </div>
           <div class="form-check">
@@ -235,6 +235,23 @@ export const NeedRandomMeals = (props) => {
             />
             <label class="form-check-label" for="peanut">
               Peanut
+            </label>
+          </div>
+          
+          <div class="form-check">
+            <input
+              name="diet"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="dairy"
+              onChange={(e) => {
+                console.log(e.target.id);
+                UrlTagsHandler(e);
+              }}
+            />
+            <label class="form-check-label" for="dairy">
+            Dairy
             </label>
           </div>
 
