@@ -16,6 +16,7 @@ import { Tutorial } from "./pages/tutorial";
 import { BrowsePage } from "./pages/browsepage";
 import { ProfilePage } from "./pages/profilepage.js";
 import { GroceryList } from "./pages/grocerylist";
+import {NeedRandomMeals} from "./pages/needrandommeals.js"
 
 //create your first component
 const Layout = () => {
@@ -50,13 +51,12 @@ const Layout = () => {
             <Route exact path="/browse">
               <BrowsePage />
             </Route>
-            <Route exact path="/profilepage/:theuser">
-              <ProfilePage />
-            </Route>
+            <Route exact path="/profilepage/:theuser" component={ProfilePage}/>
+              
             <Route exact path="/grocerylist">
               <GroceryList />
             </Route>
-
+            <Route exact path="/randommeals" component={NeedRandomMeals}/>
             <Route>
               <h1>Not found!</h1>
             </Route>

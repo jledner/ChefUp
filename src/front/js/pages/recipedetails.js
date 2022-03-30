@@ -4,8 +4,13 @@ import { Link, useParams, useLocation } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { MainHeader } from "../component/MainHeader";
+import { FavoriteButton } from "../component/favoritebutton";
+import Fraction from "fraction.js";
 
 export const RecipeDetails = (props) => {
+  // const [isFavorite, setFavorite] = useState(
+  //   store.user.favorites.includes(meal)
+  // );
   const { store, actions } = useContext(Context);
   const excludedIngredients = store.excludedIngredients;
   console.log(excludedIngredients);
@@ -22,9 +27,7 @@ export const RecipeDetails = (props) => {
         <div className="row">
           <div className="col-2">
             <div className="d-flex flex-column align-items-center">
-              <button className="btn btn-primary mb-3">
-                <i class="fas fa-heart"></i>
-              </button>
+              <FavoriteButton meal={meal} />
               <button
                 className="btn btn-primary"
                 onClick={
@@ -58,7 +61,15 @@ export const RecipeDetails = (props) => {
                           !excludedIngredients.includes(`${ingredient.id}`)
                       )
                       .map((ingredient) => {
-                        return <li>{ingredient.name}</li>;
+                        let amount = new Fraction(ingredient.amount); //converts decimal to a franction.
+                        return (
+                          <li>
+                            <span>{`${amount.toFraction(true)} ${
+                              ingredient.unit
+                            } `}</span>
+                            {ingredient.name}
+                          </li>
+                        );
                       })}
                   </ul>
                 </p>

@@ -1,0 +1,8 @@
+div.card:hover div.fav {
+  display: block;
+}
+div.fav {
+  display: none;
+  right: 15px;
+  top: 15px;
+}

@@ -4,13 +4,17 @@ import React, { Component } from "react";
 import { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-
+import "../../styles/card-main.css";
+import { FavoriteButton } from "./favoritebutton";
 
 export const Card = (props) => {
   const { store, actions } = useContext(Context);
   return (
     <div className="col">
-      <div className="card h-100 bg-dark text-white">
+      <div className="card h-100 bg-dark text-white position-relative">
+        <div className="fav position-absolute">
+          <FavoriteButton meal={props.meal} />
+        </div>
         <Link
           to={{
             pathname: `/meals/details/${props.meal.id}`,
@@ -39,10 +43,14 @@ export const Card = (props) => {
             Servings: {props.meal.servings}
           </p>
           <p className="card-text" style={{ margin: "0", padding: "0" }}>
-            Price per serving:{" "}
+            Price:{" "}
             {`$${
-              (Math.floor(props.meal.pricePerServing) / 100) *
-              props.meal.servings
+              Math.round(
+                ((Math.floor(props.meal.pricePerServing) / 100) *
+                  props.meal.servings +
+                  Number.EPSILON) *
+                  100
+              ) / 100
             }`}
           </p>
         </div>

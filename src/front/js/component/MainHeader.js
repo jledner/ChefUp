@@ -7,7 +7,11 @@ export const MainHeader = (props) => {
   const { store, actions } = useContext(Context);
   const [searchQuery, setSearchQuery] = useState("");
   return (
-    <header className="landing-header d-flex flex-column justify-content-center p-5">
+    <header
+      className={`${
+        props.sizeClass ? `${props.sizeClass}` : `landing-header`
+      } d-flex flex-column justify-content-center p-5`}
+    >
       <div className="row">
         <div className="col-12 col-xl-1"></div>
         <div className="col-12 col-xl-6">
