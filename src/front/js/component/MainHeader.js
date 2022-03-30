@@ -21,7 +21,9 @@ export const MainHeader = (props) => {
                 id="exampleFormControlInput1"
                 placeholder="Search for noms"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) =>
+                  setSearchQuery(e.target.value) && getProducts(e.target.value)
+                }
               />
             </div>
             <button

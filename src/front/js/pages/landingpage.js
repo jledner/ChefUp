@@ -17,6 +17,9 @@ export const LandingPage = (props) => {
   let cuisine = store.cuisine;
   let meals = store.meals;
   let MealsInCart = store.MealsInCart;
+  // actions.getProducts("steak");
+  // let products = store.productsResponseJSON;
+  // console.log(products);
   //const [MealsInCart, setMealsinCart] = useState(store.MealsInCart)
 
   return (

@@ -3,6 +3,9 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       isLoggedIn: true,
       message: null,
+      productsResponseJSON: null,
+      authtoken:
+        "eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYXBpLmtyb2dlci5jb20vdjEvLndlbGwta25vd24vandrcy5qc29uIiwia2lkIjoiWjRGZDNtc2tJSDg4aXJ0N0xCNWM2Zz09IiwidHlwIjoiSldUIn0.eyJhdWQiOiJjaGVwdXAyLWEyYjVmN2RkOWQ1NDNjZjJlYzBjOTAyN2U1OTQwZDIzNjg1MjAwNDAzMDk4OTUwMzQwMSIsImV4cCI6MTY0ODAwNTA0NSwiaWF0IjoxNjQ4MDAzMjQwLCJpc3MiOiJhcGkua3JvZ2VyLmNvbSIsInN1YiI6ImRiMjg4MWQ5LTMzMmItNWNiOS04MTg0LWI2YWM3Y2ZlZDk4ZiIsInNjb3BlIjoicHJvZHVjdC5jb21wYWN0IiwiYXV0aEF0IjoxNjQ4MDAzMjQ1OTE4ODQ3NjQ2LCJhenAiOiJjaGVwdXAyLWEyYjVmN2RkOWQ1NDNjZjJlYzBjOTAyN2U1OTQwZDIzNjg1MjAwNDAzMDk4OTUwMzQwMSJ9.Ti7WvcLPMj2XyJ919kRluqiC8oaiooOxjuvXAd4iKVUExbtEtrjK8m_zjJHSY6UUUG-xk5OikL-i6tbdZx8xI4nH919SeIbZZFgS8KDDJ7EpvXrK_BEGSq-TfvchyL3q9Y-JL4ohpHv96kaNWsJvVOu8paUo3sWsH9w57ciq1jc-zmVJr-bOgReJ5KFdVRR04fxd0FM91eqSxCWyraM4Svo49H1tz_cl4CLhlDsV060fT-OJzBOdJrZQCj5LPCrvOnA7EKOoT9wcneWq0CBIBH3tmnEX1sxTnpJsvOajVLDXe0zc47JsZMpn7TULx3ZtzqH8J3m_WCvy7Els0HY4HQ",
       demo: [
         {
           title: "FIRST",
@@ -7122,6 +7125,74 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch((error) =>
             console.log("Error loading message from backend", error)
           );
+      },
+      // getAccessToken: async () => {
+      //   var settings = {
+      //     async: true,
+      //     crossDomain: true,
+      //     url: "https://api.kroger.com/v1/connect/oauth2/token",
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/x-www-form-urlencoded",
+      //       Authorization:
+      //         "Basic {{base64(“REACT_APP_CLIENT_ID:REACT_APP_CLIENT_SECRET”)}}",
+      //     },
+      //     data: {
+      //       grant_type: "client_credentials",
+      //       scope: "{{scope}}",
+      //     },
+      //   };
+
+      //   $.ajax(settings).done(function (response) {
+      //     console.log(response);
+      //   });
+      // },
+      getAccessToken: async () => {
+        let url = `https://api.kroger.com/v1/connect/oauth2/authorize?scope={product.compact}&response_type=code&client_id={chepup2-a2b5f7dd9d543cf2ec0c9027e5940d236852004030989503401}&redirect_uri={https://3000-jledner-chefup-35yn3crb3wh.ws-us38.gitpod.io/}`;
+        fetch(url, {
+          headers: {
+            "Cache-Control": "no-cache",
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        })
+          .then((response) => {
+            if (response.ok) return response.json();
+            else throw new Error("help");
+          })
+          .then((response) => {
+            JSON.stringify(response.results);
+          });
+      },
+      getProducts: async (term) => {
+        // Use access stored access token for product request
+        let accessToken =
+          "eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYXBpLmtyb2dlci5jb20vdjEvLndlbGwta25vd24vandrcy5qc29uIiwia2lkIjoiWjRGZDNtc2tJSDg4aXJ0N0xCNWM2Zz09IiwidHlwIjoiSldUIn0.eyJhdWQiOiJjaGVwdXAyLWEyYjVmN2RkOWQ1NDNjZjJlYzBjOTAyN2U1OTQwZDIzNjg1MjAwNDAzMDk4OTUwMzQwMSIsImV4cCI6MTY0ODA2NDU1MywiaWF0IjoxNjQ4MDYyNzQ4LCJpc3MiOiJhcGkua3JvZ2VyLmNvbSIsInN1YiI6ImRiMjg4MWQ5LTMzMmItNWNiOS04MTg0LWI2YWM3Y2ZlZDk4ZiIsInNjb3BlIjoicHJvZHVjdC5jb21wYWN0IiwiYXV0aEF0IjoxNjQ4MDYyNzUzMjYzMzc3NTE3LCJhenAiOiJjaGVwdXAyLWEyYjVmN2RkOWQ1NDNjZjJlYzBjOTAyN2U1OTQwZDIzNjg1MjAwNDAzMDk4OTUwMzQwMSJ9.ByanVIT4nCgNdB8XoNTyZniv41-qAUrbAhAOgBUU58peDhohZvHvjsQmmSsxi2bZJ1NVlXGSJRV8K0_T9AW9gptfiFAditlcex-ln1NL-PKJ-jNjES1-vbxPG6RRr7rHD0FxnXSkczowXam32BMetqBKOF3kjXDEokRIYL8kro0sIOEBPyXayEOOQ8D2mQvM9SF-w9bldFSpCXeLwFlt2nyNc-6qS1mwDZqurLcJxrvrCd2oMU1HVCnZnOumMbSckDpQg12bfAnM-DNzRNNKyaG7Z4XEbEyM8geNdAg6QiL1TAVdHqiniBtWyQcVTD19CoAKCKqX6R_PmX1dzwYrYw";
+        // Use stored locationId
+        let locationId = localStorage.getItem("locationId");
+
+        // Use locationId as filter (if) selected by user
+        let searchByLocation = "";
+        if (locationId) {
+          searchByLocation = `filter.locationId=${locationId}&`;
+        }
+        // Building product URL
+        // Base URL (https://api.kroger.com)
+        // Version/Endpoint (/v1/products)
+        // Query String (?filter.locationId=${locationId}&filter.term=${term})
+        // let productsUrl = `${config.apiBaseUrl}/v1/products?${searchByLocation}filter.term=${term}`;
+        let productsUrl = `https://api.kroger.com/v1//products?filter.term=${term}&filter.limit=10`;
+        // Product request body
+        let productsResponse = await fetch(productsUrl, {
+          method: "GET",
+          cache: "no-cache",
+          headers: {
+            Authorization: `bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        });
+        const productsResponseJSON = productsResponse.json();
+        // Return json object
+        setStore({ productsResponseJSON: productsResponseJSON });
       },
       changeColor: (index, color) => {
         //get the store
