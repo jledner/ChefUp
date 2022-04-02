@@ -50,7 +50,31 @@ const getState = ({ getStore, getActions, setStore }) => {
           name: "japanese",
         },
         {
-          name: "european",
+          name: "African",
+        },
+        {
+          name: "British",
+        },
+        {
+          name: "Chinese",
+        },
+        {
+          name: "Indian",
+        },
+        {
+          name: "Irish",
+        },
+        {
+          name: "Japanese",
+        },
+        {
+          name: "Mediterranean",
+        },
+        {
+          name: "Southern",
+        },
+        {
+          name: "Middle Eastern",
         },
       ],
       trending: [
