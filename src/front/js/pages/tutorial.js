@@ -5,11 +5,14 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { Demo } from "../pages/demo";
+import { Card } from "../component/card";
+import { CartCard } from "../component/cartcard";
 import { FeaturedCard } from "../component/FeaturedCard";
 
 export const Tutorial = (props) => {
   const { store, setStore } = useContext(Context);
   let meals = store.meals;
+  const trending = store.trending;
   console.log(meals);
   return (
     <div
@@ -47,40 +50,15 @@ export const Tutorial = (props) => {
             alt="..."
           />
           <div className="carousel-caption d-none d-md-block">
-            <h2>Enjoy good food simply. As it should be.</h2>
-            <h5>
-              <em>
-                Sit back and relax while ChefUp gathers all your ingredients.
-              </em>
-            </h5>
-            <div className="row row-cols-1 row-cols-md-2 g-4">
-              {meals.slice(0, 4).map((meal, i) => {
-                return <TutorialCard key={i} meal={meal} />;
-              })}
-            </div>
-          </div>
-        </div>
-
-        <div className="carousel-item" data-bs-interval="2000">
-          <img
-            src="https://img.freepik.com/free-photo/food-background-with-place-text-with-different-kinds-pasta-tomatoes-herbs-mushrooms-eggs-seasonings-scattered-light-marble-background-top-view-italian-cuisine-concept_90258-3592.jpg?size=626&ext=jpg"
-            className="d-block w-100"
-            alt="..."
-          />
-          <div className="carousel-caption d-none d-md-block">
             <h5>Choose what's best for you!</h5>
             <p>See prep time, calories, and cost for each item</p>
-            <FeaturedCard img="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2020/04/Shrimp-Tacos-main-1.jpg" />
-            <div style={{ background: "white", border: "4px solid black" }}>
-              <p className="card-text" style={{ margin: "0", padding: "0" }}>
-                Prep time: 20 minutes
-              </p>
-              <p className="card-text" style={{ margin: "0", padding: "0" }}>
-                Calories: 500
-              </p>
-              <p className="card-text" style={{ margin: "0", padding: "0" }}>
-                Price: $5.99
-              </p>
+            <div className="Featured-Content p-5">
+              <h2>Trending</h2>
+              <div className="row">
+                {trending.map((meal) => {
+                  return <Card meal={meal} />;
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -92,16 +70,56 @@ export const Tutorial = (props) => {
             alt="..."
           />
           <div className="carousel-caption d-none d-md-block">
-            <h5>Grocery List</h5>
-            <p>
-              After you have selected all your meals, the ingredients will show
-              up here
-            </p>
-            <Demo />
+            <div className="container">
+              <h1>Grocery List</h1>
+              <p>
+                After you have selected all your meals, the ingredients will
+                show up here
+              </p>
+              <ul className="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  "Salmon"
+                  <span class="badge bg-primary rounded-pill">{`1 pound`}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  "Salmon"
+                  <span class="badge bg-primary rounded-pill">{`1 pound`}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  "Salmon"
+                  <span class="badge bg-primary rounded-pill">{`1 pound`}</span>
+                </li>
+                ))
+              </ul>
+              <br />
+              <Link to="/">
+                <button className="btn btn-primary">Back home</button>
+              </Link>
+            </div>
             <i>
               We assume you have all household ingredients like butter, salt,
               etc.
             </i>
+          </div>
+        </div>
+      </div>
+
+      <div className="carousel-item" data-bs-interval="10000">
+        <img
+          src="https://img.freepik.com/free-photo/food-background-with-place-text-with-different-kinds-pasta-tomatoes-herbs-mushrooms-eggs-seasonings-scattered-light-marble-background-top-view-italian-cuisine-concept_90258-3592.jpg?size=626&ext=jpg"
+          className="d-block w-100"
+          alt="..."
+        />
+        <div className="carousel-caption d-none d-md-block">
+          <h5>Choose what's best for you!</h5>
+          <p>See prep time, calories, and cost for each item</p>
+          <div className="Featured-Content p-5">
+            <h2>Trending</h2>
+            <div className="row">
+              {trending.map((meal) => {
+                return <CartCard meal={meal} />;
+              })}
+            </div>
           </div>
         </div>
       </div>
