@@ -7251,7 +7251,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       setUser: () => {
         if (localStorage["userID"]) {
           fetch(
-            `https://3001-jledner-chefup-0me47f5k53l.ws-us38.gitpod.io/api/user/${localStorage.getItem(
+            `${process.env.BACKEND_URL}/api/user/${localStorage.getItem(
               "userID"
             )}`
           )
