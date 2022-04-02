@@ -11,28 +11,52 @@ import { MainHeader } from "../component/MainHeader";
 //my adjustment was made under the h2 that says "Browse Meals." The previous code used was assigned
 //to a variable at the very, very bottom of this page in case it is needed - Jeff 3/21/22
 export const BrowsePage = (props) => {
-  const [searchQuery, setSearchQuery] = useState("");
   const { store } = useContext(Context);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showMoreMeals, setShowMoreMeals] = useState(false)
+
+
   return (
     <div>
       <MainHeader sizeClass={"landing-header-small"} />
       <section className="category px-5 py-5">
         <div className="category-content">
           <h2>Browse Meals</h2>
-          {/* <div className="row"> */}
-          {store.mealResults && store.mealResults.length > 0 ? (
-            <div className="row row-cols-4 gy-5">
-              {store.mealResults.slice(0, Math.round(store.mealResults.length/2)).map((meal) => {
+          <div className="row row-cols-4 gy-5">
+
+
+            {/* <div className="row"> */}
+            {store.mealResults && store.mealResults.length > 0 ?
+
+
+
+              store.mealResults.slice(0, Math.round(store.mealResults.length / 2)).map((meal) => {
                 return <Card meal={meal} />;
-              })}
-            </div>
-          ) : (
-            <div>no results :(</div>
-          )}
-          {/* </div> */}
+
+              })
+
+
+
+
+              : (
+                <div>no results :(</div>
+              )}
+
+            {store.mealResults && store.mealResults.length > 0 ? <button type="button" class="btn btn-light" onClick={(e) => {
+              console.log('clicked', showMoreMeals)
+              setShowMoreMeals(!showMoreMeals)
+            }}>Primary</button> : null}
+
+            {showMoreMeals ?
+              store.mealResults.slice(Math.round(store.mealResults.length / 2), store.mealResults.length - 1).map((meal) => {
+                return <Card meal={meal} />;
+              })
+              : null}
+
+          </div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 };
 
@@ -59,8 +83,7 @@ let previouscode = `return (
 );`
 
 
-let findindex = `meals.findIndex((meal,index) => {
-  console.log(meal)
-  return index == 2
-  
-})`
+let button = `<button type="button" class="btn btn-dark" onClick={(e) => {
+  console.log('clicked', showMoreMeals)
+  setShowMoreMeals(!showMoreMeals)
+}}>Primary</button>`
