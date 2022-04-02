@@ -18,36 +18,28 @@ const getState = ({ getStore, getActions, setStore }) => {
           initial: "white",
         },
       ],
-      user: {
-        id: 1,
-        name: "User",
-        mealPrefs: {
-          diet: ["paleo"],
-          intolerances: ["dairy"],
-        },
-        favorites: [],
-      },
+      user: null,
       cuisine: [
         {
-          name: "italian",
+          name: "Italian",
         },
         {
-          name: "american",
+          name: "American",
         },
         {
-          name: "mexican",
+          name: "Mexican",
         },
         {
-          name: "chinese",
+          name: "Chinese",
         },
         {
-          name: "cajun",
+          name: "Cajun",
         },
         {
           name: "greek",
         },
         {
-          name: "japanese",
+          name: "Japanese",
         },
         {
           name: "African",
@@ -7241,7 +7233,39 @@ const getState = ({ getStore, getActions, setStore }) => {
         //reset the global store
         setStore({ demo: demo });
       },
-
+      userLogin: async (user) => {
+        await fetch(`${process.env.BACKEND_URL}/api/login`, {
+          method: "POST",
+          body: JSON.stringify(user),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((resp) => (resp.ok ? resp.json() : new Error("help")))
+          .then((resp) => {
+            console.log(resp);
+            localStorage.setItem("userID", JSON.stringify(resp["id"]));
+          })
+          .catch((e) => console.log(e));
+      },
+      setUser: () => {
+        if (localStorage["userID"]) {
+          fetch(
+            `https://3001-jledner-chefup-0me47f5k53l.ws-us38.gitpod.io/api/user/${localStorage.getItem(
+              "userID"
+            )}`
+          )
+            .then((resp) => (resp.ok ? resp.json() : null))
+            .then((resp) => {
+              //whole meal object is stored as a string in the db
+              //need to convert it back to object by parsing.
+              resp.favorites = resp.favorites.map((favorite) => {
+                return JSON.parse(favorite.meal);
+              });
+              setStore({ user: resp });
+            });
+        }
+      },
       getMeals: async (url, query) => {
         const store = getStore();
         if (!localStorage[query]) {
@@ -7291,20 +7315,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         let removed = user.favorites.filter((fav) => fav.id != meal.id);
         setStore({ user: { ...user, favorites: removed } });
       },
-
-      // AddMealToCart: (index) => {
-      //   const storecopy = getStore();
-      //   storecopy.MealsInCart.push(storecopy.meals[index]);
-      //   console.log(storecopy.MealsInCart);
-      //   return setStore({ store: storecopy });
-      // },
-
-      // deleteAMeal: (index) => {
-      //   const storecopy = getStore();
-      //   storecopy.MealsInCart.splice(index, 1);
-
-      //   return setStore({ store: storecopy });
-      // },
     },
   };
 };

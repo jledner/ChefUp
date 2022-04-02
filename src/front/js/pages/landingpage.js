@@ -8,6 +8,7 @@ import "../../styles/landing.css";
 import { CategoryCard } from "../component/CategoryCard";
 import { Card } from "../component/card";
 import { MainHeader } from "../component/MainHeader";
+import { useReducer } from "react/cjs/react.production.min";
 
 export const LandingPage = (props) => {
   console.log(props);
@@ -24,49 +25,56 @@ export const LandingPage = (props) => {
 
   return (
     <div>
-      <MainHeader />
-      <section className="Featured">
-        <div className="Featured-Content p-5">
-          <h2>Trending</h2>
-          <div className="row">
-            {trending.map((meal) => {
-              return <Card meal={meal} />;
-            })}
-          </div>
-        </div>
-      </section>
-      <section className="category px-5 py-5">
-        <div className="category-content">
-          <h2>Meals By Cuisine</h2>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
-            delectus sint deleniti. Excepturi et vitae eum cumque nostrum
-            adipisci at.
-          </p>
-          <div className="row">
-            <ul>
-              <div className="row gx-2 gy-2">
-                {cuisine.map((cuisine) => {
-                  return (
-                    <li
-                      className="col-6 col-md-3 cuisine-li"
-                      onClick={async () => {
-                        await actions.getMeals(
-                          `https://api.spoonacular.com/recipes/complexSearch?&cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`,
-                          cuisine.name
-                        );
-                        props.history.push(`/meals/browse/${cuisine.name}`);
-                      }}
-                    >
-                      <CategoryCard cuisine={cuisine} img={foodImg} />
-                    </li>
-                  );
+      {store.user ? (
+        <div>
+          {" "}
+          <MainHeader />
+          <section className="Featured">
+            <div className="Featured-Content p-5">
+              <h2>Trending</h2>
+              <div className="row">
+                {trending.map((meal) => {
+                  return <Card meal={meal} />;
                 })}
               </div>
-            </ul>
-          </div>
+            </div>
+          </section>
+          <section className="category px-5 py-5">
+            <div className="category-content">
+              <h2>Meals By Cuisine</h2>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Voluptatum delectus sint deleniti. Excepturi et vitae eum cumque
+                nostrum adipisci at.
+              </p>
+              <div className="row">
+                <ul>
+                  <div className="row gx-2 gy-2">
+                    {cuisine.map((cuisine) => {
+                      return (
+                        <li
+                          className="col-6 col-md-3 cuisine-li"
+                          onClick={async () => {
+                            await actions.getMeals(
+                              `https://api.spoonacular.com/recipes/complexSearch?&cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`,
+                              cuisine.name
+                            );
+                            props.history.push(`/meals/browse/${cuisine.name}`);
+                          }}
+                        >
+                          <CategoryCard cuisine={cuisine} img={foodImg} />
+                        </li>
+                      );
+                    })}
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
+      ) : (
+        "you have to be logged in to see this"
+      )}
     </div>
   );
 };
