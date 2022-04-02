@@ -52,7 +52,7 @@ export const LandingPage = (props) => {
                       className="col-6 col-md-3 cuisine-li"
                       onClick={async () => {
                         await actions.getMeals(
-                          `https://api.spoonacular.com/recipes/complexSearch?&cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`,
+                          `https://api.spoonacular.com/recipes/complexSearch?&cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`,
                           cuisine.name
                         );
                         props.history.push(`/meals/browse/${cuisine.name}`);
