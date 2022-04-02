@@ -22,7 +22,7 @@ export const BrowsePage = (props) => {
           {/* <div className="row"> */}
           {store.mealResults && store.mealResults.length > 0 ? (
             <div className="row row-cols-4 gy-5">
-              {store.mealResults.map((meal) => {
+              {store.mealResults.slice(0, Math.round(store.mealResults.length/2)).map((meal) => {
                 return <Card meal={meal} />;
               })}
             </div>
@@ -36,25 +36,31 @@ export const BrowsePage = (props) => {
   );
 };
 
-let previouscode = ` <section className="category px-5 py-5">
-<div className="category-content">
-  <h2>Browse Meals</h2>
-  <div className="row">
-    {store.mealResults && store.mealResults.length > 0 ? (
-      <ul>
-        <div className="row">
-          {store.mealResults.map((meal) => {
-            return (
-              <li className="col-lg-3 mb-1">
-                <Card meal={meal} />
-              </li>
-            );
-          })}
-        </div>
-      </ul>
-    ) : (
-      <div>no results :(</div>
-    )}
+let previouscode = `return (
+  <div>
+    <MainHeader sizeClass={"landing-header-small"} />
+    <section className="category px-5 py-5">
+      <div className="category-content">
+        <h2>Browse Meals</h2>
+        {/* <div className="row"> */}
+        {store.mealResults && store.mealResults.length > 0 ? (
+          <div className="row row-cols-4 gy-5">
+            {store.mealResults.slice(0, 3).map((meal) => {
+              return <Card meal={meal} />;
+            })}
+          </div>
+        ) : (
+          <div>no results :(</div>
+        )}
+        {/* </div> */}
+      </div>
+    </section>
   </div>
-</div>
-</section>`;
+);`
+
+
+let findindex = `meals.findIndex((meal,index) => {
+  console.log(meal)
+  return index == 2
+  
+})`
