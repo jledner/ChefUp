@@ -13,7 +13,9 @@ import { MainHeader } from "../component/MainHeader";
 export const BrowsePage = (props) => {
   const { store } = useContext(Context);
   const [searchQuery, setSearchQuery] = useState("");
-  const [showMoreMeals, setShowMoreMeals] = useState(false)
+  const [showMoreMeals1, setShowMoreMeals1] = useState(false)
+  const [showMoreMeals2, setShowMoreMeals2] = useState(false)
+
 
 
   return (
@@ -22,6 +24,7 @@ export const BrowsePage = (props) => {
       <section className="category px-5 py-5">
         <div className="category-content">
           <h2>Browse Meals</h2>
+          
           <div className="row row-cols-4 gy-5">
 
 
@@ -30,7 +33,7 @@ export const BrowsePage = (props) => {
 
 
 
-              store.mealResults.slice(0, Math.round(store.mealResults.length / 2)).map((meal) => {
+              store.mealResults.slice(0, Math.round(store.mealResults.length / 3)).map((meal) => {
                 return <Card meal={meal} />;
 
               })
@@ -42,18 +45,26 @@ export const BrowsePage = (props) => {
                 <div>no results :(</div>
               )}
 
-            {store.mealResults && store.mealResults.length > 0 ? <button type="button" class="btn btn-light" onClick={(e) => {
-              console.log('clicked', showMoreMeals)
-              setShowMoreMeals(!showMoreMeals)
-            }}>Primary</button> : null}
+           
+          </div>
+          {store.mealResults && store.mealResults.length > 10 ?
+              <div class="d-grid justify-content-center mx-auto my-5">
+                <Link to="/meals/page2">
+                  <button type="button" class="btn btn-light">To Page 2</button>
 
-            {showMoreMeals ?
-              store.mealResults.slice(Math.round(store.mealResults.length / 2), store.mealResults.length - 1).map((meal) => {
-                return <Card meal={meal} />;
-              })
+                </Link>
+
+
+              </div>
               : null}
 
-          </div>
+
+
+
+
+
+
+
         </div>
       </section >
     </div >

@@ -14,6 +14,8 @@ import { SignUp } from "./pages/signup";
 import { RecipeDetails } from "./pages/recipedetails";
 import { Tutorial } from "./pages/tutorial";
 import { BrowsePage } from "./pages/browsepage";
+import { BrowsePage2 } from "./pages/browsepage2";
+import { BrowsePage3 } from "./pages/browsepage3";
 import { ProfilePage } from "./pages/profilepage.js";
 import { GroceryList } from "./pages/grocerylist";
 import {NeedRandomMeals} from "./pages/needrandommeals.js"
@@ -48,6 +50,8 @@ const Layout = () => {
               <Tutorial />
             </Route>
             <Route exact path="/meals/browse/:query" component={BrowsePage} />
+            <Route exact path="/meals/page2" component={BrowsePage2} />
+            <Route exact path="/meals/page3" component={BrowsePage3} />
             <Route exact path="/browse">
               <BrowsePage />
             </Route>

@@ -70,7 +70,7 @@ export const NeedRandomMeals = (props) => {
       `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaInDietURL}${noFinalCommaInIntolerancesURL}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`,
       'UrlParams: '+noFinalCommaInIntolerancesURL+noFinalCommaInDietURL
      )
-     history.push(`/meals/browse/test`);
+     history.push(`/meals/browse/page1`);
 
   }
     console.log(UrlParams);
