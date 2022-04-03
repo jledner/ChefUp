@@ -7244,27 +7244,17 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((resp) => (resp.ok ? resp.json() : new Error("help")))
           .then((resp) => {
             console.log(resp);
-            localStorage.setItem("userID", JSON.stringify(resp["id"]));
+            // localStorage.setItem("userID", JSON.stringify(resp["id"]));
+            resp.favorites = resp.favorites.map((favorite) => {
+              return JSON.parse(favorite.meal);
+            });
+            localStorage.setItem("user", JSON.stringify(resp));
+            setStore({ user: JSON.parse(localStorage.getItem("user")) });
           })
           .catch((e) => console.log(e));
       },
-      setUser: () => {
-        if (localStorage["userID"]) {
-          fetch(
-            `${process.env.BACKEND_URL}/api/user/${localStorage.getItem(
-              "userID"
-            )}`
-          )
-            .then((resp) => (resp.ok ? resp.json() : null))
-            .then((resp) => {
-              //whole meal object is stored as a string in the db
-              //need to convert it back to object by parsing.
-              resp.favorites = resp.favorites.map((favorite) => {
-                return JSON.parse(favorite.meal);
-              });
-              setStore({ user: resp });
-            });
-        }
+      setUser: (user) => {
+        setStore({ user: user });
       },
       getMeals: async (url, query) => {
         const store = getStore();

@@ -42,7 +42,7 @@ export const Navbar = () => {
           </Link>
         </div>
         <div className="ml-auto">
-          <Link to="/profilepage/user">
+          <Link to={store.user ? `/profilepage/${store.user.username}` : ""}>
             <button className="btn btn-primary">Profile</button>
           </Link>
         </div>

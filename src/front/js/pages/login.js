@@ -28,7 +28,6 @@ export const Login = (props) => {
                 onSubmit={async (e) => {
                   e.preventDefault();
                   await actions.userLogin({ username: UserName });
-                  await actions.setUser();
                   props.history.push("/");
                 }}
               >
