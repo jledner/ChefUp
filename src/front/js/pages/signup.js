@@ -245,7 +245,7 @@ export const SignUp = props => {
           <input type="text" className="form-control" id="inputCity" />
         </div>
      
-        </div>
+        
         <div className="col-md-2">
           <label for="inputZip" className="form-label">Zip</label>
           <input type="text" className="form-control" id="inputZip" />
