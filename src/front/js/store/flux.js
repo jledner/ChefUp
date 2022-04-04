@@ -8993,6 +8993,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             resp.favorites = resp.favorites.map((favorite) => {
               return JSON.parse(favorite.meal);
             });
+            let mealPrefs = {
+              diets: ["vegan"],
+              intolerances: ["peanut", "sulfite"],
+            };
+            resp.mealPrefs = mealPrefs;
             localStorage.setItem("user", JSON.stringify(resp));
             setStore({ user: JSON.parse(localStorage.getItem("user")) });
           })
