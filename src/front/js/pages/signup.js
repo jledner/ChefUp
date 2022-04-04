@@ -14,7 +14,7 @@ export const SignUp = props => {
     "SignUpEmail"
       : '', 'SignUpPassword': ''
   })
-  
+
   const history = useHistory()
 
   //Sends a Post Request to the MeCall API to create a new user account. While the API is limited in
@@ -53,27 +53,27 @@ export const SignUp = props => {
           sessionStorage.setItem("SignUpPassword", SignUpInfo.SignUpPassword);
 
           //How to access the data if needed: console.log(sessionStorage.getItem("SignUpUserName"))
-          
+
 
 
           return response.json();
         }
       }).then(responseJSON => {
         console.log("response", responseJSON);
-         if(responseJSON.status == 'ok'){
-           //if the signup request to the API goes through ok, then our app takes us to the login page
-           //StarWars blog reading list
-           history.push({pathname: '/login', UserInfo: responseJSON})
-          
-          
-         }
-        
+        if (responseJSON.status == 'ok') {
+          //if the signup request to the API goes through ok, then our app takes us to the login page
+          //StarWars blog reading list
+          history.push({ pathname: '/login', UserInfo: responseJSON })
+
+
+        }
+
       })
       .catch(e => console.log(e, " THE ERROR"));
   }
 
 
-  
+
 
   //The idea with these useStates is that they start out as true on render, and should remain true onSubmit if they pass the logic tests we give them.
   //If the user enters invalid data, these useStates become false and the corresponding error messages in the ternary operators located in the
@@ -130,8 +130,8 @@ export const SignUp = props => {
     return blankSpacesforUsername == 0 && givenUserName.length >= 6
 
   }
-  
-  
+
+
 
 
 
@@ -244,64 +244,7 @@ export const SignUp = props => {
           <label for="inputCity" className="form-label">City</label>
           <input type="text" className="form-control" id="inputCity" />
         </div>
-        <div className="col-md-4">
-          <label for="inputState" className="form-label">State</label>
-          <select id="inputState" className="form-select">
-            <option value="Choose...">Choose...</option>
-            <option value="">N/A</option>
-            <option value="AK">Alaska</option>
-            <option value="AL">Alabama</option>
-            <option value="AR">Arkansas</option>
-            <option value="AZ">Arizona</option>
-            <option value="CA">California</option>
-            <option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option>
-            <option value="DC">District of Columbia</option>
-            <option value="DE">Delaware</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="HI">Hawaii</option>
-            <option value="IA">Iowa</option>
-            <option value="ID">Idaho</option>
-            <option value="IL">Illinois</option>
-            <option value="IN">Indiana</option>
-            <option value="KS">Kansas</option>
-            <option value="KY">Kentucky</option>
-            <option value="LA">Louisiana</option>
-            <option value="MA">Massachusetts</option>
-            <option value="MD">Maryland</option>
-            <option value="ME">Maine</option>
-            <option value="MI">Michigan</option>
-            <option value="MN">Minnesota</option>
-            <option value="MO">Missouri</option>
-            <option value="MS">Mississippi</option>
-            <option value="MT">Montana</option>
-            <option value="NC">North Carolina</option>
-            <option value="ND">North Dakota</option>
-            <option value="NE">Nebraska</option>
-            <option value="NH">New Hampshire</option>
-            <option value="NJ">New Jersey</option>
-            <option value="NM">New Mexico</option>
-            <option value="NV">Nevada</option>
-            <option value="NY">New York</option>
-            <option value="OH">Ohio</option>
-            <option value="OK">Oklahoma</option>
-            <option value="OR">Oregon</option>
-            <option value="PA">Pennsylvania</option>
-            <option value="PR">Puerto Rico</option>
-            <option value="RI">Rhode Island</option>
-            <option value="SC">South Carolina</option>
-            <option value="SD">South Dakota</option>
-            <option value="TN">Tennessee</option>
-            <option value="TX">Texas</option>
-            <option value="UT">Utah</option>
-            <option value="VA">Virginia</option>
-            <option value="VT">Vermont</option>
-            <option value="WA">Washington</option>
-            <option value="WI">Wisconsin</option>
-            <option value="WV">West Virginia</option>
-            <option value="WY">Wyoming</option>
-          </select>
+     
         </div>
         <div className="col-md-2">
           <label for="inputZip" className="form-label">Zip</label>
@@ -331,6 +274,47 @@ export const SignUp = props => {
           </Link>
         </div>
       </form>
+
+      {/* second form below */}
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style={{ borderRadius: "15px;" }}>
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center text-dark mb-5">Create an account</h2>
+
+                <form>
+
+
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control text-dark" id="floatingInput" placeholder="name@example.com"/>
+                      <label class=" text-dark" for="floatingInput">Email Address</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control text-dark" id="floatingInput" placeholder="name@example.com"/>
+                      <label class=" text-dark" for="floatingInput">User Name</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control text-dark" id="floatingInput" placeholder="name@example.com"/>
+                      <label class=" text-dark" for="floatingInput">Password</label>
+                  </div>
+
+                  <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                  </div>
+                  
+
+                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!" class="fw-bold text-body"><u>Login here</u></a></p>
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
