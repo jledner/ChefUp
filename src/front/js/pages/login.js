@@ -31,7 +31,7 @@ export const Login = (props) => {
                   props.history.push("/");
                 }}
               >
-                <h3 style={{ color: "orange" }}>Login Page to be used later</h3>
+                
 
                 <div class="text-center">
                   <img
@@ -48,35 +48,30 @@ export const Login = (props) => {
                     class="form-control"
                     id="Username"
                     aria-describedby="emailHelp"
-                    placeholder="User Name"
+                    placeholder="Username"
                     value={UserName}
                     onChange={(e) => {
                       setUserName(e.target.value);
                     }}
                   />
-                  <p style={{ color: "black" }}>
-                    The username is now set to "diego.greene@mecallapi.com" and
-                    login will never fail unless the internet goes out
-                  </p>
+                 
                 </div>
                 <div class="mb-3">
                   <input
                     type="password"
                     class="form-control"
                     id="password"
-                    placeholder="password"
+                    placeholder="Password"
                     value={Password}
                     onChange={(e) => {
                       console.log(e.target.value);
                       setLoginPassword(e.target.value);
                     }}
                   />
-                  <p style={{ color: "black" }}>
-                    The password for this API is always "mecallapi"
-                  </p>
+                 
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-color px-5 mb-5 w-100">
+                  <button type="submit" class="btn btn-primary mb-5 w-25">
                     Login
                   </button>
                 </div>
@@ -84,7 +79,8 @@ export const Login = (props) => {
                   id="emailHelp"
                   class="form-text text-center mb-5 text-dark"
                 >
-                  Not Registered? <Link to="/signup">Take me to signup</Link>
+                  <p class="text-center text-muted mt-5 mb-0">Not Registered? <Link to="/signup" class="fw-bold text-body"><u>Sign up here</u></Link></p>
+                  {/* <p class="text-center text-muted mt-5 mb-0">Have an account already? <Link to="/login" class="fw-bold text-body"><u>Login here</u></Link></p> */}
                 </div>
               </form>
             </div>
