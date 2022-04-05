@@ -9067,11 +9067,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             localStorage.setItem("user", JSON.stringify(store.user));
           })
           .catch((e) => console.log(e));
-
-        // const store = getStore();
-        // let user = store.user;
-        // let favorites = user.favorites;
-        // setStore({ user: { ...user, favorites: [...favorites, meal] } });
       },
 
       removeFavoriteMeal: (meal, userID) => {
