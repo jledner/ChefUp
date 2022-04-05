@@ -53,7 +53,6 @@ export const Tutorial = (props) => {
             <h5>Choose what's best for you!</h5>
             <p>See prep time, calories, and cost for each item</p>
             <div className="Featured-Content p-5">
-              <h2>Trending</h2>
               <div className="row">
                 {trending.map((meal) => {
                   return <Card meal={meal} />;
@@ -78,18 +77,61 @@ export const Tutorial = (props) => {
               </p>
               <ul className="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                  "Salmon"
-                  <span class="badge bg-primary rounded-pill">{`1 pound`}</span>
+                  shrimp
+                  <span class="badge bg-primary rounded-pill">{`14`}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                  "Salmon"
-                  <span class="badge bg-primary rounded-pill">{`1 pound`}</span>
+                  zucchini
+                  <span class="badge bg-primary rounded-pill">{`2`}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                  "Salmon"
-                  <span class="badge bg-primary rounded-pill">{`1 pound`}</span>
+                  parsley
+                  <span class="badge bg-primary rounded-pill">{`1 tsp`}</span>
                 </li>
-                ))
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  garlic powder
+                  <span class="badge bg-primary rounded-pill">{`1 tsp`}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  red pepper flakes
+                  <span class="badge bg-primary rounded-pill">{`1/2 tsp`}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  lemon
+                  <span class="badge bg-primary rounded-pill">{`1`}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  jalapeño
+                  <span class="badge bg-primary rounded-pill">{`1 serving`}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  tomato
+                  <span class="badge bg-primary rounded-pill">{`1`}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  onion
+                  <span class="badge bg-primary rounded-pill">{`1`}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  garlic
+                  <span class="badge bg-primary rounded-pill">{`2 cloves`}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  cilantro
+                  <span class="badge bg-primary rounded-pill">{`1/3 cup`}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  cheddar cheese
+                  <span class="badge bg-primary rounded-pill">{`1 cup`}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  lime
+                  <span class="badge bg-primary rounded-pill">{`1/2`}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  chips
+                  <span class="badge bg-primary rounded-pill">{`1 serving`}</span>
+                </li>
               </ul>
               <br />
               <Link to="/">
