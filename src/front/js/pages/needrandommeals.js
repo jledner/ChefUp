@@ -74,14 +74,13 @@ export const NeedRandomMeals = (props) => {
 
   }
     console.log(UrlParams);
-    
+    //json.parse -->
     //for the JSX below each input id is set to either a diet or intolerance. When checked, the id
     //is added to the UrlParams to be used later in the URL to fetch the meals
     return (
       <>
-        <h1>Framework in place. Test it out with the console open preferably</h1>
-        <h2>Code will probably be modified later. Page was coded this way for the time being to give us a
-          clear idea of what we want it to do.  - Jeff 3/27/22
+        <h1>look up json.parse to access data from local storage.</h1>
+        <h2>{localStorage.getItem("user")}
         </h2>
         <h3>
           Diets
@@ -264,6 +263,12 @@ export const NeedRandomMeals = (props) => {
             Once preferences are chosen, click me to be taken to browse page.
           </button>
         </form>
+
+        <button type="button" class="btn btn-warning" onClick={()=>{
+          
+          return null}
+          
+          }>I want to be able to click this and see the meal prefs as an h1</button>
 
         
       </>
