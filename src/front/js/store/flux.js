@@ -9044,6 +9044,21 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       addFavoriteMeal: (meal, userID) => {
+        fetch(
+          `https://3001-jledner-chefup-0me47f5k53l.ws-us38.gitpod.io/api/favorites/${userID}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+          .then((resp) => {
+            if (resp.ok) return resp.json();
+            else throw new Error("help");
+          })
+          .then((resp) => {});
+
         const store = getStore();
         let user = store.user;
         let favorites = user.favorites;
