@@ -38,7 +38,7 @@ def handle_favorites(user_id):
         favorite = Favorites(meal=Json(meal), user_id=user_id)
         db.session.add(favorite)
         db.session.commit()
-        return jsonify(user.serialize()["favorites"])
+        return jsonify(user.serialize())
     if request.method == 'GET':
         return jsonify(user.serialize()["favorites"]) 
 
@@ -56,4 +56,4 @@ def delete_favorite(user_id):
             fav_query = Favorites.query.get(favorites[i]['id'])
             db.session.delete(fav_query)
             db.session.commit()
-    return jsonify(user.serialize()['favorites'])
+    return jsonify(user.serialize())

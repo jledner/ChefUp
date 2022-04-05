@@ -9003,6 +9003,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((e) => console.log(e));
       },
+      favMealsToObj: (arr) => {
+        return arr.map((fav) => JSON.parse(fav.meal));
+      },
       setUser: (user) => {
         setStore({ user: user });
       },
@@ -9044,32 +9047,52 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       addFavoriteMeal: (meal, userID) => {
-        fetch(
-          `https://3001-jledner-chefup-0me47f5k53l.ws-us38.gitpod.io/api/favorites/${userID}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
+        fetch(`${process.env.BACKEND_URL}/api/favorites/${userID}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(meal),
+        })
           .then((resp) => {
             if (resp.ok) return resp.json();
             else throw new Error("help");
           })
-          .then((resp) => {});
+          .then((resp) => {
+            let actions = getActions();
+            let user = resp;
+            user.favorites = actions.favMealsToObj(user.favorites);
+            setStore({ user: user });
+            let store = getStore();
+            localStorage.setItem("user", JSON.stringify(store.user));
+          })
+          .catch((e) => console.log(e));
 
-        const store = getStore();
-        let user = store.user;
-        let favorites = user.favorites;
-        setStore({ user: { ...user, favorites: [...favorites, meal] } });
+        // const store = getStore();
+        // let user = store.user;
+        // let favorites = user.favorites;
+        // setStore({ user: { ...user, favorites: [...favorites, meal] } });
       },
 
       removeFavoriteMeal: (meal, userID) => {
-        const store = getStore();
-        let user = store.user;
-        let removed = user.favorites.filter((fav) => fav.id != meal.id);
-        setStore({ user: { ...user, favorites: removed } });
+        fetch(`${process.env.BACKEND_URL}/api/favorites/${userID}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(meal),
+        })
+          .then((resp) => {
+            if (resp.ok) return resp.json();
+            else throw new Error("help me pls");
+          })
+          .then((resp) => {
+            let actions = getActions();
+            resp.favorites = actions.favMealsToObj(resp.favorites);
+            setStore({ user: resp });
+            let store = getStore();
+            localStorage.setItem("user", JSON.stringify(store.user));
+          });
       },
     },
   };

@@ -8,8 +8,8 @@ export const FavoriteButton = (props) => {
       className="btn btn-primary mb-3"
       onClick={() =>
         !store.user.favorites.map((fav) => fav.id).includes(props.meal.id)
-          ? actions.addFavoriteMeal(props.meal)
-          : actions.removeFavoriteMeal(props.meal)
+          ? actions.addFavoriteMeal(props.meal, store.user.id)
+          : actions.removeFavoriteMeal(props.meal, store.user.id)
       }
     >
       <i
