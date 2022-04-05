@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Favorites
 from api.utils import generate_sitemap, APIException
 from psycopg2.extras import Json
+import json
 
 api = Blueprint('api', __name__)
 
@@ -39,6 +40,20 @@ def handle_favorites(user_id):
         db.session.commit()
         return jsonify(user.serialize()["favorites"])
     if request.method == 'GET':
-        return jsonify(user.serialize()["favorites"])
+        return jsonify(user.serialize()["favorites"]) 
 
     return jsonify(response_body), 200
+
+@api.route('/favorites/<int:user_id>', methods=['DELETE'])
+def delete_favorite(user_id):
+    user = User.query.get(user_id)
+    fav_query = Favorites.query.filter_by(user_id=user_id)
+    favorites = list(map(lambda fav: fav.serialize(),fav_query))
+    req = request.json
+    for i in range(len(favorites)):
+        fav = json.loads(favorites[i]['meal'])
+        if fav['id'] == req['id']:
+            fav_query = Favorites.query.get(favorites[i]['id'])
+            db.session.delete(fav_query)
+            db.session.commit()
+    return jsonify(user.serialize()['favorites'])

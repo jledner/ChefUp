@@ -29,5 +29,6 @@ class Favorites(db.Model):
 
     def serialize(self):
         return {
+            'id': self.id,
             'meal': self.meal,
         }

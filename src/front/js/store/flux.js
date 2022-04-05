@@ -7304,6 +7304,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         let favorites = user.favorites;
         setStore({ user: { ...user, favorites: [...favorites, meal] } });
       },
+
       removeFavoriteMeal: (meal, userID) => {
         const store = getStore();
         let user = store.user;
