@@ -8994,8 +8994,8 @@ const getState = ({ getStore, getActions, setStore }) => {
               return JSON.parse(favorite.meal);
             });
             let mealPrefs = {
-              diets: ["vegan"],
-              intolerances: ["peanut", "sulfite"],
+              diets: ["Vegan"],
+              intolerances: ["Peanut", "Sulfite"],
             };
             resp.mealPrefs = mealPrefs;
             localStorage.setItem("user", JSON.stringify(resp));
