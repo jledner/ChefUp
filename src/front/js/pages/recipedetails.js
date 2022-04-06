@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { MainHeader } from "../component/MainHeader";
 import { FavoriteButton } from "../component/favoritebutton";
-import Fraction from "fraction.js";
+// import Fraction from "fraction.js";
 
 export const RecipeDetails = (props) => {
   // const [isFavorite, setFavorite] = useState(
