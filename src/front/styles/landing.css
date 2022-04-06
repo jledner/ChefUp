@@ -1,7 +1,12 @@
 header.landing-header {
-  height: 50vh;
+  height: 70vh;
   background-image: url("https://images.unsplash.com/photo-1513135557534-682d53fd7046?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80");
   background-size: cover;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  /* border-radius: 5px; */
+  color: white;
 }
 
 header form input,
@@ -34,7 +39,7 @@ header form button.btn-header {
 }
 
 section.category {
-  background: var(--secondary-bg-color);
+  background: var(--main-bg-color);
 }
 
 section.category div.card img {
@@ -47,7 +52,6 @@ section.category .row li {
 }
 
 section.Featured {
-  background-color: var(--alt-bg) !important;
 }
 
 li.cuisine-li:hover {

@@ -18,7 +18,7 @@ import { BrowsePage2 } from "./pages/browsepage2";
 import { BrowsePage3 } from "./pages/browsepage3";
 import { ProfilePage } from "./pages/profilepage.js";
 import { GroceryList } from "./pages/grocerylist";
-import {NeedRandomMeals} from "./pages/needrandommeals.js"
+import { NeedRandomMeals } from "./pages/needrandommeals.js";
 
 //create your first component
 const Layout = () => {
@@ -27,48 +27,46 @@ const Layout = () => {
   const basename = process.env.BASENAME || "";
 
   return (
-    <div className="container">
-      <BrowserRouter basename={basename}>
-        <ScrollToTop>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route
-              exact
-              path="/meals/details/:mealid"
-              component={RecipeDetails}
-            />
-            <Route exact path="/demo">
-              <Demo />
-            </Route>
-            <Route exact path="/single/:theid">
-              <Single />
-            </Route>
-            <Route exact path="/tutorial">
-              <Tutorial />
-            </Route>
-            <Route exact path="/meals/browse/:query" component={BrowsePage} />
-            <Route exact path="/meals/page2" component={BrowsePage2} />
-            <Route exact path="/meals/page3" component={BrowsePage3} />
-            <Route exact path="/browse">
-              <BrowsePage />
-            </Route>
-            <Route exact path="/profilepage/:theuser" component={ProfilePage}/>
-              
-            <Route exact path="/grocerylist">
-              <GroceryList />
-            </Route>
-            <Route exact path="/randommeals" component={NeedRandomMeals}/>
-            <Route>
-              <h1>Not found!</h1>
-            </Route>
-          </Switch>
-          <Footer />
-        </ScrollToTop>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter basename={basename}>
+      <ScrollToTop>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route
+            exact
+            path="/meals/details/:mealid"
+            component={RecipeDetails}
+          />
+          <Route exact path="/demo">
+            <Demo />
+          </Route>
+          <Route exact path="/single/:theid">
+            <Single />
+          </Route>
+          <Route exact path="/tutorial">
+            <Tutorial />
+          </Route>
+          <Route exact path="/meals/browse/:query" component={BrowsePage} />
+          <Route exact path="/meals/page2" component={BrowsePage2} />
+          <Route exact path="/meals/page3" component={BrowsePage3} />
+          <Route exact path="/browse">
+            <BrowsePage />
+          </Route>
+          <Route exact path="/profilepage/:theuser" component={ProfilePage} />
+
+          <Route exact path="/grocerylist">
+            <GroceryList />
+          </Route>
+          <Route exact path="/randommeals" component={NeedRandomMeals} />
+          <Route>
+            <h1>Not found!</h1>
+          </Route>
+        </Switch>
+        <Footer />
+      </ScrollToTop>
+    </BrowserRouter>
   );
 };
 

@@ -9,7 +9,7 @@ export const Navbar = () => {
   console.log(store);
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container">
+      <div className="container-fluid">
         <Link to="/">
           <span className="navbar-brand mb-0 h1">Home(logo here)</span>
         </Link>

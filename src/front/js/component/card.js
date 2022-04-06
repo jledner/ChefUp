@@ -11,7 +11,7 @@ export const Card = (props) => {
   const { store, actions } = useContext(Context);
   return (
     <div className="col">
-      <div className="card h-100 bg-dark text-white position-relative">
+      <div className="card h-100 position-relative">
         <div className="fav position-absolute">
           <FavoriteButton meal={props.meal} />
         </div>

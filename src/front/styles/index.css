@@ -2,7 +2,7 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 :root {
-  --main-bg-color: #212121;
+  --main-bg-color: #f9f6ea;
   --secondary-bg-color: #343434;
   --alt-bg: #272727;
   --primary-color: #ffc20d;
@@ -10,7 +10,7 @@
 
 body {
   background: var(--main-bg-color);
-  color: white;
+  color: #2f2f2f;
 }
 
 header.landing-header-small {
