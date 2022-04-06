@@ -22,51 +22,51 @@ const getState = ({ getStore, getActions, setStore }) => {
       cuisine: [
         {
           name: "Italian",
+          img: "https://th.bing.com/th/id/R.300c26c1f69e52cb0146af610f6822d8?rik=Q%2fdYu%2bf%2fxKeZJQ&pid=ImgRaw&r=0",
         },
         {
           name: "American",
+          img: "https://tse4.mm.bing.net/th/id/OIP.JxJ9yTP5_CeSE4CahawdHgHaHY?pid=ImgDet&rs=1",
         },
         {
           name: "Mexican",
+          img: "https://th.bing.com/th/id/R.252f7ce4ee506bbdad7fda7516e717f9?rik=eYfDFdJ02SjR4g&riu=http%3a%2f%2fcaliforniaburritosnh.com%2fwp-content%2fuploads%2f2019%2f06%2fFotolia_257265924_Subscription_Monthly_M.jpg&ehk=x7wvCbEcwZDx28pA7Za6tSJVT5fAFThthGjH0mhJcPk%3d&risl=&pid=ImgRaw&r=0",
         },
         {
           name: "Chinese",
+          img: "https://patch.com/img/cdn/users/22872568/2016/02/raw/20160256c37b1e22007.jpg",
         },
         {
           name: "Cajun",
+          img: "https://th.bing.com/th/id/R.43b59e4905d01be034d1230dc513d1fe?rik=EvafNBYplXvQuQ&pid=ImgRaw&r=0",
         },
         {
-          name: "greek",
+          name: "Greek",
+          img: "https://th.bing.com/th/id/R.08a4329cb8b9da97c6021e5a06e59acf?rik=JupNN0iNOkVBng&pid=ImgRaw&r=0",
         },
         {
           name: "Japanese",
+          img: "https://tse1.mm.bing.net/th/id/OIP.gMtoeDG1xB87jJhtM5HATgHaKs?pid=ImgDet&rs=1",
         },
         {
           name: "African",
+          img: "https://zululandobserver.co.za/wp-content/uploads/sites/56/2015/05/AFrican-food.jpg",
         },
         {
           name: "British",
-        },
-        {
-          name: "Chinese",
-        },
-        {
-          name: "Indian",
-        },
-        {
-          name: "Irish",
-        },
-        {
-          name: "Japanese",
+          img: "https://th.bing.com/th/id/R.5bf2625c6e38172e3cb7444cfc07edb2?rik=8NWFnr5731pPNA&riu=http%3a%2f%2fblog.luulla.com%2fwp-content%2fuploads%2f2017%2f03%2fEnglish-Breakfast-.jpg&ehk=GO56MDDP5aaxpo8ZlKS8laszR5httfRSoXQBhlDKLi0%3d&risl=&pid=ImgRaw&r=0",
         },
         {
           name: "Mediterranean",
+          img: "https://th.bing.com/th/id/R.2e3a90fec623e412803f4f6d44e2aaf0?rik=fNNj8Y3oCoBhTg&pid=ImgRaw&r=0",
         },
         {
           name: "Southern",
+          img: "https://tse1.mm.bing.net/th/id/OIP.9bXpj7-JkG5CpoVledq7CgHaKN?pid=ImgDet&rs=1",
         },
         {
           name: "Middle Eastern",
+          img: "https://th.bing.com/th/id/R.8661155e570fab25d952ca4ff3d03a46?rik=4SN120Mi%2fKwwbQ&pid=ImgRaw&r=0",
         },
       ],
       trending: [

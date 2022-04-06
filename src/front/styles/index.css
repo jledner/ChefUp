@@ -35,3 +35,6 @@ header.landing-header-small {
 .cart-ingredients-list {
   list-style: none;
 }
+.card-img-overlay {
+  background-color: rgba(0, 0, 0, 0.09);
+}

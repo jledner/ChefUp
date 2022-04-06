@@ -16,6 +16,7 @@ export const LandingPage = (props) => {
   const { store, actions } = useContext(Context);
   const trending = store.trending;
   let cuisine = store.cuisine;
+  let img = store.img;
   let meals = store.meals;
   let MealsInCart = store.MealsInCart;
   // actions.getProducts("steak");
@@ -65,7 +66,7 @@ export const LandingPage = (props) => {
                               );
                             }}
                           >
-                            <CategoryCard cuisine={cuisine} img={foodImg} />
+                            <CategoryCard cuisine={cuisine} />
                           </li>
                         );
                       })}
