@@ -51,7 +51,8 @@ section.category .row li {
   list-style: none;
 }
 
-section.Featured {
+.card-img-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 li.cuisine-li:hover {
