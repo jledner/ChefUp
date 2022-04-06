@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Card } from "./card";
-
+import ChefUp from "../../img/ChefUp.png";
 import { CartCard } from "./cartcard";
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -11,7 +11,9 @@ export const Navbar = () => {
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <Link to="/">
-          <span className="navbar-brand mb-0 h1">Home(logo here)</span>
+          <span className="navbar-brand mb-0 h1">
+            <img src={ChefUp} alt="" style={{ width: "120px" }} />
+          </span>
         </Link>
         <div className="ml-auto">
           <Link to="/tutorial">

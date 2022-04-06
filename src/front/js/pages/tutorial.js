@@ -70,6 +70,27 @@ export const Tutorial = (props) => {
           />
           <div className="carousel-caption d-none d-md-block">
             <div className="container">
+              <h5>Choose what's best for you!</h5>
+              <p>See prep time, calories, and cost for each item</p>
+              <div className="Featured-Content p-5">
+                <div class="row gy-4">
+                  {trending.map((meal, index) => {
+                    return <CartCard meal={meal} />;
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="carousel-item" data-bs-interval="2000">
+          <img
+            src="https://img.freepik.com/free-photo/food-background-with-place-text-with-different-kinds-pasta-tomatoes-herbs-mushrooms-eggs-seasonings-scattered-light-marble-background-top-view-italian-cuisine-concept_90258-3592.jpg?size=626&ext=jpg"
+            className="d-block w-100"
+            alt="..."
+          />
+          <div className="carousel-caption d-none d-md-block">
+            <div className="container">
               <h1>Grocery List</h1>
               <p>
                 After you have selected all your meals, the ingredients will
@@ -145,27 +166,6 @@ export const Tutorial = (props) => {
           </div>
         </div>
       </div>
-
-      <div className="carousel-item" data-bs-interval="10000">
-        <img
-          src="https://img.freepik.com/free-photo/food-background-with-place-text-with-different-kinds-pasta-tomatoes-herbs-mushrooms-eggs-seasonings-scattered-light-marble-background-top-view-italian-cuisine-concept_90258-3592.jpg?size=626&ext=jpg"
-          className="d-block w-100"
-          alt="..."
-        />
-        <div className="carousel-caption d-none d-md-block">
-          <h5>Choose what's best for you!</h5>
-          <p>See prep time, calories, and cost for each item</p>
-          <div className="Featured-Content p-5">
-            <h2>Trending</h2>
-            <div className="row">
-              {trending.map((meal) => {
-                return <CartCard meal={meal} />;
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-
       <button
         className="carousel-control-prev"
         type="button"
