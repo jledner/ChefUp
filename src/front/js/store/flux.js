@@ -9059,6 +9059,10 @@ const getState = ({ getStore, getActions, setStore }) => {
             else throw new Error("help");
           })
           .then((resp) => {
+            /* 
+              favMealsToObj converts the meal value in the respose back into a javascript obj. The whole spoonacular meal is currently
+              stored in the db as a string.  Once converted the store is updated as well as the localStorage. 
+            */
             let actions = getActions();
             let user = resp;
             user.favorites = actions.favMealsToObj(user.favorites);
