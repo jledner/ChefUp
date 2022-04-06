@@ -14,7 +14,7 @@ import { FeaturedCard } from "../component/FeaturedCard";
 
 export const NeedRandomMeals = (props) => {
   const [UrlParams, setUrlParams] = useState([]); //As boxes are checked, params are added to this list
-  
+  const [showToast, setShowToast] = useState(false)
   const { store, actions } = useContext(Context);
   const history = useHistory();
   let UrlParamsHandler = (e) => {
@@ -31,7 +31,7 @@ export const NeedRandomMeals = (props) => {
     console.log("submit works");
     //"master lists" of diets and intolerances. These can easily be modified
     let diets = ['vegetarian', 'vegan', 'lacto-vegetarian', 'ovo-vegetarian',]
-    let intolerances = ['peanut', 'soy', 'sulfite', 'sesame','dairy','gluten']
+    let intolerances = ['peanut', 'soy', 'sulfite', 'sesame', 'dairy', 'gluten']
     let URLforIntolerances = '&intolerances='
     let URLforDiets = '&diet='
 
@@ -49,7 +49,7 @@ export const NeedRandomMeals = (props) => {
     for (let chosenbox of UrlParams) {
       //goes through each diet in the diets array
       for (let diet of diets) {
-         //if a match if found, the match is concatenated to URLforDiets
+        //if a match if found, the match is concatenated to URLforDiets
         if (chosenbox == diet) {
           URLforDiets += chosenbox + ','
         }
@@ -68,212 +68,237 @@ export const NeedRandomMeals = (props) => {
     );
     await actions.getMeals(
       `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaInDietURL}${noFinalCommaInIntolerancesURL}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`,
-      'UrlParams: '+noFinalCommaInIntolerancesURL+noFinalCommaInDietURL
-     )
-     history.push(`/meals/browse/page1`);
+      'UrlParams: ' + noFinalCommaInIntolerancesURL + noFinalCommaInDietURL
+    )
+    history.push(`/meals/browse/page1`);
 
   }
-    console.log(UrlParams);
-    //json.parse -->
-    //for the JSX below each input id is set to either a diet or intolerance. When checked, the id
-    //is added to the UrlParams to be used later in the URL to fetch the meals
-    return (
-      <>
-        <h1>look up json.parse to access data from local storage.</h1>
-        <h2>{localStorage.getItem("user")}
-        </h2>
+
+
+  console.log(UrlParams);
+  //json.parse -->
+  //for the JSX below each input id is set to either a diet or intolerance. When checked, the id
+  //is added to the UrlParams to be used later in the URL to fetch the meals
+  return (
+    <>
+      
+      
+      <div class='d-flex justify-content-center'>
+        <div><h4>header</h4></div>
+</div>
+      <form class= 'm-3' style={{border:'orange' , borderStyle:'solid', backgroundColor:'white', color:'black'}}
+        onSubmit={(e) => {
+          SubmitCheckboxForm(e);
+        }}
+      >
+        <div class= 'd-flex justify-content-around '>
+          
+        <div id="intolerances div">
         <h3>
-          Diets
+          Intolerances
         </h3>
-
-        <form
-          onSubmit={(e) => {
-            SubmitCheckboxForm(e);
-          }}
-        >
-          <div class="form-check">
-            <input
-              name="diet"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="vegetarian" //each input id is set to to either a diet or intolerance
-              onChange={(e) => {
-                console.log(e.target.id);
-                UrlParamsHandler(e);
-              }}
-            />
-            <label class="form-check-label" for="vegetarian">{/*the value after for= must match the id in inputtag*/}
-              Vegetarian
-              {/* Each piece of text is set to match the id in the input located in the same div */}
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              name="diet"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="vegan"
-              onChange={(e) => {
-                console.log(e.target.id);
-                UrlParamsHandler(e);
-              }}
-            />
-            <label class="form-check-label" for="vegan">
-              Vegan
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              name="diet"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="ovo-vegetarian"
-              onChange={(e) => {
-                console.log(e.target.id);
-                UrlParamsHandler(e);
-              }}
-            />
-            <label class="form-check-label" for="ovo-vegetarian">
-              Ovo-Vegetarian(excludes dairy)
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              name="diet"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="lacto-vegetarian"
-              onChange={(e) => {
-                console.log(e.target.id);
-                UrlParamsHandler(e);
-              }}
-            />
-            <label class="form-check-label" for="lacto-vegetarian">
-            Lacto-Vegetarian(exludes eggs)
-            </label>
-          </div>
-          
-          <h3>
-            Intolerances
-          </h3>
-          <div class="form-check">
-            <input
-              name="diet"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="sesame"
-              onChange={(e) => {
-                console.log(e.target.id);
-                UrlParamsHandler(e);
-              }}
-            />
-            <label class="form-check-label" for="sesame">
+        <div class="form-check">
+          <input
+            name="diet"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="sesame"
+            onChange={(e) => {
+              console.log(e.target.id);
+              UrlParamsHandler(e);
+            }}
+          />
+          <label class="form-check-label" for="sesame">
             Sesame
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              name="diet"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="sulfite"
-              onChange={(e) => {
-                console.log(e.target.id);
-                UrlParamsHandler(e);
-              }}
-            />
-            <label class="form-check-label" for="sulfite">
-              Sulfite
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              name="diet"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="soy"
-              onChange={(e) => {
-                console.log(e.target.id);
-                UrlParamsHandler(e);
-              }}
-            />
-            <label class="form-check-label" for="soy">
-              Soy
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              name="diet"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="peanut"
-              onChange={(e) => {
-                console.log(e.target.id);
-                UrlParamsHandler(e);
-              }}
-            />
-            <label class="form-check-label" for="peanut">
-              Peanut
-            </label>
-          </div>
-          
-          <div class="form-check">
-            <input
-              name="diet"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="dairy"
-              onChange={(e) => {
-                console.log(e.target.id);
-                UrlParamsHandler(e);
-              }}
-            />
-            <label class="form-check-label" for="dairy">
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            name="diet"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="sulfite"
+            onChange={(e) => {
+              console.log(e.target.id);
+              UrlParamsHandler(e);
+            }}
+          />
+          <label class="form-check-label" for="sulfite">
+            Sulfite
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            name="diet"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="soy"
+            onChange={(e) => {
+              console.log(e.target.id);
+              UrlParamsHandler(e);
+            }}
+          />
+          <label class="form-check-label" for="soy">
+            Soy
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            name="diet"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="peanut"
+            onChange={(e) => {
+              console.log(e.target.id);
+              UrlParamsHandler(e);
+            }}
+          />
+          <label class="form-check-label" for="peanut">
+            Peanut
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input
+            name="diet"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="dairy"
+            onChange={(e) => {
+              console.log(e.target.id);
+              UrlParamsHandler(e);
+            }}
+          />
+          <label class="form-check-label" for="dairy">
             Dairy
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              name="diet"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="gluten"
-              onChange={(e) => {
-                console.log(e.target.id);
-                UrlParamsHandler(e);
-              }}
-            />
-            <label class="form-check-label" for="gluten">
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            name="diet"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="gluten"
+            onChange={(e) => {
+              console.log(e.target.id);
+              UrlParamsHandler(e);
+            }}
+          />
+          <label class="form-check-label" for="gluten">
             Gluten
-            </label>
-          </div>
-
-          <button type="submit" class="btn btn-primary">
-            {" "}
-            Once preferences are chosen, click me to be taken to browse page.
-          </button>
-        </form>
-
-        <button type="button" class="btn btn-warning" onClick={()=>{
-          
-          return null}
-          
-          }>I want to be able to click this and see the meal prefs as an h1</button>
+          </label>
+        </div>
+        </div>
+        <div id="dietdiv">
+        <h3>
+        Diets
+      </h3>
+        <div class="form-check">
+          <input
+            name="diet"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="vegetarian" //each input id is set to to either a diet or intolerance
+            onChange={(e) => {
+              console.log(e.target.id);
+              UrlParamsHandler(e);
+            }}
+          />
+          <label class="form-check-label" for="vegetarian">{/*the value after for= must match the id in inputtag*/}
+            Vegetarian
+            {/* Each piece of text is set to match the id in the input located in the same div */}
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            name="diet"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="vegan"
+            onChange={(e) => {
+              console.log(e.target.id);
+              UrlParamsHandler(e);
+            }}
+          />
+          <label class="form-check-label" for="vegan">
+            Vegan
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            name="diet"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="ovo-vegetarian"
+            onChange={(e) => {
+              console.log(e.target.id);
+              UrlParamsHandler(e);
+            }}
+          />
+          <label class="form-check-label" for="ovo-vegetarian">
+            Ovo-Vegetarian(excludes dairy)
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            name="diet"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="lacto-vegetarian"
+            onChange={(e) => {
+              console.log(e.target.id);
+              UrlParamsHandler(e);
+            }}
+          />
+          <label class="form-check-label" for="lacto-vegetarian">
+            Lacto-Vegetarian(exludes eggs)
+          </label>
+        </div>
+        </div>
+     
 
         
-      </>
-    );
-  }
+        </div>
+      </form>
+      <button type="submit" class="btn btn-primary">
+          {" "}
+          Once preferences are chosen, click me to be taken to browse page.
+        </button>
+      <button type="button" class="btn btn-warning" onClick={() => {
+        setShowToast(!showToast)
+        let newobj = JSON.parse(localStorage.getItem("user"))
+        console.log(newobj)
+        console.log(`${newobj.mealPrefs.intolerances}`)
+        return null
+      }
+
+      }>I want to be able to click this and see the meal prefs as an h1</button>
+
+
+
+      <div class={showToast ? "toast show" : "toast hide"}>
+    
+      <div class="toast-header">
+        <strong class="me-auto">Toast Header</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+      </div>
+      <div class="toast-body " style={{ backgroundColor: 'black' }}>
+        <p>Some text inside the toast body</p>
+      </div>
+      </div>
+    </>
+  );
+}
 
 
 
