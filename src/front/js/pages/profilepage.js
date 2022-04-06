@@ -27,7 +27,7 @@ export const ProfilePage = (props) => {
               <div className="user-profile">
                 <div className="row">
                   <div className="col-4">
-                    <div className="profile-nav bg-dark p-3">
+                    <div className="profile-nav p-3">
                       <div className="profile-nav-head d-flex flex-wrap  align-content-center align-items-center mb-3">
                         <div className="avatar me-3">
                           <img src={avatar} alt="" className="img-responsive" />
@@ -70,7 +70,7 @@ export const ProfilePage = (props) => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-8 bg-dark">
+                  <div className="col-8">
                     <div class="tab-content" id="v-pills-tabContent">
                       <div
                         class="tab-pane fade show active"

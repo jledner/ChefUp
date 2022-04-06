@@ -7,6 +7,7 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
+import { ChefNavbar } from "./component/chefup_nav";
 import { Footer } from "./component/footer";
 import { LandingPage } from "./pages/landingpage";
 import { Login } from "./pages/login";
@@ -29,7 +30,7 @@ const Layout = () => {
   return (
     <BrowserRouter basename={basename}>
       <ScrollToTop>
-        <Navbar />
+        <ChefNavbar />
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/login" component={Login} />
