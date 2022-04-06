@@ -2,7 +2,7 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 :root {
-  --main-bg-color: #f9f6ea;
+  --main-bg-color: #ffffff;
   --secondary-bg-color: #343434;
   --alt-bg: #272727;
   --primary-color: #ffc20d;
@@ -13,10 +13,17 @@ body {
   color: #2f2f2f;
 }
 
+nav {
+  background-color: var(--main-bg-color) !important;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
 header.landing-header-small {
   background-image: url("https://images.unsplash.com/photo-1513135557534-682d53fd7046?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80");
   height: 30vh;
-  background-size: auto;
+  background-size: cover;
 }
 
 .cart-card img {
