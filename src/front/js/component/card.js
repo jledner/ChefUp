@@ -6,12 +6,16 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/card-main.css";
 import { FavoriteButton } from "./favoritebutton";
+import { CartButton } from "./CartButton";
 
 export const Card = (props) => {
   const { store, actions } = useContext(Context);
   return (
     <div className="col-12 col-lg">
       <div className="card h-100 position-relative">
+        <div className="cart position-absolute">
+          <CartButton meal={props.meal} />
+        </div>
         <div className="fav position-absolute">
           <FavoriteButton meal={props.meal} />
         </div>
@@ -62,7 +66,7 @@ export const Card = (props) => {
               actions.AddMealToCart(props.meal);
             }}
           >
-            Add to Cart
+            <i class="fas fa-shopping-cart"></i>
           </button>
         ) : (
           <button
@@ -72,7 +76,7 @@ export const Card = (props) => {
               actions.deleteAMeal(props.meal.id);
             }}
           >
-            Remove from Cart
+            <i class="fas fa-shopping-cart"></i>
           </button>
         )}
       </div>
