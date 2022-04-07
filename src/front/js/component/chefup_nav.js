@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Card } from "./card";
+import logo from "../../img/ChefUp.png";
 
 import { CartCard } from "./cartcard";
 export const ChefNavbar = () => {
@@ -10,9 +11,9 @@ export const ChefNavbar = () => {
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          Navbar
-        </a>
+        <div className="logo-container">
+          <img className="img-fluid logo" src={logo} />
+        </div>
         <button
           class="navbar-toggler"
           type="button"
@@ -25,9 +26,9 @@ export const ChefNavbar = () => {
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <Link to="/" className="nav-link">
+              <Link to="/" className="nav-link active">
                 Home
               </Link>
             </li>
@@ -116,17 +117,6 @@ export const ChefNavbar = () => {
               </div>
             </div>
           </ul>
-          <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
         </div>
       </div>
     </nav>
