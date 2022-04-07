@@ -48,6 +48,14 @@ export const ChefNavbar = () => {
               </Link>
             </li>
             <li class="nav-item">
+              <Link
+                to={store.user ? `/profilepage/${store.user.username}` : ""}
+                className="nav-link"
+              >
+                Profile
+              </Link>
+            </li>
+            <li class="nav-item">
               <Link to="/grocerylist" className="nav-link">
                 Grocery List
               </Link>

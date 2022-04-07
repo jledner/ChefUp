@@ -57,6 +57,11 @@ header::before {
   z-index: 1;
 }
 
+div.card.category-card::hover {
+  transform: scale();
+  cursor: wait !important;
+}
+
 .cart-card img {
   height: 100%;
   max-width: 100%;
