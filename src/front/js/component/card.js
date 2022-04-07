@@ -10,7 +10,7 @@ import { FavoriteButton } from "./favoritebutton";
 export const Card = (props) => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="col">
+    <div className="col-12 col-lg">
       <div className="card h-100 position-relative">
         <div className="fav position-absolute">
           <FavoriteButton meal={props.meal} />

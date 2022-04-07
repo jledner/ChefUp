@@ -5,5 +5,5 @@ div.profile-nav-head div.avatar {
 div.profile-nav-head div.avatar img {
   width: 100%;
   border-radius: 50%;
-  border: 3px solid var(--main-bg-color);
+  border: 3px solid var(--primary-color);
 }
