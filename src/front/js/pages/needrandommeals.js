@@ -98,7 +98,7 @@ export const NeedRandomMeals = (props) => {
         <div class="jumbotron" style={{borderRadius:'8px', backgroundColor: 'lightblue', width: '75%', padding: '5%' }}>
           <div class="d-flex justify-content-center">
             <div>
-              <h2><em>A Conversation As Old As Time...</em></h2>
+              <h3><em>A Conversation As Old As Time...</em></h3>
             </div>
 
           </div>
@@ -125,7 +125,7 @@ export const NeedRandomMeals = (props) => {
           <h5>Let's help you with that. First, let's upload your preferences from your user profile.</h5>
           <button
             type="button"
-            class="btn btn-primary"
+            class="btn btn-primary btn-sm"
             onClick={() => {
               setShowToast(!showToast);
               let newobj = JSON.parse(localStorage.getItem("user"));
@@ -379,7 +379,7 @@ export const NeedRandomMeals = (props) => {
 
 
         </form>
-        <div class="container">
+        <div class="container mt-3">
           <div class="row justify-content-end">
 
             <div class="col-3 ">
