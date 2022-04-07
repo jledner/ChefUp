@@ -85,8 +85,20 @@ export const NeedRandomMeals = (props) => {
   //for the JSX below each input id is set to either a diet or intolerance. When checked, the id
   //is added to the UrlParams to be used later in the URL to fetch the meals
   return (
-    <div className="container">
-      <>
+
+    <>
+    <br></br>
+    <div class ='jumbotroncontainer' style={{display:'flex', justifyContent:'center'}}>
+      <div class="jumbotron" style={{backgroundColor: 'lightgrey', width:'75%'}}>
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4" />
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </div>
+      </div>
+      <br></br>
+      <div className="container">
         <br></br>
         <div class="d-flex justify-content-center">
           <div>
@@ -307,15 +319,15 @@ export const NeedRandomMeals = (props) => {
         </button>
 
         <div class={showToast ? "toast show" : "toast hide"}>
-          <div class="toast-header">
-            <strong class="me-auto">Upload Complete!</strong>
+          <div class="toast-header" style={{ backgroundColor: "lightgreen" }}>
+            <strong class="me-auto" style={{ color: "darkgreen" }} >Upload Complete!</strong>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="toast"
             ></button>
           </div>
-          <div class="toast-body " style={{ backgroundColor: "black" }}>
+          <div class="toast-body " style={{ backgroundColor: "ghostwhite" }}>
             <p>
               {" "}
               Uploaded the following intolerance(s):{" "}
@@ -325,8 +337,9 @@ export const NeedRandomMeals = (props) => {
             <p>Uploaded the following diet(s): {newobj.mealPrefs.diets}</p>
           </div>
         </div>
-      </>
-    </div>
+      </div>
+    </>
+
   );
 };
 
