@@ -84,27 +84,62 @@ export const NeedRandomMeals = (props) => {
   //json.parse -->
   //for the JSX below each input id is set to either a diet or intolerance. When checked, the id
   //is added to the UrlParams to be used later in the URL to fetch the meals
+
+  const toastStyles = {
+    position: 'absolute',
+    bottom: '30%',
+    left: '15%',
+  }
   return (
 
     <>
-    <br></br>
-    <div class ='jumbotroncontainer' style={{display:'flex', justifyContent:'center'}}>
-      <div class="jumbotron" style={{backgroundColor: 'lightgrey', width:'75%'}}>
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4" />
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-      </div>
+      <br></br>
+      <div class='jumbotroncontainer' style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
+        <div class="jumbotron" style={{ backgroundColor: 'lightgrey', width: '75%', padding: '5%' }}>
+          <h1 class="display-4">Hello, world!</h1>
+          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+          <hr class="my-4" />
+          <p>First up, let's upload your preferences from your user profile.</p>
+          <button
+            type="button"
+            class="btn btn-primary"
+            onClick={() => {
+              setShowToast(!showToast);
+              let newobj = JSON.parse(localStorage.getItem("user"));
+              console.log(showToast)
+              //console.log(newobj);
+              //console.log(`${newobj.mealPrefs.intolerances}`);
+              return null;
+            }}
+          >
+            Upload Preferences
+          </button>
+          <div class={showToast ? "toast show" : "toast hide"} style={toastStyles}>
+            <div class="toast-header" style={{ backgroundColor: "lightgreen" }}>
+              <strong class="me-auto" style={{ color: "darkgreen" }} >Upload Complete!</strong>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="toast"
+              ></button>
+            </div>
+            <div class="toast-body " style={{ backgroundColor: "ghostwhite" }}>
+              <p>
+                {" "}
+                Uploaded the following intolerance(s):{" "}
+                {newobj.mealPrefs.intolerances[0]} and{" "}
+                {newobj.mealPrefs.intolerances[1]}
+              </p>
+              <p>Uploaded the following diet(s): {newobj.mealPrefs.diets}</p>
+            </div>
+          </div>
+        </div>
+
       </div>
       <br></br>
       <div className="container">
         <br></br>
-        <div class="d-flex justify-content-center">
-          <div>
-            <h4>Form Title</h4>
-          </div>
-        </div>
+
 
         <form
           class="m-3"
@@ -118,6 +153,16 @@ export const NeedRandomMeals = (props) => {
             SubmitCheckboxForm(e);
           }}
         >
+          <div class="d-flex justify-content-center">
+            <div>
+              <h2>Cooking for Others?</h2>
+            </div>
+
+          </div>
+          <div class="d-flex justify-content-center">
+
+            <div><p>Fill out the form below</p></div>
+          </div>
           <div class="d-flex justify-content-around ">
             <div id="intolerances div" class="p-5">
               <h3>Intolerances</h3>
@@ -303,40 +348,9 @@ export const NeedRandomMeals = (props) => {
           {" "}
           Once preferences are chosen, click me to be taken to browse page.
         </button>
-        <button
-          type="button"
-          class="btn btn-warning"
-          onClick={() => {
-            setShowToast(!showToast);
-            let newobj = JSON.parse(localStorage.getItem("user"));
-            console.log(newobj);
-            console.log(`${newobj.mealPrefs.intolerances}`);
-            return null;
-          }}
-        >
-          Thinking of having this button "upload" user preferences and give
-          feedback
-        </button>
 
-        <div class={showToast ? "toast show" : "toast hide"}>
-          <div class="toast-header" style={{ backgroundColor: "lightgreen" }}>
-            <strong class="me-auto" style={{ color: "darkgreen" }} >Upload Complete!</strong>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="toast"
-            ></button>
-          </div>
-          <div class="toast-body " style={{ backgroundColor: "ghostwhite" }}>
-            <p>
-              {" "}
-              Uploaded the following intolerance(s):{" "}
-              {newobj.mealPrefs.intolerances[0]} and{" "}
-              {newobj.mealPrefs.intolerances[1]}
-            </p>
-            <p>Uploaded the following diet(s): {newobj.mealPrefs.diets}</p>
-          </div>
-        </div>
+
+
       </div>
     </>
 
