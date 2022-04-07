@@ -28,7 +28,7 @@ export const ChefNavbar = () => {
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <Link to="/" className="nav-link">
+              <Link to="/" className="nav-link active">
                 Home
               </Link>
             </li>

@@ -10,12 +10,15 @@ export const MainHeader = (props) => {
     <header
       className={`${
         props.sizeClass ? `${props.sizeClass}` : `landing-header`
-      } d-flex flex-column justify-content-center p-5`}
+      } d-flex flex-column justify-content-center p-5 position-relative`}
     >
-      <div className="row">
+      <div className="head-content row">
         <div className="col-12 col-xl-1"></div>
-        <div className="col-12 col-xl-6">
-          <h1>Search thousands of quick, delicous meals on Chefup!</h1>
+        <div className="col-12 col-xl-5">
+          <h1>
+            Search <span className="highlight">thousands</span> of quick,
+            delicous meals on <span className="highlight">Chefup</span>!
+          </h1>
           <p>Nom nome nome nom...</p>
           <form className="d-flex">
             <div className="form-group">
