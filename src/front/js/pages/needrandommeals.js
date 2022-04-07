@@ -95,9 +95,32 @@ export const NeedRandomMeals = (props) => {
     <>
       <br></br>
       <div class='jumbotroncontainer' style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
-        <div class="jumbotron" style={{ backgroundColor: 'lightgrey', width: '75%', padding: '5%' }}>
-          <h1 class="display-4">Hello, world!</h1>
-          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <div class="jumbotron" style={{ backgroundColor: 'lightblue', width: '75%', padding: '5%' }}>
+        <div class="d-flex justify-content-center">
+            <div>
+              <h2><em>A Conversation As Old As Time...</em></h2>
+            </div>
+
+          </div>
+          <br/>
+          <br/>
+        <div class="container">
+            <div class="row justify-content-start">
+              <div class="col-3"><blockquote><p class='lead'>What do you want to eat today?</p>
+                &mdash; <cite>You</cite> </blockquote></div>
+                </div>
+
+          </div>
+          <br></br>
+          <div class="container">
+            <div class="row justify-content-end">
+              <div class="col-3"><blockquote><p class='lead'>I don't know, what do you want to eat today?</p>
+                &mdash; <cite>Your friend, cousin, girlfriend, uncle, etc</cite> </blockquote></div>
+                </div>
+
+          </div>
+          <br/>
+          
           <hr class="my-4" />
           <p>First up, let's upload your preferences from your user profile.</p>
           <button
@@ -137,7 +160,7 @@ export const NeedRandomMeals = (props) => {
 
       </div>
       <br></br>
-      <div className="container">
+      <div className="formcontainer" style={{ marginLeft: '11%', marginRight: '11%' }}>
         <br></br>
 
 
@@ -146,8 +169,9 @@ export const NeedRandomMeals = (props) => {
           style={{
             border: "white",
             borderStyle: "solid",
-            backgroundColor: "white",
+            backgroundColor: "lightgray",
             color: "black",
+            padding: '3%',
           }}
           onSubmit={(e) => {
             SubmitCheckboxForm(e);
@@ -161,8 +185,9 @@ export const NeedRandomMeals = (props) => {
           </div>
           <div class="d-flex justify-content-center">
 
-            <div><p>Fill out the form below</p></div>
+            <div><p>Fill out the form below or leave it blank if no extra info is needed.</p></div>
           </div>
+
           <div class="d-flex justify-content-around ">
             <div id="intolerances div" class="p-5">
               <h3>Intolerances</h3>
@@ -342,12 +367,24 @@ export const NeedRandomMeals = (props) => {
               </div>
             </div>
           </div>
-        </form>
 
-        <button type="submit" class="btn btn-primary">
-          {" "}
-          Once preferences are chosen, click me to be taken to browse page.
-        </button>
+
+
+        </form>
+        <div class="container">
+          <div class="row justify-content-end">
+
+            <div class="col-3 ">
+              <button type="submit" class="btn btn-primary " onClick={SubmitCheckboxForm}>
+
+                Search for Suggestions
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+
 
 
 
