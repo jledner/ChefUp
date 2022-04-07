@@ -94,21 +94,21 @@ export const NeedRandomMeals = (props) => {
 
     <>
       <br></br>
-      <div class='jumbotroncontainer' style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
-        <div class="jumbotron" style={{ backgroundColor: 'lightblue', width: '75%', padding: '5%' }}>
-        <div class="d-flex justify-content-center">
+      <div class='jumbotroncontainer' style={{  display: 'flex', justifyContent: 'center', position: 'relative' }}>
+        <div class="jumbotron" style={{borderRadius:'8px', backgroundColor: 'lightblue', width: '75%', padding: '5%' }}>
+          <div class="d-flex justify-content-center">
             <div>
               <h2><em>A Conversation As Old As Time...</em></h2>
             </div>
 
           </div>
-          <br/>
-          <br/>
-        <div class="container">
+          <br />
+          <br />
+          <div class="container">
             <div class="row justify-content-start">
               <div class="col-3"><blockquote><p class='lead'>What do you want to eat today?</p>
                 &mdash; <cite>You</cite> </blockquote></div>
-                </div>
+            </div>
 
           </div>
           <br></br>
@@ -116,13 +116,13 @@ export const NeedRandomMeals = (props) => {
             <div class="row justify-content-end">
               <div class="col-3"><blockquote><p class='lead'>I don't know, what do you want to eat today?</p>
                 &mdash; <cite>Your friend, cousin, girlfriend, uncle, etc</cite> </blockquote></div>
-                </div>
+            </div>
 
           </div>
-          <br/>
-          
+          <br />
+
           <hr class="my-4" />
-          <p>First up, let's upload your preferences from your user profile.</p>
+          <h5>Let's help you with that. First, let's upload your preferences from your user profile.</h5>
           <button
             type="button"
             class="btn btn-primary"
@@ -160,13 +160,21 @@ export const NeedRandomMeals = (props) => {
 
       </div>
       <br></br>
-      <div className="formcontainer" style={{ marginLeft: '11%', marginRight: '11%' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
+        <div style={{ width: '75%' }}>
+          <hr></hr>
+        </div>
+      </div>
+
+      <div class='formdiv' style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
+      <div className="formcontainer" style={{ width: '75%' }}>
         <br></br>
 
 
         <form
-          class="m-3"
+          class="m-0"
           style={{
+            borderRadius:'8px',
             border: "white",
             borderStyle: "solid",
             backgroundColor: "lightgray",
@@ -389,6 +397,8 @@ export const NeedRandomMeals = (props) => {
 
 
       </div>
+      </div>
+
     </>
 
   );
