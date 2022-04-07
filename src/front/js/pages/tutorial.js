@@ -14,6 +14,9 @@ export const Tutorial = (props) => {
   let meals = store.meals;
   const trending = store.trending;
   console.log(meals);
+  let background =
+    "https://cdn.shopify.com/s/files/1/0533/2089/files/5-websites-to-download-free-subtle-textures-lost.jpg?4487992953913685304";
+
   return (
     <div
       id="carouselExampleDark"
@@ -42,17 +45,12 @@ export const Tutorial = (props) => {
           aria-label="Slide 3"
         ></button>
       </div>
-      <div className="carousel-inner">
+      <div className="carousel-inner bg">
         <div className="carousel-item active" data-bs-interval="10000">
-          <img
-            src="https://img.freepik.com/free-photo/food-background-with-place-text-with-different-kinds-pasta-tomatoes-herbs-mushrooms-eggs-seasonings-scattered-light-marble-background-top-view-italian-cuisine-concept_90258-3592.jpg?size=626&ext=jpg"
-            className="d-block w-100"
-            alt="..."
-          />
           <div className="carousel-caption d-none d-md-block">
-            <h5>Choose what's best for you!</h5>
-            <p>See prep time, calories, and cost for each item</p>
-            <div className="Featured-Content p-5">
+            <h1>Choose what's best for you!</h1>
+            <h5>See prep time, calories, and cost for each item</h5>
+            <div className="Featured-Content p-6">
               <div className="row">
                 {trending.map((meal) => {
                   return <Card meal={meal} />;
@@ -61,13 +59,8 @@ export const Tutorial = (props) => {
             </div>
           </div>
         </div>
-
         <div className="carousel-item" data-bs-interval="2000">
-          <img
-            src="https://img.freepik.com/free-photo/food-background-with-place-text-with-different-kinds-pasta-tomatoes-herbs-mushrooms-eggs-seasonings-scattered-light-marble-background-top-view-italian-cuisine-concept_90258-3592.jpg?size=626&ext=jpg"
-            className="d-block w-100"
-            alt="..."
-          />
+          {/* <img src={background} className="d-block w-100" alt="..." /> */}
           <div className="carousel-caption d-none d-md-block">
             <div className="container">
               <h5>Choose what's best for you!</h5>
@@ -84,11 +77,7 @@ export const Tutorial = (props) => {
         </div>
 
         <div className="carousel-item" data-bs-interval="2000">
-          <img
-            src="https://img.freepik.com/free-photo/food-background-with-place-text-with-different-kinds-pasta-tomatoes-herbs-mushrooms-eggs-seasonings-scattered-light-marble-background-top-view-italian-cuisine-concept_90258-3592.jpg?size=626&ext=jpg"
-            className="d-block w-100"
-            alt="..."
-          />
+          {/* <img src={background} className="d-block w-100" alt="..." /> */}
           <div className="carousel-caption d-none d-md-block">
             <div className="container">
               <h1>Grocery List</h1>

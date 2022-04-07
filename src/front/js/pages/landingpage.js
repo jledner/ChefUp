@@ -45,9 +45,9 @@ export const LandingPage = (props) => {
               <div className="category-content">
                 <h2>Meals By Cuisine</h2>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Voluptatum delectus sint deleniti. Excepturi et vitae eum
-                  cumque nostrum adipisci at.
+                  Search for over 1000 meals by cuisine! Add to cart to generate
+                  a grocery list or click the heart to save meals to as
+                  favorites on your profile.
                 </p>
                 <div className="row">
                   <ul>
