@@ -15,6 +15,7 @@ export const BrowsePage2 = (props) => {
 
   return (
     <div className="container">
+      <a name="backToTop"></a>
       <MainHeader sizeClass={"landing-header-small"} />
       <section className="category px-5 py-5">
         <div className="category-content">
@@ -54,6 +55,8 @@ export const BrowsePage2 = (props) => {
                 </button>
               </Link>
             </div>
+            <button type="button" class="btn btn-light"><a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>Back to top of page<i class="fas fa-level-up-alt"></i></a>
+            </button>
             <div>
               <Link to="/meals/page3">
                 <button type="button" class="btn btn-light">

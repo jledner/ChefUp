@@ -18,6 +18,7 @@ export const BrowsePage = (props) => {
 
   return (
     <div className="container">
+      <a name="backToTop"></a>
       <MainHeader sizeClass={"landing-header-small"} />
       <section className="category px-5 py-5">
         <div className="category-content">
@@ -36,7 +37,10 @@ export const BrowsePage = (props) => {
             )}
           </div>
           {store.mealResults && store.mealResults.length > 10 ? (
-            <div class="d-grid justify-content-center mx-auto my-5">
+            <div class="d-flex justify-content-spaceEvenly mx-auto my-5 g-5" style={{justifyContent: 'space-evenly'}}>
+              <div><button type="button" class="btn btn-light"><a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>Back to top of page<i class="fas fa-level-up-alt"></i></a>
+            </button>
+              </div>
               <Link to="/meals/page2">
                 <button type="button" class="btn btn-light">
                   To Page 2
@@ -45,6 +49,7 @@ export const BrowsePage = (props) => {
             </div>
           ) : null}
         </div>
+        <a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>Back to top of page<i class="fas fa-level-up-alt"></i></a>
       </section>
     </div>
   );
@@ -72,7 +77,7 @@ let previouscode = `return (
   </div>
 );`;
 
-let button = `<button type="button" class="btn btn-dark" onClick={(e) => {
-  console.log('clicked', showMoreMeals)
-  setShowMoreMeals(!showMoreMeals)
-}}>Primary</button>`;
+let backToTopvar = `<a name="backToTop"></a>
+<a href="#top" style={{color:'black',fontSize:'1.3vw'}}>Back to top of page<i class="fas fa-level-up-alt"></i></a>
+
+`
