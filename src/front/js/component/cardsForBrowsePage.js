@@ -8,15 +8,15 @@ import "../../styles/card-main.css";
 import { FavoriteButton } from "./favoritebutton";
 import { CartButton } from "./CartButton";
 
-export const Card = (props) => {
+export const CardsForBrowsePage = (props) => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="col-12 col-lg">
-      <div className="card h-100 position-relative" id='testid'>
-        <div className="cart position-absolute" id='transparent'>
+    <div className="col-3">
+      <div className="card h-100 position-relative">
+        <div className="cart position-absolute">
           <CartButton meal={props.meal} />
         </div>
-        <div className="fav position-absolute" id='transparent'>
+        <div className="fav position-absolute">
           <FavoriteButton meal={props.meal} />
         </div>
         <Link
@@ -84,7 +84,7 @@ export const Card = (props) => {
   );
 };
 
-Card.propTypes = {
+CardsForBrowsePage.propTypes = {
   img: PropTypes.string,
   name: PropTypes.string,
 };

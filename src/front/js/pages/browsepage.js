@@ -6,6 +6,7 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import foodImg from "../../img/foods/pls.jpg";
 import "../../styles/landing.css";
 import { Card } from "../component/card";
+import { CardsForBrowsePage } from "../component/cardsForBrowsePage";
 import { MainHeader } from "../component/MainHeader";
 
 //my adjustment was made under the h2 that says "Browse Meals." The previous code used was assigned
@@ -30,7 +31,7 @@ export const BrowsePage = (props) => {
               store.mealResults
                 .slice(0, Math.round(store.mealResults.length / 3))
                 .map((meal) => {
-                  return <Card meal={meal} />;
+                  return <CardsForBrowsePage meal={meal} />;
                 })
             ) : (
               <div>no results :(</div>
@@ -49,7 +50,7 @@ export const BrowsePage = (props) => {
             </div>
           ) : null}
         </div>
-        <a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>Back to top of page<i class="fas fa-level-up-alt"></i></a>
+        <a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>To the top<i class="fas fa-level-up-alt"></i></a>
       </section>
     </div>
   );

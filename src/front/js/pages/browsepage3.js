@@ -39,7 +39,7 @@ export const BrowsePage3 = (props) => {
                 </button>
               </Link>
             </div>
-            <button type="button" class="btn btn-light"><a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>Back to top of page<i class="fas fa-level-up-alt"></i></a>
+            <button type="button" class="btn btn-light"><a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>To the top<i class="fas fa-level-up-alt"></i></a>
             </button>
 
             <div>
