@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
+import logo from "../../img/ChefUp.png";
 //We'll come back to this and the Login page later 3-22-22 - Jeff
 export const Login = (props) => {
   const { store, actions } = useContext(Context);
@@ -31,11 +32,9 @@ export const Login = (props) => {
                   props.history.push("/");
                 }}
               >
-                
-
                 <div class="text-center">
                   <img
-                    src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png"
+                    src={logo}
                     class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
                     width="200px"
                     alt="profile"
@@ -54,7 +53,6 @@ export const Login = (props) => {
                       setUserName(e.target.value);
                     }}
                   />
-                 
                 </div>
                 <div class="mb-3">
                   <input
@@ -68,7 +66,6 @@ export const Login = (props) => {
                       setLoginPassword(e.target.value);
                     }}
                   />
-                 
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary mb-5 w-25">
@@ -79,7 +76,12 @@ export const Login = (props) => {
                   id="emailHelp"
                   class="form-text text-center mb-5 text-dark"
                 >
-                  <p class="text-center text-muted mt-5 mb-0">Not Registered? <Link to="/signup" class="fw-bold text-body"><u>Sign up here</u></Link></p>
+                  <p class="text-center text-muted mt-5 mb-0">
+                    Not Registered?{" "}
+                    <Link to="/signup" class="fw-bold text-body">
+                      <u>Sign up here</u>
+                    </Link>
+                  </p>
                   {/* <p class="text-center text-muted mt-5 mb-0">Have an account already? <Link to="/login" class="fw-bold text-body"><u>Login here</u></Link></p> */}
                 </div>
               </form>

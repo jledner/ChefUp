@@ -39,7 +39,7 @@ export const ChefNavbar = () => {
             </li>
             <li class="nav-item">
               <Link to="/signup" className="nav-link">
-                Signup
+                Sign Up
               </Link>
             </li>
             <li class="nav-item">
