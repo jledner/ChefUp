@@ -39,7 +39,7 @@ export const BrowsePage = (props) => {
           </div>
           {store.mealResults && store.mealResults.length > 10 ? (
             <div class="d-flex justify-content-spaceEvenly mx-auto my-5 g-5" style={{justifyContent: 'space-evenly'}}>
-              <div><button type="button" class="btn btn-light"><a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>Back to top of page<i class="fas fa-level-up-alt"></i></a>
+              <div><button type="button" class="btn btn-light"><a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>To the top of page<i class="fas fa-level-up-alt"></i></a>
             </button>
               </div>
               <Link to="/meals/page2">
@@ -50,7 +50,7 @@ export const BrowsePage = (props) => {
             </div>
           ) : null}
         </div>
-        <a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>To the top<i class="fas fa-level-up-alt"></i></a>
+        
       </section>
     </div>
   );

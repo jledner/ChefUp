@@ -118,17 +118,14 @@ body {
   background-position: center bottom;
 }
 
-/* #testid:hover #transparent{
+#testid:hover #transparent {
   opacity: 1;
-} 
-
-
+}
 
 #transparent {
-  opacity:0;
-} */
-
-html,
+  opacity: 0;
+}
+*/ html,
 .root {
   padding: 0;
   margin: 0;
