@@ -12,11 +12,8 @@ export const Card = (props) => {
   const { store, actions } = useContext(Context);
   return (
     <div className="col-12 col-lg">
-      <div className="card h-100 position-relative" id='testid'>
-        <div className="cart position-absolute" id='transparent'>
-          <CartButton meal={props.meal} />
-        </div>
-        <div className="fav position-absolute" id='transparent'>
+      <div className="card h-100 position-relative" id="testid">
+        <div className="fav position-absolute" id="transparent">
           <FavoriteButton meal={props.meal} />
         </div>
         <Link
@@ -66,7 +63,7 @@ export const Card = (props) => {
               actions.AddMealToCart(props.meal);
             }}
           >
-            <i class="fas fa-shopping-cart"></i>
+            Add to cart
           </button>
         ) : (
           <button
@@ -76,7 +73,7 @@ export const Card = (props) => {
               actions.deleteAMeal(props.meal.id);
             }}
           >
-            <i class="fas fa-shopping-cart"></i>
+            Remove from cart
           </button>
         )}
       </div>
