@@ -11,6 +11,9 @@ export const NeedRandomMeals = (props) => {
   let newobj = JSON.parse(localStorage.getItem("user"));
   const [UrlParams, setUrlParams] = useState([]); //As boxes are checked, params are added to this list
   const [showToast, setShowToast] = useState(false);
+  // useEffect(() => {
+    
+  // }, [showToast]);
   const { store, actions } = useContext(Context);
   const history = useHistory();
   let UrlParamsHandler = (e) => {
@@ -99,6 +102,21 @@ export const NeedRandomMeals = (props) => {
     bottom: '30%',
     left: '15%',
   }
+
+  
+    let userobj = JSON.parse(localStorage.getItem("user"))
+    console.log(userobj)
+    console.log(userobj.mealPrefs.diets)
+    console.log(userobj['mealPrefs'].intolerances)
+    let dietsString = ''
+    let intolerancesString = ''
+    for(let diets of userobj.mealPrefs.diets){
+      dietsString += diets + ' '
+    }
+    for(let intolerances of userobj['mealPrefs']['intolerances']){
+     intolerancesString += intolerances + ' '
+    }
+    
   return (
 
     <>
@@ -136,13 +154,9 @@ export const NeedRandomMeals = (props) => {
             type="button"
             class="btn btn-primary btn-sm"
             onClick={() => {
-              setShowToast(!showToast);
-              let newobj = JSON.parse(localStorage.getItem("user"));
-              console.log(newobj.mealPrefs.intolerances,newobj.mealPrefs.diets)
-              //console.log(newobj);
-              //console.log(`${newobj.mealPrefs.intolerances}`);
-              return null;
-            }}
+              console.log('upload prefs clicked')
+              setShowToast(!showToast)
+              }}
           >
             Upload Preferences
           </button>
@@ -153,16 +167,17 @@ export const NeedRandomMeals = (props) => {
                 type="button"
                 class="btn-close"
                 data-bs-dismiss="toast"
+                onClick={() => {
+                  console.log('cose click')
+                  setShowToast(!showToast)
+                  }}
               ></button>
             </div>
             <div class="toast-body " style={{ backgroundColor: "ghostwhite" }}>
               <p>
-                {" "}
-                Uploaded the following intolerance(s):{" "}
-                {newobj.mealPrefs.intolerances[0]} and{" "}
-                {newobj.mealPrefs.intolerances[1]}
+              <p>Uploaded the following diet(s): {dietsString}</p>
               </p>
-              <p>Uploaded the following diet(s): {newobj.mealPrefs.diets}</p>
+              <p>Uploaded the following intolerances(s): {intolerancesString}</p>
             </div>
           </div>
         </div>
