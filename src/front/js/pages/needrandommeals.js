@@ -38,6 +38,15 @@ export const NeedRandomMeals = (props) => {
     let URLforIntolerances = "&intolerances=";
     let URLforDiets = "&diet=";
 
+    let newobj = JSON.parse(localStorage.getItem("user"))
+    for(let diets of newobj.mealPrefs.diets){
+      URLforDiets += diets + ",";
+    }
+
+    for(let intolerances of newobj.mealPrefs.intolerances){
+      URLforIntolerances += intolerances + ",";
+    }
+
     //goes through each checkedbox that was added to URLParams hook
     for (let checkedbox of UrlParams) {
       //goes through each intolerance in the intolerances array
@@ -129,7 +138,7 @@ export const NeedRandomMeals = (props) => {
             onClick={() => {
               setShowToast(!showToast);
               let newobj = JSON.parse(localStorage.getItem("user"));
-              console.log(showToast)
+              console.log(newobj.mealPrefs.intolerances,newobj.mealPrefs.diets)
               //console.log(newobj);
               //console.log(`${newobj.mealPrefs.intolerances}`);
               return null;
