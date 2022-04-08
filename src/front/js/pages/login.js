@@ -16,13 +16,14 @@ export const Login = (props) => {
   // };
 
   return (
-    <div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 offset-md-3">
-            <h2 class="text-center text-white mt-5">Login Form</h2>
+    <>
+       <div class="container h-100 ">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            
 
-            <div class="card my-5">
+            <div class="card my-5"  style={{ borderRadius: "15px" }}>
+            <h2 class="text-center text-black mt-5">Login Form</h2>
               <form
                 class="card-body cardbody-color p-lg-5"
                 onSubmit={async (e) => {
@@ -87,9 +88,81 @@ export const Login = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
+
+let oldlogin =`<div class="container h-100 m-3">
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h2 class="text-center text-white mt-5">Login Form</h2>
+
+    <div class="card my-5">
+      <form
+        class="card-body cardbody-color p-lg-5"
+        onSubmit={async (e) => {
+          e.preventDefault();
+          await actions.userLogin({ username: UserName });
+          props.history.push("/");
+        }}
+      >
+        
+
+        <div class="text-center">
+          <img
+            src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png"
+            class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+            width="200px"
+            alt="profile"
+          />
+        </div>
+
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="Username"
+            aria-describedby="emailHelp"
+            placeholder="Username"
+            value={UserName}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
+         
+        </div>
+        <div class="mb-3">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+            value={Password}
+            onChange={(e) => {
+              console.log(e.target.value);
+              setLoginPassword(e.target.value);
+            }}
+          />
+         
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary mb-5 w-25">
+            Login
+          </button>
+        </div>
+        <div
+          id="emailHelp"
+          class="form-text text-center mb-5 text-dark"
+        >
+          <p class="text-center text-muted mt-5 mb-0">Not Registered? <Link to="/signup" class="fw-bold text-body"><u>Sign up here</u></Link></p>
+          {/* <p class="text-center text-muted mt-5 mb-0">Have an account already? <Link to="/login" class="fw-bold text-body"><u>Login here</u></Link></p> */}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>`
+
 
 // let tryLogin = () => {
 
