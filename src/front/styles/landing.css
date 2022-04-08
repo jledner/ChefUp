@@ -55,6 +55,17 @@ section.category .row li {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+div.card.category-card::hover {
+  transform: scale();
+  cursor: wait;
+}
+
+li.cuisine-li {
+  transition: all 0.3s ease-in-out;
+}
+
 li.cuisine-li:hover {
   cursor: pointer;
+  transform: scale(1.15);
+  z-index: 1;
 }

@@ -11,6 +11,9 @@ export const NeedRandomMeals = (props) => {
   let newobj = JSON.parse(localStorage.getItem("user"));
   const [UrlParams, setUrlParams] = useState([]); //As boxes are checked, params are added to this list
   const [showToast, setShowToast] = useState(false);
+  // useEffect(() => {
+    
+  // }, [showToast]);
   const { store, actions } = useContext(Context);
   const history = useHistory();
   let UrlParamsHandler = (e) => {
@@ -37,6 +40,15 @@ export const NeedRandomMeals = (props) => {
     ];
     let URLforIntolerances = "&intolerances=";
     let URLforDiets = "&diet=";
+
+    let newobj = JSON.parse(localStorage.getItem("user"))
+    for(let diets of newobj.mealPrefs.diets){
+      URLforDiets += diets + ",";
+    }
+
+    for(let intolerances of newobj.mealPrefs.intolerances){
+      URLforIntolerances += intolerances + ",";
+    }
 
     //goes through each checkedbox that was added to URLParams hook
     for (let checkedbox of UrlParams) {
@@ -84,28 +96,130 @@ export const NeedRandomMeals = (props) => {
   //json.parse -->
   //for the JSX below each input id is set to either a diet or intolerance. When checked, the id
   //is added to the UrlParams to be used later in the URL to fetch the meals
+
+  const toastStyles = {
+    position: 'absolute',
+    bottom: '30%',
+    left: '15%',
+  }
+
+  
+    let userobj = JSON.parse(localStorage.getItem("user"))
+    console.log(userobj)
+    console.log(userobj.mealPrefs.diets)
+    console.log(userobj['mealPrefs'].intolerances)
+    let dietsString = ''
+    let intolerancesString = ''
+    for(let diets of userobj.mealPrefs.diets){
+      dietsString += diets + ' '
+    }
+    for(let intolerances of userobj['mealPrefs']['intolerances']){
+     intolerancesString += intolerances + ' '
+    }
+    
   return (
-    <div className="container">
-      <>
-        <br></br>
-        <div class="d-flex justify-content-center">
-          <div>
-            <h4>Form Title</h4>
+
+    <>
+      <br></br>
+      <div class='jumbotroncontainer' style={{  display: 'flex', justifyContent: 'center', position: 'relative' }}>
+        <div class="jumbotron" style={{borderRadius:'8px', backgroundColor: 'lightblue', width: '75%', padding: '5%' }}>
+          <div class="d-flex justify-content-center">
+            <div>
+              <h3><em>A Conversation As Old As Time...</em></h3>
+            </div>
+
+          </div>
+          <br />
+          <br />
+          <div class="container">
+            <div class="row justify-content-start">
+              <div class="col-3"><blockquote><p class='lead'>What do you want to eat today?</p>
+                &mdash; <cite>You</cite> </blockquote></div>
+            </div>
+
+          </div>
+          <br></br>
+          <div class="container">
+            <div class="row justify-content-end">
+              <div class="col-3"><blockquote><p class='lead'>I don't know, what do you want to eat today?</p>
+                &mdash; <cite>Your friend, cousin, girlfriend, uncle, etc</cite> </blockquote></div>
+            </div>
+
+          </div>
+          <br />
+
+          <hr class="my-4" />
+          <h5>Let's help you with that. First, let's upload your preferences from your user profile.</h5>
+          <button
+            type="button"
+            class="btn btn-primary btn-sm"
+            onClick={() => {
+              console.log('upload prefs clicked')
+              setShowToast(!showToast)
+              }}
+          >
+            Upload Preferences
+          </button>
+          <div class={showToast ? "toast show" : "toast hide"} style={toastStyles}>
+            <div class="toast-header" style={{ backgroundColor: "lightgreen" }}>
+              <strong class="me-auto" style={{ color: "darkgreen" }} >Upload Complete!</strong>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="toast"
+                onClick={() => {
+                  console.log('cose click')
+                  setShowToast(!showToast)
+                  }}
+              ></button>
+            </div>
+            <div class="toast-body " style={{ backgroundColor: "ghostwhite" }}>
+              <p>
+              <p>Uploaded the following diet(s): {dietsString}</p>
+              </p>
+              <p>Uploaded the following intolerances(s): {intolerancesString}</p>
+            </div>
           </div>
         </div>
 
+      </div>
+      <br></br>
+      <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
+        <div style={{ width: '75%' }}>
+          <hr></hr>
+        </div>
+      </div>
+
+      <div class='formdiv' style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
+      <div className="formcontainer" style={{ width: '75%' }}>
+        <br></br>
+
+
         <form
-          class="m-3"
+          class="m-0"
           style={{
+            borderRadius:'8px',
             border: "white",
             borderStyle: "solid",
-            backgroundColor: "white",
+            backgroundColor: "lightgray",
             color: "black",
+            padding: '3%',
           }}
           onSubmit={(e) => {
             SubmitCheckboxForm(e);
           }}
         >
+          <div class="d-flex justify-content-center">
+            <div>
+              <h2>Cooking for Others?</h2>
+            </div>
+
+          </div>
+          <div class="d-flex justify-content-center">
+
+            <div><p>Fill out the form below or leave it blank if no extra info is needed.</p></div>
+          </div>
+
           <div class="d-flex justify-content-around ">
             <div id="intolerances div" class="p-5">
               <h3>Intolerances</h3>
@@ -285,48 +399,32 @@ export const NeedRandomMeals = (props) => {
               </div>
             </div>
           </div>
+
+
+
         </form>
+        <div class="container mt-3">
+          <div class="row justify-content-end">
 
-        <button type="submit" class="btn btn-primary">
-          {" "}
-          Once preferences are chosen, click me to be taken to browse page.
-        </button>
-        <button
-          type="button"
-          class="btn btn-warning"
-          onClick={() => {
-            setShowToast(!showToast);
-            let newobj = JSON.parse(localStorage.getItem("user"));
-            console.log(newobj);
-            console.log(`${newobj.mealPrefs.intolerances}`);
-            return null;
-          }}
-        >
-          Thinking of having this button "upload" user preferences and give
-          feedback
-        </button>
+            <div class="col-3 ">
+              <button type="submit" class="btn btn-primary " onClick={SubmitCheckboxForm}>
 
-        <div class={showToast ? "toast show" : "toast hide"}>
-          <div class="toast-header">
-            <strong class="me-auto">Upload Complete!</strong>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="toast"
-            ></button>
+                Search for Suggestions
+              </button>
+            </div>
           </div>
-          <div class="toast-body " style={{ backgroundColor: "black" }}>
-            <p>
-              {" "}
-              Uploaded the following intolerance(s):{" "}
-              {newobj.mealPrefs.intolerances[0]} and{" "}
-              {newobj.mealPrefs.intolerances[1]}
-            </p>
-            <p>Uploaded the following diet(s): {newobj.mealPrefs.diets}</p>
-          </div>
+
         </div>
-      </>
-    </div>
+
+
+
+
+
+      </div>
+      </div>
+
+    </>
+
   );
 };
 

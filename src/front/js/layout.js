@@ -6,7 +6,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import { Navbar } from "./component/navbar";
+// import { Navbar } from "./component/navbar";
 import { ChefNavbar } from "./component/chefup_nav";
 import { Footer } from "./component/footer";
 import { LandingPage } from "./pages/landingpage";
