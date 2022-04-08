@@ -23,7 +23,7 @@ export const RecipeDetails = (props) => {
   let ingredients = meal.nutrition.ingredients;
 
   return (
-    <section>
+    <section className="details">
       <h1>{meal.title}</h1>
       {/* <div className="row">
         <div className="col-2">
