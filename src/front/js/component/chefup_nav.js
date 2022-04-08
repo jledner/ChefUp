@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Card } from "./card";
 import logo from "../../img/ChefUp.png";
@@ -26,44 +26,80 @@ export const ChefNavbar = () => {
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <ul
+            class="navbar-nav ms-auto mb-2 mb-lg-0"
+            onClick={(e) => console.log(e.target.parentNode)}
+          >
             <li class="nav-item">
-              <Link to="/" className="nav-link active">
+              <NavLink
+                exact={true}
+                to="/"
+                className={(isActive) => {
+                  return `nav-link ${isActive ? "active" : ""}`;
+                }}
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li class="nav-item">
-              <Link to="/tutorial" className="nav-link">
+              <NavLink
+                to="/tutorial"
+                className={(isActive) => {
+                  return `nav-link ${isActive ? "active" : ""}`;
+                }}
+              >
                 Tutorial
-              </Link>
+              </NavLink>
             </li>
             <li class="nav-item">
-              <Link to="/signup" className="nav-link">
-                Signup
-              </Link>
+              <NavLink
+                to="/signup"
+                className={(isActive) => {
+                  return `nav-link ${isActive ? "active" : ""}`;
+                }}
+              >
+                Sign up
+              </NavLink>
             </li>
             <li class="nav-item">
-              <Link to="/login" className="nav-link">
+              <NavLink
+                to="/login"
+                className={(isActive) => {
+                  return `nav-link ${isActive ? "active" : ""}`;
+                }}
+              >
                 Login
-              </Link>
+              </NavLink>
             </li>
             <li class="nav-item">
-              <Link
+              <NavLink
                 to={store.user ? `/profilepage/${store.user.username}` : ""}
-                className="nav-link"
+                className={(isActive) => {
+                  return `nav-link ${isActive ? "active" : ""}`;
+                }}
               >
                 Profile
-              </Link>
+              </NavLink>
             </li>
             <li class="nav-item">
-              <Link to="/grocerylist" className="nav-link">
+              <NavLink
+                to="/grocerylist"
+                className={(isActive) => {
+                  return `nav-link ${isActive ? "active" : ""}`;
+                }}
+              >
                 Grocery List
-              </Link>
+              </NavLink>
             </li>
             <li class="nav-item">
-              <Link to="/randommeals" className="nav-link">
+              <NavLink
+                to="/randommeals"
+                className={(isActive) => {
+                  return `nav-link ${isActive ? "active" : ""}`;
+                }}
+              >
                 Random Meals
-              </Link>
+              </NavLink>
             </li>
 
             <button
