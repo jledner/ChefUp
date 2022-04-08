@@ -73,7 +73,11 @@ export const ChefNavbar = () => {
             </li>
             <li class="nav-item">
               <NavLink
-                to={store.user ? `/profilepage/${store.user.username}` : ""}
+                to={
+                  store.user
+                    ? `/profilepage/${store.user.username.toLowerCase()}`
+                    : ""
+                }
                 className={(isActive) => {
                   return `nav-link ${isActive ? "active" : ""}`;
                 }}

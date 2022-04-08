@@ -16,10 +16,15 @@ export const ProfilePage = (props) => {
   let MealsInCart = store.MealsInCart;
   let meals = store.meals;
   const history = useHistory();
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    setUser(store.user);
+  }, [store.user]);
 
   return (
     <div>
-      {store.user ? (
+      {user ? (
         <div>
           <MainHeader sizeClass={"landing-header-small"} />
           <div className="container">
@@ -78,7 +83,33 @@ export const ProfilePage = (props) => {
                         role="tabpanel"
                         aria-labelledby="v-pills-home-tab"
                       >
-                        User Info
+                        <div>
+                          <div className="d-flex justify-content-between">
+                            <h3>Account Information</h3>
+                            <div>
+                              <i class="fas fa-edit"></i>
+                            </div>
+                          </div>
+                          <hr />
+                          <p>Username: {user.username}</p>
+                          <p>Email: {user.email}</p>
+
+                          <div className="d-flex justify-content-between">
+                            <h3>Meal Preferences</h3>
+                            <div>
+                              <i class="fas fa-edit"></i>
+                            </div>
+                          </div>
+                          <hr />
+                          <div className="row">
+                            <div className="col-6">
+                              <h4>Intolerances</h4>
+                            </div>
+                            <div className="col-6">
+                              <h4>Diet</h4>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       <div
                         class="tab-pane fade"

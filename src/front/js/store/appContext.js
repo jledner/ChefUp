@@ -21,7 +21,7 @@ const injectContext = (PassedComponent) => {
       })
     );
 
-    useEffect(async () => {
+    useEffect(() => {
       /**
        * EDIT THIS!
        * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime
@@ -29,9 +29,9 @@ const injectContext = (PassedComponent) => {
        * store, instead use actions, like this:
        **/
       state.actions.setUser(JSON.parse(localStorage.getItem("user")));
-      state.actions.getProducts("steak");
-      state.actions.getAccessToken();
-      state.actions.getMessage(); // <---- calling this function from the flux.js actions
+      // state.actions.getProducts("steak");
+      // state.actions.getAccessToken();
+      // state.actions.getMessage(); // <---- calling this function from the flux.js actions
     }, []);
 
     // The initial value for the context is not null anymore, but the current state of this component,
