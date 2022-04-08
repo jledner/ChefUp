@@ -6,6 +6,7 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import foodImg from "../../img/foods/pls.jpg";
 import "../../styles/landing.css";
 import { Card } from "../component/card";
+import { CardsForBrowsePage } from "../component/cardsForBrowsePage";
 import { MainHeader } from "../component/MainHeader";
 
 export const BrowsePage3 = (props) => {
@@ -27,7 +28,7 @@ export const BrowsePage3 = (props) => {
                 store.mealResults.length
               )
               .map((meal) => {
-                return <Card meal={meal} />;
+                return <CardsForBrowsePage meal={meal} />;
               })}
           </div>
 
@@ -39,7 +40,7 @@ export const BrowsePage3 = (props) => {
                 </button>
               </Link>
             </div>
-            <button type="button" class="btn btn-light"><a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>To the top<i class="fas fa-level-up-alt"></i></a>
+            <button type="button" class="btn btn-light"><a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>To the top of page<i class="fas fa-level-up-alt"></i></a>
             </button>
 
             <div>

@@ -119,7 +119,7 @@ body {
 }
 
 
-  /* #testid:hover #transparent{
+  #testid:hover #transparent{
   opacity: 1;
 } 
 
@@ -127,4 +127,4 @@ body {
 
 #transparent {
   opacity:0;
-} */
+}
