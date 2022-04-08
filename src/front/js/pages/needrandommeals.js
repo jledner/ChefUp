@@ -121,68 +121,7 @@ export const NeedRandomMeals = (props) => {
 
     <>
       <br></br>
-      <div class='jumbotroncontainer' style={{  display: 'flex', justifyContent: 'center', position: 'relative' }}>
-        <div class="jumbotron" style={{borderRadius:'8px', backgroundColor: 'lightblue', width: '75%', padding: '5%' }}>
-          <div class="d-flex justify-content-center">
-            <div>
-              <h3><em>A Conversation As Old As Time...</em></h3>
-            </div>
-
-          </div>
-          <br />
-          <br />
-          <div class="container">
-            <div class="row justify-content-start">
-              <div class="col-3"><blockquote><p class='lead'>What do you want to eat today?</p>
-                &mdash; <cite>You</cite> </blockquote></div>
-            </div>
-
-          </div>
-          <br></br>
-          <div class="container">
-            <div class="row justify-content-end">
-              <div class="col-3"><blockquote><p class='lead'>I don't know, what do you want to eat today?</p>
-                &mdash; <cite>Your friend, cousin, girlfriend, uncle, etc</cite> </blockquote></div>
-            </div>
-
-          </div>
-          <br />
-
-          <hr class="my-4" />
-          <h5>Let's help you with that. First, let's upload your preferences from your user profile.</h5>
-          <button
-            type="button"
-            class="btn btn-primary btn-sm"
-            onClick={() => {
-              console.log('upload prefs clicked')
-              setShowToast(!showToast)
-              }}
-          >
-            Upload Preferences
-          </button>
-          <div class={showToast ? "toast show" : "toast hide"} style={toastStyles}>
-            <div class="toast-header" style={{ backgroundColor: "lightgreen" }}>
-              <strong class="me-auto" style={{ color: "darkgreen" }} >Upload Complete!</strong>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="toast"
-                onClick={() => {
-                  console.log('cose click')
-                  setShowToast(!showToast)
-                  }}
-              ></button>
-            </div>
-            <div class="toast-body " style={{ backgroundColor: "ghostwhite" }}>
-              <p>
-              <p>Uploaded the following diet(s): {dietsString}</p>
-              </p>
-              <p>Uploaded the following intolerances(s): {intolerancesString}</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      
       <br></br>
       <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
         <div style={{ width: '75%' }}>
@@ -211,13 +150,13 @@ export const NeedRandomMeals = (props) => {
         >
           <div class="d-flex justify-content-center">
             <div>
-              <h2>Cooking for Others?</h2>
+              <h2>Random Meals Generator</h2>
             </div>
 
           </div>
           <div class="d-flex justify-content-center">
 
-            <div><p>Fill out the form below or leave it blank if no extra info is needed.</p></div>
+            <div><p>Your preferences are shown below. Choose more if needed.</p></div>
           </div>
 
           <div class="d-flex justify-content-around ">
@@ -251,6 +190,7 @@ export const NeedRandomMeals = (props) => {
                     console.log(e.target.id);
                     UrlParamsHandler(e);
                   }}
+                  checked
                 />
                 <label class="form-check-label" for="sulfite">
                   Sulfite
@@ -283,6 +223,7 @@ export const NeedRandomMeals = (props) => {
                     console.log(e.target.id);
                     UrlParamsHandler(e);
                   }}
+                  checked
                 />
                 <label class="form-check-label" for="peanut">
                   Peanut
@@ -360,6 +301,7 @@ export const NeedRandomMeals = (props) => {
                     console.log(e.target.id);
                     UrlParamsHandler(e);
                   }}
+                  checked
                 />
                 <label class="form-check-label" for="vegan">
                   Vegan
@@ -427,6 +369,71 @@ export const NeedRandomMeals = (props) => {
 
   );
 };
+
+
+let oldjumbrotron = `<div class='jumbotroncontainer' style={{  display: 'flex', justifyContent: 'center', position: 'relative' }}>
+<div class="jumbotron" style={{borderRadius:'8px', backgroundColor: 'lightblue', width: '75%', padding: '5%' }}>
+  <div class="d-flex justify-content-center">
+    <div>
+      <h3><em>A Conversation As Old As Time...</em></h3>
+    </div>
+
+  </div>
+  <br />
+  <br />
+  <div class="container">
+    <div class="row justify-content-start">
+      <div class="col-3"><blockquote><p class='lead'>What do you want to eat today?</p>
+        &mdash; <cite>You</cite> </blockquote></div>
+    </div>
+
+  </div>
+  <br></br>
+  <div class="container">
+    <div class="row justify-content-end">
+      <div class="col-3"><blockquote><p class='lead'>I don't know, what do you want to eat today?</p>
+        &mdash; <cite>Your friend, cousin, girlfriend, uncle, etc</cite> </blockquote></div>
+    </div>
+
+  </div>
+  <br />
+
+  <hr class="my-4" />
+  <h5>Let's help you with that. First, let's upload your preferences from your user profile.</h5>
+  <button
+    type="button"
+    class="btn btn-primary btn-sm"
+    onClick={() => {
+      console.log('upload prefs clicked')
+      setShowToast(!showToast)
+      }}
+  >
+    Upload Preferences
+  </button>
+  <div class={showToast ? "toast show" : "toast hide"} style={toastStyles}>
+    <div class="toast-header" style={{ backgroundColor: "lightgreen" }}>
+      <strong class="me-auto" style={{ color: "darkgreen" }} >Upload Complete!</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="toast"
+        onClick={() => {
+          console.log('cose click')
+          setShowToast(!showToast)
+          }}
+      ></button>
+    </div>
+    <div class="toast-body " style={{ backgroundColor: "ghostwhite" }}>
+      <p>
+      <p>Uploaded the following diet(s): {dietsString}</p>
+      </p>
+      <p>Uploaded the following intolerances(s): {intolerancesString}</p>
+    </div>
+  </div>
+</div>
+
+</div>`
+
 
 //Waynes code below
 

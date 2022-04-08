@@ -193,7 +193,7 @@ export const SignUp = (props) => {
       linked to the useStates in lines 11-13 */}
 
         {/* second form below */}
-        <div class="container h-100 m-3">
+        <div class="container h-100 mt-5">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-9 col-lg-7 col-xl-6">
               <div class="card" style={{ borderRadius: "15px" }}>
