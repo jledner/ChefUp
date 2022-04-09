@@ -78,7 +78,11 @@ export const ChefNavbar = (props) => {
                 Login
               </NavLink>
             </li>
-            <div className={`nav-item d-flex ${user ? "" : "d-none"}`}>
+            <ul
+              className={`navbar-nav mb-2 mb-lg-0 nav-item d-flex ${
+                user ? "" : "d-none"
+              }`}
+            >
               <li class="nav-item">
                 <NavLink
                   to="/grocerylist"
@@ -186,7 +190,7 @@ export const ChefNavbar = (props) => {
                   <i class="fas fa-sign-out-alt"></i>
                 </button>
               </li>
-            </div>
+            </ul>
           </ul>
         </div>
       </div>
