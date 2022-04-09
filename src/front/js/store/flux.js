@@ -9007,7 +9007,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         return arr.map((fav) => JSON.parse(fav.meal));
       },
       setUser: (user) => {
-        setStore({ user: user });
+        if (user != null) {
+          setStore({ user: user });
+        } else {
+          setStore({ user: null });
+        }
       },
       getMeals: async (url, query) => {
         const store = getStore();

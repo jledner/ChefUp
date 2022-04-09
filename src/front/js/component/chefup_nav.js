@@ -1,13 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Card } from "./card";
 import logo from "../../img/ChefUp.png";
 
 import { CartCard } from "./cartcard";
-export const ChefNavbar = () => {
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+export const ChefNavbar = (props) => {
+  const history = useHistory();
   const { store, actions } = useContext(Context);
-  console.log(store);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    setUser(store.user);
+  }, [store.user]);
+
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -41,7 +48,7 @@ export const ChefNavbar = () => {
                 Home
               </NavLink>
             </li>
-            <li class="nav-item">
+            {/* <li class="nav-item">
               <NavLink
                 to="/tutorial"
                 className={(isActive) => {
@@ -50,8 +57,8 @@ export const ChefNavbar = () => {
               >
                 Tutorial
               </NavLink>
-            </li>
-            <li class="nav-item">
+            </li> */}
+            <li class={`nav-item ${user ? "d-none" : ""}`}>
               <NavLink
                 to="/signup"
                 className={(isActive) => {
@@ -61,7 +68,7 @@ export const ChefNavbar = () => {
                 Sign up
               </NavLink>
             </li>
-            <li class="nav-item">
+            <li class={`nav-item ${user ? "d-none" : ""}`}>
               <NavLink
                 to="/login"
                 className={(isActive) => {
@@ -71,98 +78,114 @@ export const ChefNavbar = () => {
                 Login
               </NavLink>
             </li>
-            <li class="nav-item">
-              <NavLink
-                to={
-                  store.user
-                    ? `/profilepage/${store.user.username.toLowerCase()}`
-                    : ""
-                }
-                className={(isActive) => {
-                  return `nav-link ${isActive ? "active" : ""}`;
-                }}
-              >
-                Profile
-              </NavLink>
-            </li>
-            <li class="nav-item">
-              <NavLink
-                to="/grocerylist"
-                className={(isActive) => {
-                  return `nav-link ${isActive ? "active" : ""}`;
-                }}
-              >
-                Grocery List
-              </NavLink>
-            </li>
-            <li class="nav-item">
-              <NavLink
-                to="/randommeals"
-                className={(isActive) => {
-                  return `nav-link ${isActive ? "active" : ""}`;
-                }}
-              >
-                Random Meals
-              </NavLink>
-            </li>
+            <div className={`nav-item d-flex ${user ? "" : "d-none"}`}>
+              <li class="nav-item">
+                <NavLink
+                  to="/grocerylist"
+                  exact={true}
+                  className={(isActive) => {
+                    return `nav-link ${isActive ? "active" : ""}`;
+                  }}
+                >
+                  Grocery List
+                </NavLink>
+              </li>
+              <li class="nav-item">
+                <NavLink
+                  to="/randommeals"
+                  className={(isActive) => {
+                    return `nav-link ${isActive ? "active" : ""}`;
+                  }}
+                >
+                  Random Meals
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to={
+                    store.user
+                      ? `/profilepage/${store.user.username.toLowerCase()}`
+                      : ""
+                  }
+                  className={(isActive) => {
+                    return `nav-link ${isActive ? "active" : ""}`;
+                  }}
+                >
+                  Profile
+                </NavLink>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                  onClick={() => {
+                    // console.log(MealsInCart);
+                  }}
+                >
+                  {/* Testing Cart{"(" + MealsInCart.length + ")"} */}
+                  <i class="fas fa-shopping-cart"></i>
+                </button>
 
-            <button
-              type="button"
-              className="btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
-              onClick={() => {
-                // console.log(MealsInCart);
-              }}
-            >
-              {/* Testing Cart{"(" + MealsInCart.length + ")"} */}
-              <i class="fas fa-shopping-cart"></i>
-            </button>
-
-            <div
-              class="modal fade"
-              id="staticBackdrop"
-              data-bs-backdrop="static"
-              data-bs-keyboard="false"
-              tabIndex="-1"
-              aria-labelledby="staticBackdropLabel"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog modal-xl">
-                <div class="modal-content text-black">
-                  <div class="modal-header">
-                    <h5
-                      className="modal-title text-dark"
-                      id="staticBackdropLabel"
-                    >
-                      Your Cart
-                    </h5>
-                    <button
-                      type="button"
-                      className="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="modal-body">
-                    {/* <div class="row row-cols-3 gy-4"> */}
-                    <div class="row gy-3">
-                      {store.cart.map((meal, index) => {
-                        return <CartCard meal={meal} />;
-                      })}
+                <div
+                  class="modal fade"
+                  id="staticBackdrop"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabIndex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-xl">
+                    <div class="modal-content text-black">
+                      <div class="modal-header">
+                        <h5
+                          className="modal-title text-dark"
+                          id="staticBackdropLabel"
+                        >
+                          Your Cart
+                        </h5>
+                        <button
+                          type="button"
+                          className="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        {/* <div class="row row-cols-3 gy-4"> */}
+                        <div class="row gy-3">
+                          {store.cart.map((meal, index) => {
+                            return <CartCard meal={meal} />;
+                          })}
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                  </div>
                 </div>
-              </div>
+              </li>
+              <li>
+                <button
+                  className="btn btn-primary btn-logout"
+                  onClick={async () => {
+                    localStorage.clear();
+                    actions.setUser(null);
+                    history.push("/");
+                  }}
+                >
+                  <i class="fas fa-sign-out-alt"></i>
+                </button>
+              </li>
             </div>
           </ul>
         </div>

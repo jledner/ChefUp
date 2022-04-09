@@ -18,19 +18,17 @@ export const Login = (props) => {
 
   return (
     <>
-       <div class="container h-100 ">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-            
-
-            <div class="card my-5"  style={{ borderRadius: "15px" }}>
-            <h2 class="text-center text-black mt-5">Login Form</h2>
+      <div class="container h-100 ">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card my-5" style={{ borderRadius: "15px" }}>
+              <h2 class="text-center text-black mt-5">Login Form</h2>
               <form
                 class="card-body cardbody-color p-lg-5"
                 onSubmit={async (e) => {
                   e.preventDefault();
                   await actions.userLogin({ username: UserName });
-                  props.history.push("/");
+                  props.history.push("/tutorial");
                 }}
               >
                 <div class="text-center">
@@ -94,7 +92,7 @@ export const Login = (props) => {
   );
 };
 
-let oldlogin =`<div class="container h-100 m-3">
+let oldlogin = `<div class="container h-100 m-3">
 <div class="row">
   <div class="col-md-6 offset-md-3">
     <h2 class="text-center text-white mt-5">Login Form</h2>
@@ -163,8 +161,7 @@ let oldlogin =`<div class="container h-100 m-3">
     </div>
   </div>
 </div>
-</div>`
-
+</div>`;
 
 // let tryLogin = () => {
 
