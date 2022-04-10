@@ -14,7 +14,7 @@
 
 body {
   background: var(--main-bg-color);
-  color: #2f2f2f;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .btn-primary {
@@ -32,7 +32,8 @@ nav .btn-primary:hover {
   color: rgba(0, 0, 0, 0.55) !important;
 }
 
-nav li {
+nav li,
+.profile-nav {
   font-family: "Work Sans", sans-serif;
   font-weight: 600;
   letter-spacing: -1px;

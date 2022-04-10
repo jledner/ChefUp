@@ -8,7 +8,30 @@ div.profile-nav-head div.avatar img {
   border: 3px solid var(--primary-color);
 }
 
+div.profile-nav {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+div.profile-nav button {
+  display: inline-block;
+  width: 50%;
+  color: var(--primary-color) !important;
+}
+
+div.profile-nav button.active {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+div.tab-content {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
 div.profile-content {
   padding-top: 60px !important;
   padding-bottom: 60px !important;
+}
+
+.tab-content {
+  padding: 80px 60px 80px;
 }

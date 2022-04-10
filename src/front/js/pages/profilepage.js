@@ -31,9 +31,9 @@ export const ProfilePage = (props) => {
             <section className="main">
               <div className="user-profile">
                 <div className="row">
-                  <div className="col-4">
-                    <div className="profile-nav p-3">
-                      <div className="profile-nav-head d-flex flex-wrap  align-content-center align-items-center mb-3">
+                  <div className="col-12 col-md-4">
+                    <div className="profile-nav p-3 bg-light ">
+                      <div className="profile-nav-head d-flex flex-wrap  justify-content-center align-content-center align-items-center mb-3">
                         <div className="avatar me-3">
                           <img src={avatar} alt="" className="img-responsive" />
                         </div>
@@ -42,7 +42,7 @@ export const ProfilePage = (props) => {
                       <div>
                         {" "}
                         <div
-                          class="nav flex-column nav-pills me-3"
+                          class="nav align-items-center flex-column nav-pills me-3"
                           id="v-pills-tab"
                           role="tablist"
                           aria-orientation="vertical"
@@ -57,7 +57,7 @@ export const ProfilePage = (props) => {
                             aria-controls="v-pills-home"
                             aria-selected="true"
                           >
-                            User Info
+                            <i class="fas fa-user-circle"></i> User Info
                           </button>
                           <button
                             class="nav-link"
@@ -69,14 +69,14 @@ export const ProfilePage = (props) => {
                             aria-controls="v-pills-profile"
                             aria-selected="false"
                           >
-                            Favorites
+                            <i class="fab fa-gratipay"></i> Favorites
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="col-8">
-                    <div class="tab-content" id="v-pills-tabContent">
+                  <div className="col-12 col-md-8">
+                    <div class="tab-content bg-light" id="v-pills-tabContent">
                       <div
                         class="tab-pane fade show active"
                         id="v-pills-home"
@@ -117,7 +117,7 @@ export const ProfilePage = (props) => {
                         role="tabpanel"
                         aria-labelledby="v-pills-profile-tab"
                       >
-                        <div className="row justify-content-center">
+                        <div className="row justify-content-center gy-2 gx-2">
                           {store.user.favorites.length > 0
                             ? store.user.favorites.map((fav) => (
                                 <Card meal={fav} favorite={true} />

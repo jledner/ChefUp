@@ -29,7 +29,7 @@ export const Card = (props) => {
             <img src={props.meal.image} className="card-img-top" alt="..." />
           </Link>
           <div className="d-flex justify-content-center align-items-center">
-            <div className="d-flex align-items-center p-1">
+            <div className="d-flex align-items-center justify-content-between p-3 text-center">
               <div className="d-flex justify-content-center align-items-center icon-wrap text-center me-2">
                 <i class="fas fa-utensils"></i>
               </div>
