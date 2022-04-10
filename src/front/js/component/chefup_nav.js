@@ -19,7 +19,9 @@ export const ChefNavbar = (props) => {
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <div className="logo-container">
-          <img className="img-fluid logo" src={logo} />
+          <Link to="/">
+            <img className="img-fluid logo" src={logo} />
+          </Link>
         </div>
         <button
           class="navbar-toggler"

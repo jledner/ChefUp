@@ -27,7 +27,7 @@ export const ProfilePage = (props) => {
       {user ? (
         <div className="secondary-bg">
           <MainHeader sizeClass={"landing-header-small"} />
-          <div className="container">
+          <div className="container profile-content">
             <section className="main">
               <div className="user-profile">
                 <div className="row">
@@ -117,10 +117,10 @@ export const ProfilePage = (props) => {
                         role="tabpanel"
                         aria-labelledby="v-pills-profile-tab"
                       >
-                        <div className="row">
+                        <div className="row justify-content-center">
                           {store.user.favorites.length > 0
                             ? store.user.favorites.map((fav) => (
-                                <Card meal={fav} />
+                                <Card meal={fav} favorite={true} />
                               ))
                             : "You have no favorites"}
                         </div>

@@ -41,7 +41,7 @@ export const LandingPage = (props) => {
                       <span className="highlight">#</span>Trending
                     </h2>
                   </div>
-                  <div className="row">
+                  <div className="row gy-3">
                     {trending.map((meal) => {
                       return <Card meal={meal} />;
                     })}
