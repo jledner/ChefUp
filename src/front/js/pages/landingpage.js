@@ -52,40 +52,42 @@ export const LandingPage = (props) => {
               ""
             )}
           </div>
-          <section className="category px-5 py-5">
-            <div className="category-content">
-              <h2>Meals By Cuisine</h2>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Voluptatum delectus sint deleniti. Excepturi et vitae eum cumque
-                nostrum adipisci at.
-              </p>
-              <div className="row">
-                <ul>
-                  <div className="row gx-2 gy-2">
-                    {cuisine.map((cuisine) => {
-                      return (
-                        <li
-                          className="col-6 col-md-3 cuisine-li"
-                          onClick={async () => {
-                            await actions.getMeals(
-                              `https://api.spoonacular.com/recipes/complexSearch?&cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`,
-                              cuisine.name
-                            );
-                            props.history.push(`/meals/browse/${cuisine.name}`);
-                          }}
-                        >
-                          <CategoryCard cuisine={cuisine} />
-                        </li>
-                      );
-                    })}
-                  </div>
-                </ul>
-              </div>
-            </div>
-          </section>
         </div>
       </div>
+      <section className="category secondary-bg px-5 py-5">
+        <div className="container">
+          <div className="category-content">
+            <h2>Meals By Cuisine</h2>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Voluptatum delectus sint deleniti. Excepturi et vitae eum cumque
+              nostrum adipisci at.
+            </p>
+            <div className="row">
+              <ul>
+                <div className="row gx-2 gy-2">
+                  {cuisine.map((cuisine) => {
+                    return (
+                      <li
+                        className="col-6 col-md-3 cuisine-li"
+                        onClick={async () => {
+                          await actions.getMeals(
+                            `https://api.spoonacular.com/recipes/complexSearch?&cuisine=${cuisine.name}&maxReadyTime=20&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`,
+                            cuisine.name
+                          );
+                          props.history.push(`/meals/browse/${cuisine.name}`);
+                        }}
+                      >
+                        <CategoryCard cuisine={cuisine} />
+                      </li>
+                    );
+                  })}
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

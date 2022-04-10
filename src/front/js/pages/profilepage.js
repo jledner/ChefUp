@@ -25,7 +25,7 @@ export const ProfilePage = (props) => {
   return (
     <div>
       {user ? (
-        <div>
+        <div className="secondary-bg">
           <MainHeader sizeClass={"landing-header-small"} />
           <div className="container">
             <section className="main">

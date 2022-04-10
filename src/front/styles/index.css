@@ -3,9 +3,13 @@
 */
 :root {
   --main-bg-color: #fafafa;
-  --secondary-bg-color: #343434;
+  --secondary-bg-color: #f3f3f3;
   --alt-bg: #272727;
   --primary-color: #fe9c03;
+}
+
+.secondary-bg {
+  background-color: var(--secondary-bg-color) !important;
 }
 
 body {
