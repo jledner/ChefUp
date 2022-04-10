@@ -48,8 +48,10 @@ export const Tutorial = (props) => {
       <div className="carousel-inner bg">
         <div className="carousel-item active" data-bs-interval="10000">
           <div className="carousel-caption d-none d-md-block">
-            <h1>Choose what's best for you!</h1>
-            <h5>See prep time, calories, and cost for each item</h5>
+            <div className="tutorial-head">
+              <h1>Choose what's best for you!</h1>
+              <h5>See prep time, calories, and cost for each item</h5>
+            </div>
             <div className="Featured-Content p-6">
               <div className="row">
                 {trending.map((meal) => {

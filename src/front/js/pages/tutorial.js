@@ -47,11 +47,15 @@ export const Tutorial = (props) => {
           ></button>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <div class="carousel-item active" data-bs-interval="0">
             <div className="container">
-              <div className="text-center">
-                <h5>Choose what's best for you!</h5>
-                <p>See prep time, calories, and cost for each item</p>
+              <div className="tutorial-content">
+                <div className="tutorial-head">
+                  <div>
+                    <h5>Choose what's best for you!</h5>
+                    <p>See prep time, calories, and cost for each item</p>
+                  </div>
+                </div>
                 <div className="Featured-Content p-5">
                   <div class="row gy-4">
                     {trending.map((meal, index) => {
@@ -63,15 +67,16 @@ export const Tutorial = (props) => {
             </div>
           </div>
 
-          <div class="carousel-item">
+          <div class="carousel-item" data-bs-interval="0">
             <div className="container">
-              <div>
-                {" "}
-                <h1>Grocery List</h1>
-                <p>
-                  After you have selected all your meals, the ingredients will
-                  show up here
-                </p>
+              <div className="tutorial-content">
+                <div className="tutorial-head">
+                  <h1>Grocery List</h1>
+                  <p>
+                    After you have selected all your meals, the ingredients will
+                    show up here
+                  </p>
+                </div>
                 <ul className="list-group">
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     shrimp
@@ -138,11 +143,13 @@ export const Tutorial = (props) => {
             </div>
           </div>
 
-          <div class="carousel-item">
+          <div class="carousel-item" data-bs-interval="0">
             <div className="container">
-              <div>
-                <h5>Choose what's best for you!</h5>
-                <p>See prep time, calories, and cost for each item</p>
+              <div className="tutorial-content">
+                <div className="tutorial-head">
+                  <h5>Choose what's best for you!</h5>
+                  <p>See prep time, calories, and cost for each item</p>
+                </div>
                 <div className="Featured-Content">
                   <div class="row gy-4">
                     {trending.map((meal, index) => {

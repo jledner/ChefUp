@@ -304,7 +304,16 @@ details p {
 button.carousel-control-next,
 button.carousel-control-prev {
   color: black !important;
-  /* background-color: black; */
   right: 0px;
-  /* top: 50%; */
 }
+
+.tutorial-head {
+  text-align: center;
+}
+
+/* svg.arrow {
+  width: 200px;
+  transform: rotate(200deg);
+  margin-left: 320px;
+  margin-top: -110px;
+} */
