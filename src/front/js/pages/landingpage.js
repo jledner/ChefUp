@@ -36,7 +36,11 @@ export const LandingPage = (props) => {
             {user ? (
               <section className="Featured">
                 <div className="Featured-Content p-5">
-                  <h2>Trending</h2>
+                  <div className="trending-wrap d-inline-block position-relative mb-3">
+                    <h2>
+                      <span className="highlight">#</span>Trending
+                    </h2>
+                  </div>
                   <div className="row">
                     {trending.map((meal) => {
                       return <Card meal={meal} />;

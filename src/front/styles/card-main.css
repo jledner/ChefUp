@@ -1,6 +1,32 @@
 /* div.card:hover div.fav {
   display: block;
 } */
+.card-main {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.fancy-title {
+  margin-top: -20px;
+}
+.fancy-title-wrap {
+  background-color: #ffff;
+  /* border: 1px solid #7ec3b4; */
+}
+
+.fancy-title .icon-wrap {
+  background: #f5be82;
+  width: 20px;
+  height: 20px;
+  color: white !important;
+  padding: 15px;
+}
+a {
+  text-decoration: none;
+}
+a h5 {
+  margin-bottom: 0 !important;
+  color: #7ec3b4;
+}
 div.fav {
   right: 15px;
   top: 15px;
@@ -8,4 +34,22 @@ div.fav {
 div.cart {
   left: 15px;
   top: 15px;
+}
+
+.card-main hr {
+  width: 50%;
+  border: 2px solid #f5be82;
+  opacity: 100%;
+  margin: auto;
+  margin-bottom: 5px;
+}
+
+p.card-text {
+  flex-basis: 100%;
+  padding: 20px !important;
+  color: rgba(0, 0, 0, 0.55) !important;
+  font-weight: 500;
+}
+p i {
+  color: var(--primary-color);
 }

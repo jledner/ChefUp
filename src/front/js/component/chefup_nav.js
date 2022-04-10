@@ -65,7 +65,7 @@ export const ChefNavbar = (props) => {
                   return `nav-link ${isActive ? "active" : ""}`;
                 }}
               >
-                Sign up
+                <i class="fas fa-user-plus"></i> Sign up
               </NavLink>
             </li>
             <li class={`nav-item ${user ? "d-none" : ""}`}>
@@ -75,7 +75,7 @@ export const ChefNavbar = (props) => {
                   return `nav-link ${isActive ? "active" : ""}`;
                 }}
               >
-                Login
+                <i class="fas fa-sign-in-alt"></i> Login
               </NavLink>
             </li>
             <ul

@@ -279,3 +279,23 @@ details p {
   margin: 0 0 1rem;
   padding-top: 1rem;
 }
+
+h2 {
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+h2 .highlight {
+  color: var(--primary-color);
+}
+
+.trending-wrap h2:after {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 25%;
+  border: 5px solid var(--primary-color);
+  width: 50%;
+  border-radius: 5px 20px 5px;
+}
