@@ -5,7 +5,7 @@ export const FavoriteButton = (props) => {
   const { store, actions } = useContext(Context);
   const [user, setUser] = useState({});
   const [favorites, setFavorites] = useState([]);
-
+  const isFavStyle = { color: "hotpink" };
   useEffect(() => {
     if (store.user != null) {
       setUser(store.user);
@@ -21,7 +21,12 @@ export const FavoriteButton = (props) => {
     <div>
       {user ? (
         <button
-          className="btn btn-primary mb-3"
+          className="btn-favorite btn btn-primary mb-3"
+          style={
+            favorites.map((favorite) => favorite.id).includes(props.meal.id)
+              ? { opacity: "1" }
+              : null
+          }
           onClick={() =>
             !favorites.map((fav) => fav.id).includes(props.meal.id)
               ? actions.addFavoriteMeal(props.meal, store.user.id)
@@ -29,11 +34,11 @@ export const FavoriteButton = (props) => {
           }
         >
           <i
-            class="fas fa-heart"
+            class="fas fa-heart fa-1x"
             style={
               !favorites.map((favorite) => favorite.id).includes(props.meal.id)
                 ? { color: "white" }
-                : { color: "hotpink" }
+                : { color: "#ec5451" }
             }
           ></i>
         </button>

@@ -56,7 +56,7 @@ export const LandingPage = (props) => {
       </div>
       <section className="category secondary-bg px-5 py-5">
         <div className="container">
-          <div className="category-content">
+          <div className="category-content landing">
             <h2>Meals By Cuisine</h2>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.

@@ -97,6 +97,14 @@ ul.dropdown-menu {
 .btn-logout {
   background-color: #971d12 !important;
 }
+
+.btn-favorite.btn-primary {
+  border-radius: 50%;
+  background-color: #f5be82 !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
 nav {
   background-color: var(--main-bg-color) !important;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
@@ -204,13 +212,18 @@ body {
   background-position: center bottom;
 }
 
-#testid:hover #transparent {
+#transparent button {
+  transition: opacity 0.3s ease-in-out;
+}
+
+#testid:hover #transparent button {
   opacity: 1;
 }
 
-#transparent {
+#transparent button {
   opacity: 0;
 }
+
 */ html,
 .root {
   padding: 0;
@@ -284,25 +297,4 @@ details p {
   font-size: 0.95rem;
   margin: 0 0 1rem;
   padding-top: 1rem;
-}
-
-.landing h2 {
-  font-family: "Shadows Into Light", cursive;
-  font-weight: 700;
-  font-size: 3rem;
-}
-
-.trending-wrap h2 .highlight {
-  color: var(--primary-color);
-}
-
-.trending-wrap h2:after {
-  content: "";
-  position: absolute;
-  top: 43px;
-  left: 25%;
-  border: 5px solid var(--primary-color);
-  width: 60%;
-  border-radius: 5px 20px 5px;
-  z-index: -1;
 }

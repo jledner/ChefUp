@@ -43,6 +43,27 @@ section.category {
   /* background: var(--main-bg-color); */
 }
 
+.landing h2 {
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.trending-wrap h2 .highlight {
+  color: var(--primary-color);
+}
+
+.trending-wrap h2:after {
+  content: "";
+  position: absolute;
+  top: 43px;
+  left: 25%;
+  border: 5px solid var(--primary-color);
+  width: 60%;
+  border-radius: 5px 20px 5px;
+  z-index: -1;
+}
+
 section.category li.cuisine-li div.card img {
   height: 100px;
   object-fit: cover;
