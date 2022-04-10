@@ -2,7 +2,7 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 :root {
-  --main-bg-color: #ffffff;
+  --main-bg-color: #fafafa;
   --secondary-bg-color: #343434;
   --alt-bg: #272727;
   --primary-color: #fe9c03;
@@ -17,6 +17,34 @@ body {
   background-color: var(--primary-color) !important;
   border: none;
   transition: transform 0.1s ease-in-out;
+}
+
+nav .btn-primary {
+  background-color: transparent !important;
+  color: rgba(0, 0, 0, 0.55) !important;
+}
+nav .btn-primary:hover {
+  background-color: transparent !important;
+  color: rgba(0, 0, 0, 0.55) !important;
+}
+
+nav li {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+nav li:hover {
+  border-bottom: 3px solid var(--primary-color) !important;
+  margin-top: -3px;
+}
+li.logout:hover {
+  border-bottom: none !important;
+  margin-top: 0;
+}
+
+ul.dropdown-menu {
+  top: 30px !important;
+  left: -100px !important;
 }
 
 .btn-primary:hover {
@@ -36,6 +64,30 @@ body {
 .btn-primary:active {
   outline: none;
   box-shadow: none;
+}
+.btn-secondary {
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.55);
+  border: none;
+}
+
+.btn-secondary:focus,
+.btn-secondary:focus:active {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+.btn-primary:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background-color: transparent;
+  color: var(--primary-color);
 }
 
 .btn-logout {
@@ -227,4 +279,3 @@ details p {
   margin: 0 0 1rem;
   padding-top: 1rem;
 }
-

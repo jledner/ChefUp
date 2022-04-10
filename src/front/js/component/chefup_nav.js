@@ -16,7 +16,7 @@ export const ChefNavbar = (props) => {
   }, [store.user]);
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <div className="logo-container">
           <img className="img-fluid logo" src={logo} />
@@ -45,7 +45,7 @@ export const ChefNavbar = (props) => {
                   return `nav-link ${isActive ? "active" : ""}`;
                 }}
               >
-                Home
+                <i class="fas fa-home"></i> Home
               </NavLink>
             </li>
             {/* <li class="nav-item">
@@ -91,7 +91,7 @@ export const ChefNavbar = (props) => {
                     return `nav-link ${isActive ? "active" : ""}`;
                   }}
                 >
-                  Grocery List
+                  <i class="fas fa-list"></i> Grocery List
                 </NavLink>
               </li>
               <li class="nav-item">
@@ -101,7 +101,7 @@ export const ChefNavbar = (props) => {
                     return `nav-link ${isActive ? "active" : ""}`;
                   }}
                 >
-                  Random Meals
+                  <i class="fas fa-cookie-bite"></i> Random Meals
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -115,10 +115,10 @@ export const ChefNavbar = (props) => {
                     return `nav-link ${isActive ? "active" : ""}`;
                   }}
                 >
-                  Profile
+                  <i class="fas fa-address-card"></i> Profile
                 </NavLink>
               </li>
-              <li>
+              <li className="cart">
                 <button
                   type="button"
                   className="btn btn-primary"
@@ -179,16 +179,35 @@ export const ChefNavbar = (props) => {
                 </div>
               </li>
               <li>
-                <button
-                  className="btn btn-primary btn-logout"
-                  onClick={async () => {
-                    localStorage.clear();
-                    actions.setUser(null);
-                    history.push("/");
-                  }}
-                >
-                  <i class="fas fa-sign-out-alt"></i>
-                </button>
+                <div class="dropdown">
+                  <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="fas fa-user fa-1x"></i>
+                  </button>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton1"
+                  >
+                    <li className="logout">
+                      <button
+                        class="dropdown-item logout"
+                        href="#"
+                        onClick={() => {
+                          localStorage.clear();
+                          actions.setUser(null);
+                          history.push("/");
+                        }}
+                      >
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
+                </div>
               </li>
             </ul>
           </ul>
