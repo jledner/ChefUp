@@ -30,7 +30,7 @@ export const LandingPage = (props) => {
   return (
     <div>
       <MainHeader />
-      <div className="container">
+      <div className="container landing">
         <div>
           <div>
             {user ? (
