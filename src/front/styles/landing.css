@@ -42,7 +42,7 @@ section.category {
   /* background: var(--main-bg-color); */
 }
 
-section.category div.card img {
+section.category li.cuisine-li div.card img {
   height: 100px;
   object-fit: cover;
 }

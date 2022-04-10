@@ -11,8 +11,8 @@ import { CartButton } from "./CartButton";
 export const CardsForBrowsePage = (props) => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="col-3">
-      <div className="card h-100 position-relative">
+    <div className="col-12, col-lg">
+      <div className="card position-relative">
         <div className="cart position-absolute">
           <CartButton meal={props.meal} />
         </div>

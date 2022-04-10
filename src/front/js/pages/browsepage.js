@@ -18,40 +18,51 @@ export const BrowsePage = (props) => {
   const [showMoreMeals2, setShowMoreMeals2] = useState(false);
 
   return (
-    <div className="container">
-      <a name="backToTop"></a>
+    <div>
       <MainHeader sizeClass={"landing-header-small"} />
-      <section className="category px-5 py-5">
-        <div className="category-content">
-          <h2>Browse Meals</h2>
+      <div className="container">
+        <a name="backToTop"></a>
+        <section className="category px-5 py-5">
+          <div className="category-content">
+            <h2>Browse Meals</h2>
 
-          <div className="row row-cols-4 gy-5">
-            {/* <div className="row"> */}
-            {store.mealResults && store.mealResults.length > 0 ? (
-              store.mealResults
-                .slice(0, Math.round(store.mealResults.length / 3))
-                .map((meal) => {
-                  return <CardsForBrowsePage meal={meal} />;
-                })
-            ) : (
-              <div>no results :(</div>
-            )}
-          </div>
-          {store.mealResults && store.mealResults.length > 10 ? (
-            <div class="d-flex justify-content-spaceEvenly mx-auto my-5 g-5" style={{justifyContent: 'space-evenly'}}>
-              <div><button type="button" class="btn btn-light"><a href="#top" style={{ color: 'black', fontSize: '1.3vw' }}>To the top of page<i class="fas fa-level-up-alt"></i></a>
-            </button>
-              </div>
-              <Link to="/meals/page2">
-                <button type="button" class="btn btn-light">
-                  To Page 2
-                </button>
-              </Link>
+            <div className="row gy-3" id="meals">
+              {/* <div className="row"> */}
+              {store.mealResults && store.mealResults.length > 0 ? (
+                store.mealResults
+                  .slice(0, Math.round(store.mealResults.length / 3))
+                  .map((meal) => {
+                    return <Card meal={meal} />;
+                  })
+              ) : (
+                <div>no results :(</div>
+              )}
             </div>
-          ) : null}
-        </div>
-        
-      </section>
+            {store.mealResults && store.mealResults.length > 10 ? (
+              <div
+                class="d-flex justify-content-spaceEvenly mx-auto my-5 g-5"
+                style={{ justifyContent: "space-evenly" }}
+              >
+                <div>
+                  <button type="button" class="btn btn-light">
+                    <a
+                      href="#top"
+                      style={{ color: "black", fontSize: "1.3vw" }}
+                    >
+                      To the top of page<i class="fas fa-level-up-alt"></i>
+                    </a>
+                  </button>
+                </div>
+                <Link to="/meals/page2">
+                  <button type="button" class="btn btn-light">
+                    To Page 2
+                  </button>
+                </Link>
+              </div>
+            ) : null}
+          </div>
+        </section>
+      </div>
     </div>
   );
 };
@@ -81,4 +92,4 @@ let previouscode = `return (
 let backToTopvar = `<a name="backToTop"></a>
 <a href="#top" style={{color:'black',fontSize:'1.3vw'}}>Back to top of page<i class="fas fa-level-up-alt"></i></a>
 
-`
+`;

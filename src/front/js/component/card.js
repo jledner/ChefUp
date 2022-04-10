@@ -11,7 +11,7 @@ import { CartButton } from "./CartButton";
 export const Card = (props) => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="col-12 col-lg">
+    <div className="col-12 col-lg-4 card-wrap">
       <div className="card card-main h-100 position-relative" id="testid">
         <div className="fav position-absolute" id="transparent">
           <FavoriteButton meal={props.meal} />
