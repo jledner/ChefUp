@@ -15,11 +15,19 @@ export const MainHeader = (props) => {
       <div className="head-content row">
         <div className="col-12 col-xl-1"></div>
         <div className="col-12 col-xl-5">
-          <h1>
-            Search <span className="highlight">thousands</span> of quick,
-            delicous meals on <span className="highlight">Chefup</span>!
-          </h1>
-          <p>Nom nome nome nom...</p>
+          {!props.sizeClass ? (
+            <div>
+              {" "}
+              <h1>
+                Search <span className="highlight">thousands</span> of quick,
+                delicous meals on <span className="highlight">Chefup</span>!
+              </h1>
+              <p>Nom nom nom nom...</p>
+            </div>
+          ) : (
+            ""
+          )}
+
           <form className="d-flex">
             <div className="form-group">
               <input
