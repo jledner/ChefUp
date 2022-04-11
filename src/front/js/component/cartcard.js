@@ -13,7 +13,7 @@ export const CartCard = (props) => {
   return (
     <div>
       <div className="col-12">
-        <div className="card cart-card h-100 position-relative">
+        <div className="card cart-card h-100 position-relative py-1">
           <div className="row">
             <div className="col-3">
               <Link
@@ -24,7 +24,7 @@ export const CartCard = (props) => {
               >
                 <img
                   src={props.meal.image}
-                  className="card-img-top"
+                  className="cart-card card-img-top"
                   alt="..."
                 />
               </Link>
@@ -62,7 +62,7 @@ export const CartCard = (props) => {
               {!store.cart.map((meal) => meal.id).includes(props.meal.id) ? (
                 <button
                   type="button"
-                  className="btn btn-light"
+                  className="btn btn-chef"
                   onClick={() => {
                     actions.AddMealToCart(props.meal);
                   }}
@@ -72,7 +72,7 @@ export const CartCard = (props) => {
               ) : (
                 <button
                   type="button"
-                  className="btn btn-light"
+                  className="btn btn-chef"
                   onClick={() => {
                     actions.deleteAMeal(props.meal.id);
                   }}

@@ -12,6 +12,13 @@
   background-color: var(--secondary-bg-color) !important;
 }
 
+.btn-chef {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 body {
   background: var(--main-bg-color);
   color: rgba(0, 0, 0, 0.7);
@@ -23,7 +30,7 @@ body {
   transition: transform 0.1s ease-in-out;
 }
 
-nav .btn-primary {
+nav li .btn-primary {
   background-color: transparent !important;
   color: rgba(0, 0, 0, 0.55) !important;
 }
@@ -162,6 +169,9 @@ header::before {
   z-index: 1;
 }
 
+.cart-card {
+  background-color: var(--main-bg-color) !important;
+}
 img.cart-card {
   height: 100%;
   width: 100%;

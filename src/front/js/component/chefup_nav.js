@@ -170,7 +170,7 @@ export const ChefNavbar = (props) => {
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          class="btn btn-chef"
                           data-bs-dismiss="modal"
                         >
                           Close
@@ -183,7 +183,7 @@ export const ChefNavbar = (props) => {
               <li className="user-nav-icon">
                 <div class="dropdown">
                   <button
-                    class="btn btn-secondary dropdown-toggle "
+                    class="btn btn-secondary dropdown-toggle"
                     type="button"
                     id="dropdownMenuButton1"
                     data-bs-toggle="dropdown"
