@@ -38,7 +38,8 @@ nav li,
   font-weight: 600;
   letter-spacing: -1px;
 }
-nav li:hover {
+nav li.nav-item:hover,
+li.user-nav-icon:hover {
   border-bottom: 3px solid var(--primary-color) !important;
   margin-top: -3px;
 }
@@ -161,9 +162,9 @@ header::before {
   z-index: 1;
 }
 
-.cart-card img {
+img.cart-card {
   height: 100%;
-  max-width: 100%;
+  width: 100%;
   object-fit: cover;
 }
 

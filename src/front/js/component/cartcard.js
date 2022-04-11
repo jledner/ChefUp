@@ -11,74 +11,76 @@ import Fraction from "fraction.js";
 export const CartCard = (props) => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="col-12">
-      <div className="card cart-card h-100 bg-dark text-white position-relative">
-        <div className="row">
-          <div className="col-3">
-            {" "}
-            <div className="fav position-absolute">
-              <FavoriteButton meal={props.meal} />
-            </div>
-            <Link
-              to={{
-                pathname: `/meals/details/${props.meal.id}`,
-                state: { meal: props.meal },
-              }}
-            >
-              <img src={props.meal.image} className="card-img-top" alt="..." />
-            </Link>
-          </div>
-          <div className="col-9">
-            <div className="card-body">
+    <div>
+      <div className="col-12">
+        <div className="card cart-card h-100 position-relative">
+          <div className="row">
+            <div className="col-3">
               <Link
                 to={{
                   pathname: `/meals/details/${props.meal.id}`,
                   state: { meal: props.meal },
                 }}
               >
-                <h5 className="card-title">{props.meal.title}</h5>
+                <img
+                  src={props.meal.image}
+                  className="card-img-top"
+                  alt="..."
+                />
               </Link>
-              <ul class="cart-ingredients-list p-0 row gy-3">
-                {props.meal.nutrition.ingredients
-                  .filter((ingredient) => {
-                    return !store.excludedIngredients.includes(
-                      `${ingredient.id}`
-                    );
-                  })
-                  .map((ingredient) => {
-                    let amount = new Fraction(ingredient.amount);
-                    return (
-                      <li className="col-4">
-                        <span className="ingredient-amounts">{`${amount.toFraction(
-                          true
-                        )} ${ingredient.unit} `}</span>
-                        <span>{`${ingredient.name}`}</span>
-                      </li>
-                    );
-                  })}
-              </ul>
             </div>
-            {!store.cart.map((meal) => meal.id).includes(props.meal.id) ? (
-              <button
-                type="button"
-                className="btn btn-light"
-                onClick={() => {
-                  actions.AddMealToCart(props.meal);
-                }}
-              >
-                Add to Cart
-              </button>
-            ) : (
-              <button
-                type="button"
-                className="btn btn-light"
-                onClick={() => {
-                  actions.deleteAMeal(props.meal.id);
-                }}
-              >
-                Remove from Cart
-              </button>
-            )}
+            <div className="col-9">
+              <div className="card-body">
+                <Link
+                  to={{
+                    pathname: `/meals/details/${props.meal.id}`,
+                    state: { meal: props.meal },
+                  }}
+                >
+                  <h5 className="card-title">{props.meal.title}</h5>
+                </Link>
+                <ul class="cart-ingredients-list p-0 row gy-3">
+                  {props.meal.nutrition.ingredients
+                    .filter((ingredient) => {
+                      return !store.excludedIngredients.includes(
+                        `${ingredient.id}`
+                      );
+                    })
+                    .map((ingredient) => {
+                      let amount = new Fraction(ingredient.amount);
+                      return (
+                        <li className="col-4">
+                          <span className="ingredient-amounts">{`${amount.toFraction(
+                            true
+                          )} ${ingredient.unit} `}</span>
+                          <span>{`${ingredient.name}`}</span>
+                        </li>
+                      );
+                    })}
+                </ul>
+              </div>
+              {!store.cart.map((meal) => meal.id).includes(props.meal.id) ? (
+                <button
+                  type="button"
+                  className="btn btn-light"
+                  onClick={() => {
+                    actions.AddMealToCart(props.meal);
+                  }}
+                >
+                  Add to Cart
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="btn btn-light"
+                  onClick={() => {
+                    actions.deleteAMeal(props.meal.id);
+                  }}
+                >
+                  Remove from Cart
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

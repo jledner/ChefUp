@@ -120,7 +120,7 @@ export const ChefNavbar = (props) => {
                   <i class="fas fa-address-card"></i> Profile
                 </NavLink>
               </li>
-              <li className="cart">
+              <li className="cart nav-item">
                 <button
                   type="button"
                   className="btn btn-primary"
@@ -180,10 +180,10 @@ export const ChefNavbar = (props) => {
                   </div>
                 </div>
               </li>
-              <li>
+              <li className="user-nav-icon">
                 <div class="dropdown">
                   <button
-                    class="btn btn-secondary dropdown-toggle"
+                    class="btn btn-secondary dropdown-toggle "
                     type="button"
                     id="dropdownMenuButton1"
                     data-bs-toggle="dropdown"
