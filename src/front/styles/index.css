@@ -2,7 +2,7 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 :root {
-  --main-bg-color: #fafafa;
+  --main-bg-color: #f7f8fa;
   --secondary-bg-color: #f3f3f3;
   --alt-bg: #272727;
   --primary-color: #fe9c03;
@@ -108,9 +108,11 @@ ul.dropdown-menu {
 
 nav {
   background-color: var(--main-bg-color) !important;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
     rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
-    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border-top: 4px solid var(--primary-color);
 }
 
