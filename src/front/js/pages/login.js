@@ -28,7 +28,7 @@ export const Login = (props) => {
                 onSubmit={async (e) => {
                   e.preventDefault();
                   await actions.userLogin({ username: UserName });
-                  props.history.push("/tutorial");
+                  props.history.push("/");
                 }}
               >
                 <div class="text-center">

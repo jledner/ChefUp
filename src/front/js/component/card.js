@@ -146,7 +146,7 @@ export const Card = (props) => {
           {!store.cart.map((meal) => meal.id).includes(props.meal.id) ? (
             <button
               type="button"
-              className="btn btn-light"
+              className="btn btn-light card-btn"
               onClick={() => {
                 actions.AddMealToCart(props.meal);
               }}
@@ -156,7 +156,7 @@ export const Card = (props) => {
           ) : (
             <button
               type="button"
-              className="btn btn-light"
+              className="btn btn-light card-btn"
               onClick={() => {
                 actions.deleteAMeal(props.meal.id);
               }}

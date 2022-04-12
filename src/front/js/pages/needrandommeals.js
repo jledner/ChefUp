@@ -41,7 +41,7 @@ export const NeedRandomMeals = (props) => {
     let URLforIntolerances = "&intolerances=";
     let URLforDiets = "&diet=";
 
-    let newobj = JSON.parse(localStorage.getItem("user"))
+    let newobj = JSON.parse(localStorage.getItem("user"));
     for (let diets of newobj.mealPrefs.diets) {
       URLforDiets += diets + ",";
     }
@@ -81,12 +81,14 @@ export const NeedRandomMeals = (props) => {
       0,
       URLforDiets.length - 1
     );
+    // 63c77d2857624c45a6a65b2ec5df33e0
+    // abb3fdf4028b4f0d989e7ee0b2b23b67
     console.log(noFinalCommaInDietURL);
     console.log(
-      `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaInDietURL}${noFinalCommaInIntolerancesURL}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`
+      `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaInDietURL}${noFinalCommaInIntolerancesURL}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`
     );
     await actions.getMeals(
-      `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaInDietURL}${noFinalCommaInIntolerancesURL}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=abb3fdf4028b4f0d989e7ee0b2b23b67&number=100`,
+      `https://api.spoonacular.com/recipes/complexSearch?&maxReadyTime=20${noFinalCommaInDietURL}${noFinalCommaInIntolerancesURL}&addRecipeInformation=true&ignorePantry=true&instructionsRequired=true&fillIngredients=true&addRecipeNutrition=true&apiKey=63c77d2857624c45a6a65b2ec5df33e0&number=100`,
       "UrlParams: " + noFinalCommaInIntolerancesURL + noFinalCommaInDietURL
     );
     history.push(`/meals/browse/page1`);
@@ -98,53 +100,63 @@ export const NeedRandomMeals = (props) => {
   //is added to the UrlParams to be used later in the URL to fetch the meals
 
   const toastStyles = {
-    position: 'absolute',
-    bottom: '30%',
-    left: '15%',
-  }
+    position: "absolute",
+    bottom: "30%",
+    left: "15%",
+  };
 
-
-  let userobj = JSON.parse(localStorage.getItem("user"))
-  console.log(userobj)
-  console.log(userobj.mealPrefs.diets)
-  console.log(userobj['mealPrefs'].intolerances)
-  let dietsString = ''
-  let intolerancesString = ''
+  let userobj = JSON.parse(localStorage.getItem("user"));
+  console.log(userobj);
+  console.log(userobj.mealPrefs.diets);
+  console.log(userobj["mealPrefs"].intolerances);
+  let dietsString = "";
+  let intolerancesString = "";
   for (let diets of userobj.mealPrefs.diets) {
-    dietsString += diets + ' '
+    dietsString += diets + " ";
   }
-  for (let intolerances of userobj['mealPrefs']['intolerances']) {
-    intolerancesString += intolerances + ' '
+  for (let intolerances of userobj["mealPrefs"]["intolerances"]) {
+    intolerancesString += intolerances + " ";
   }
 
   return (
-
     <>
       <br></br>
 
       <br></br>
-      <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
-        <div style={{ width: '75%' }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          position: "relative",
+        }}
+      >
+        <div style={{ width: "75%" }}>
           <hr></hr>
         </div>
       </div>
 
-      <div class='formdiv' style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
-        <div className="formcontainer" style={{ width: '75%' }}>
+      <div
+        class="formdiv"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          position: "relative",
+        }}
+      >
+        <div className="formcontainer" style={{ width: "75%" }}>
           <br></br>
-
 
           <form
             class="m-0"
             style={{
-              borderRadius: '8px',
-              borderWidth:'1px',
-              border: '#fbd1a2',
+              borderRadius: "8px",
+              borderWidth: "1px",
+              border: "#fbd1a2",
               borderStyle: "solid",
               backgroundColor: "#fbd1a2",
               color: "black",
-              padding: '3%',
-              boxShadow: 'rgb(100 100 111 / 20%) 0px 7px 29px 0px',
+              padding: "3%",
+              boxShadow: "rgb(100 100 111 / 20%) 0px 7px 29px 0px",
             }}
             onSubmit={(e) => {
               SubmitCheckboxForm(e);
@@ -154,11 +166,11 @@ export const NeedRandomMeals = (props) => {
               <div>
                 <h2>Random Meals Generator</h2>
               </div>
-
             </div>
             <div class="d-flex justify-content-center">
-
-              <div><p>Your preferences are shown below. Choose more if needed.</p></div>
+              <div>
+                <p>Your preferences are shown below. Choose more if needed.</p>
+              </div>
             </div>
 
             <div class="d-flex justify-content-around ">
@@ -343,39 +355,29 @@ export const NeedRandomMeals = (props) => {
                 </div>
               </div>
             </div>
-
-
-
           </form>
           {/* Search button below */}
           {/* Search button below */}
           <br></br>
-                    
+
           <div class="container mt-3">
             <div class="row justify-content-end">
-
               <div class="col-3 ">
-                <button type="submit" class="btn btn-primary " onClick={SubmitCheckboxForm}>
-
+                <button
+                  type="submit"
+                  class="btn btn-primary "
+                  onClick={SubmitCheckboxForm}
+                >
                   Search for Suggestions
                 </button>
               </div>
             </div>
-
           </div>
-
-
-
-
-
         </div>
       </div>
-
     </>
-
   );
 };
-
 
 let oldjumbrotron = `<div class='jumbotroncontainer' style={{  display: 'flex', justifyContent: 'center', position: 'relative' }}>
 <div class="jumbotron" style={{borderRadius:'8px', backgroundColor: 'lightblue', width: '75%', padding: '5%' }}>
@@ -438,8 +440,7 @@ let oldjumbrotron = `<div class='jumbotroncontainer' style={{  display: 'flex', 
   </div>
 </div>
 
-</div>`
-
+</div>`;
 
 //Waynes code below
 
