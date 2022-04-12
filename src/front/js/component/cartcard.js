@@ -13,33 +13,35 @@ export const CartCard = (props) => {
   return (
     <div>
       <div className="col-12">
-        <div className="card cart-card h-100 position-relative py-1">
+        <div className="card cart-card py-3">
           <div className="row">
             <div className="col-3">
-              <Link
-                to={{
-                  pathname: `/meals/details/${props.meal.id}`,
-                  state: { meal: props.meal },
-                }}
-              >
-                <img
-                  src={props.meal.image}
-                  className="cart-card card-img-top"
-                  alt="..."
-                />
-              </Link>
-            </div>
-            <div className="col-9">
-              <div className="card-body">
+              <div className="p-3">
                 <Link
                   to={{
                     pathname: `/meals/details/${props.meal.id}`,
                     state: { meal: props.meal },
                   }}
                 >
-                  <h5 className="card-title">{props.meal.title}</h5>
+                  <img
+                    src={props.meal.image}
+                    className="cart-card card-img-top rounded"
+                    alt="..."
+                  />
                 </Link>
-                <ul class="cart-ingredients-list p-0 row gy-3">
+              </div>
+            </div>
+            <div className="col-9">
+              <Link
+                to={{
+                  pathname: `/meals/details/${props.meal.id}`,
+                  state: { meal: props.meal },
+                }}
+              >
+                <h5 className="card-title">{props.meal.title}</h5>
+              </Link>
+              <div className="card-body position-relative">
+                <ul class="cart-ingredients-list p-0 row">
                   {props.meal.nutrition.ingredients
                     .filter((ingredient) => {
                       return !store.excludedIngredients.includes(
@@ -49,37 +51,23 @@ export const CartCard = (props) => {
                     .map((ingredient) => {
                       let amount = new Fraction(ingredient.amount);
                       return (
-                        <li className="col-4">
-                          <span className="ingredient-amounts">{`${amount.toFraction(
-                            true
-                          )} ${ingredient.unit} `}</span>
+                        <li className="col-3">
+                          <span className="ingredient-amounts">{`${ingredient.amount} ${ingredient.unit} `}</span>
                           <span>{`${ingredient.name}`}</span>
                         </li>
                       );
                     })}
                 </ul>
               </div>
-              {!store.cart.map((meal) => meal.id).includes(props.meal.id) ? (
-                <button
-                  type="button"
-                  className="btn btn-chef"
-                  onClick={() => {
-                    actions.AddMealToCart(props.meal);
-                  }}
-                >
-                  Add to Cart
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="btn btn-chef"
-                  onClick={() => {
-                    actions.deleteAMeal(props.meal.id);
-                  }}
-                >
-                  Remove from Cart
-                </button>
-              )}
+              <button
+                type="button"
+                className="ms-auto btn btn-chef btn-delete position-absolute"
+                onClick={() => {
+                  actions.deleteAMeal(props.meal.id);
+                }}
+              >
+                <i class="fas fa-cart-arrow-down"></i>
+              </button>
             </div>
           </div>
         </div>

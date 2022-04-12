@@ -124,7 +124,7 @@ export const LandingPage = (props) => {
           store.user == null && didUserScrollDown ? "toast show" : "toast hide"
         }
         style={toastStyles}
-        data-animation="true"
+        n
       >
         <div class="toast-header" style={{ backgroundColor: "#7dcfb6" }}>
           <strong class="me-auto" style={{ color: "black" }}>
@@ -138,7 +138,11 @@ export const LandingPage = (props) => {
         </div>
         <div class="toast-body " style={{ backgroundColor: "ghostwhite" }}>
           <p>
-            Check out the <Link to="/tutorial">tutorial</Link>!
+            Check out the{" "}
+            <Link to="/tutorial" className=".active">
+              tutorial
+            </Link>
+            !
           </p>
         </div>
       </div>

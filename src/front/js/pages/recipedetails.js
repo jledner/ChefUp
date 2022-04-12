@@ -23,9 +23,9 @@ export const RecipeDetails = (props) => {
   let ingredients = meal.nutrition.ingredients;
 
   return (
-    <section className="details">
-      <h1>{meal.title}</h1>
-      {/* <div className="row">
+    <section className="details py-3">
+      {/* <h1>{meal.title}</h1>
+      <div className="row">
         <div className="col-2">
           <div className="d-flex flex-column align-items-center">
             <FavoriteButton meal={meal} />
@@ -49,58 +49,67 @@ export const RecipeDetails = (props) => {
           </div>
         </div>
       </div> */}
-      <div className="col-12">
-        <div className="card mb-3 bg-dark">
-          <DetailsCard meal={meal} />
-          {/* <img src={meal.image} className="card-img-top" alt="..." /> */}
+      <div className="container mt-5">
+        <div className="details-content bg-light p-4">
+          <div className="row">
+            <div className="col-12 col-lg-4">
+              <div className="card mb-3">
+                <DetailsCard meal={meal} />
+                {/* <img src={meal.image} className="card-img-top" alt="..." /> */}
+              </div>
+            </div>
+            <div className="col-12 col-lg-8">
+              <details>
+                <summary>Meal Details</summary>
+                <ul>
+                  <li>Prep time: {meal.readyInMinutes} minutes</li>
+                  <li>Servings: {meal.servings}</li>
+                  <li>
+                    Price: {`$${Math.floor(meal.pricePerServing) / 100}`} per
+                    serving
+                  </li>
+                  <li>Calories: {meal.nutrition.nutrients[0].amount}</li>
+                </ul>
+              </details>
+              <details>
+                <summary>Ingredients</summary>
+                <p className="card-text">
+                  <ul>
+                    {ingredients
+                      .filter(
+                        (ingredient) =>
+                          !excludedIngredients.includes(`${ingredient.id}`)
+                      )
+                      .map((ingredient) => {
+                        let amount = new Fraction(ingredient.amount); //converts decimal to a franction.
+                        return (
+                          <li>
+                            <span>{`${amount.toFraction(true)} ${
+                              ingredient.unit
+                            } `}</span>
+                            {ingredient.name}
+                          </li>
+                        );
+                      })}
+                  </ul>
+                </p>
+              </details>
+              <details>
+                <summary>Instructions</summary>
+                <p className="card-text">
+                  <ol>
+                    {instructions.map((set) => {
+                      return set.steps.map((step) => {
+                        return <li>{step.step}</li>;
+                      });
+                    })}
+                  </ol>
+                </p>
+              </details>
+            </div>
+          </div>
         </div>
       </div>
-      <details>
-        <summary>Meal Details</summary>
-        <ul>
-          <li>Prep time: {meal.readyInMinutes} minutes</li>
-          <li>Servings: {meal.servings}</li>
-          <li>
-            Price: {`$${Math.floor(meal.pricePerServing) / 100}`} per serving
-          </li>
-          <li>Calories: {meal.nutrition.nutrients[0].amount}</li>
-        </ul>
-      </details>
-      <details>
-        <summary>Ingredients</summary>
-        <p className="card-text">
-          <ul>
-            {ingredients
-              .filter(
-                (ingredient) =>
-                  !excludedIngredients.includes(`${ingredient.id}`)
-              )
-              .map((ingredient) => {
-                let amount = new Fraction(ingredient.amount); //converts decimal to a franction.
-                return (
-                  <li>
-                    <span>{`${amount.toFraction(true)} ${
-                      ingredient.unit
-                    } `}</span>
-                    {ingredient.name}
-                  </li>
-                );
-              })}
-          </ul>
-        </p>
-      </details>
-      <details>
-        <summary>Instructions</summary>
-        <p className="card-text">
-          <ol>
-            {instructions.map((set) => {
-              return set.steps.map((step) => {
-                return <li>{step.step}</li>;
-              });
-            })}
-          </ol>
-        </p>
-      </details>
     </section>
 
     // <div>

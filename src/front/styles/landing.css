@@ -91,3 +91,11 @@ li.cuisine-li:hover {
   transform: scale(1.15);
   z-index: 1;
 }
+
+div.toast:not(.hide) {
+  transition: all 0.6s ease-in-out;
+}
+
+/* div.toast:not(.show) {
+  transition: all 0.6s ease-in-out;
+} */

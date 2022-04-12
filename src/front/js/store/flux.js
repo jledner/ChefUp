@@ -9068,11 +9068,12 @@ const getState = ({ getStore, getActions, setStore }) => {
               stored in the db as a string.  Once converted the store is updated as well as the localStorage. 
             */
             let actions = getActions();
+            let store = getStore();
             let user = resp;
             user.favorites = actions.favMealsToObj(user.favorites);
+            user.mealPrefs = store.user.mealPrefs;
             setStore({ user: user });
-            let store = getStore();
-            localStorage.setItem("user", JSON.stringify(store.user));
+            localStorage.setItem("user", JSON.stringify(user));
           })
           .catch((e) => console.log(e));
       },
@@ -9090,11 +9091,12 @@ const getState = ({ getStore, getActions, setStore }) => {
             else throw new Error("help me pls");
           })
           .then((resp) => {
+            let store = getStore();
             let actions = getActions();
             resp.favorites = actions.favMealsToObj(resp.favorites);
+            resp.mealPrefs = store.user.mealPrefs;
             setStore({ user: resp });
-            let store = getStore();
-            localStorage.setItem("user", JSON.stringify(store.user));
+            localStorage.setItem("user", JSON.stringify(resp));
           });
       },
     },

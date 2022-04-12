@@ -10,10 +10,33 @@ export const ChefNavbar = (props) => {
   const history = useHistory();
   const { store, actions } = useContext(Context);
   const [user, setUser] = useState({});
+  const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
     setUser(store.user);
   }, [store.user]);
+
+  useEffect(() => {
+    const totalMealCost = (meal) => {
+      return (
+        Math.round(
+          ((Math.floor(meal.pricePerServing) / 100) * meal.servings +
+            Number.EPSILON) *
+            100
+        ) / 100
+      );
+    };
+    if (store.cart.length > 1) {
+      let total = store.cart.reduce((total, current) => {
+        return total + totalMealCost(current);
+      }, 0);
+      setCartTotal(Math.round((total + Number.EPSILON) * 100) / 100);
+    } else if (store.cart.length > 0) {
+      setCartTotal(totalMealCost(store.cart[0]));
+    } else {
+      setCartTotal(0);
+    }
+  }, [store.cart]);
 
   return (
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -167,7 +190,11 @@ export const ChefNavbar = (props) => {
                           })}
                         </div>
                       </div>
+                      <div className="modal-footer">Total: {cartTotal} </div>
                       <div class="modal-footer">
+                        <Link className="btn btn-chef" to="/grocerylist">
+                          Grocery List
+                        </Link>
                         <button
                           type="button"
                           class="btn btn-chef"
