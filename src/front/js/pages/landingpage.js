@@ -27,8 +27,40 @@ export const LandingPage = (props) => {
     setTrending(store.trending);
   }, [store.trending]);
 
+  const toastStyles = {
+    position: "fixed",
+    bottom: "0%",
+    right: "0%",
+    zIndex: "2",
+  };
+
+  //both hooks are used with the toast element.
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [didUserScrollDown, setDidUserScrollDown] = useState(false)
+  //function below constantly updates scrollPosition with the pageYOffset. Starts at 0, and increases as
+  //the user scrolls down
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+    //As soon as the user moves and the position is no longer 0, the second hook is set to true which
+    //triggers the toast
+    position != 0 ? setDidUserScrollDown(true): null;
+    
+  };
+
+  //adds the event listener on initial render and cleans it up when finished.
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+ 
+
   return (
-    <div>
+    <div class = 'position-relative'>
       <MainHeader />
       <div className="container landing">
         <div>
@@ -88,6 +120,27 @@ export const LandingPage = (props) => {
           </div>
         </div>
       </section>
+      {/* Toast element below. When the user scrolls down even a little, the toast pops up then stays up
+      until it is closed. */}
+      <div class={store.user == null && didUserScrollDown ? "toast show" : 'toast hide'} style={toastStyles}>
+    <div class="toast-header" style={{ backgroundColor: "#7dcfb6" }}>
+      <strong class="me-auto" style={{ color: "black" }} >New Here?</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="toast"
+       
+      ></button>
+    </div>
+    <div class="toast-body " style={{ backgroundColor: "ghostwhite" }}>
+      <p>
+      Check out the tutorial!{}
+      </p>
+      
+    </div>
+  </div>
+
+
     </div>
   );
 };
