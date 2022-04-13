@@ -9102,8 +9102,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       addIngredientsToGroceryList: (ingredient) => { 
         const store = getStore(); 
-        let cart = [...store.groceryListIngredients, ingredient]; 
-        setStore({ groceryListIngredients: cart }); 
+        if(store.groceryListIngredients.includes(ingredient) == false){
+          let cart = [...store.groceryListIngredients, ingredient]; 
+          setStore({ groceryListIngredients: cart }); 
+        }
+        
         console.log(store.groceryListIngredients) },
 
       deleteIngredientsInGroceryList: (moddedIngredientsArray) => { 

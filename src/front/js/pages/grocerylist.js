@@ -21,7 +21,7 @@ export const GroceryList = () => {
         return !store.excludedIngredients.includes(`${ingredient.id}`);
       });
       filtered.map((ingredient, index) => {
-        console.log('flag for useeffect')
+        console.log(ingredient)
        ingred.push(ingredient);
        actions.addIngredientsToGroceryList(ingredient)
        //setGroceryList([...groceryList,ingredient]) 
