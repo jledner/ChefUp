@@ -37,10 +37,9 @@ export const ProfilePage = (props) => {
                         <div className="avatar me-3">
                           <img src={avatar} alt="" className="img-responsive" />
                         </div>
-                        <h2>Hi, {store.user.username}</h2>
+                        <h2 className="profile">Hi, {store.user.username}</h2>
                       </div>
                       <div>
-                        {" "}
                         <div
                           class="nav align-items-center flex-column nav-pills me-3"
                           id="v-pills-tab"
@@ -85,29 +84,41 @@ export const ProfilePage = (props) => {
                       >
                         <div>
                           <div className="d-flex justify-content-between">
-                            <h3>Account Information</h3>
+                            <h3 className="profile">Account Information</h3>
                             <div>
-                              <i class="fas fa-edit"></i>
+                              <Link to="#" className="profile-link">
+                                <i class="fas fa-edit"></i>
+                              </Link>
                             </div>
                           </div>
-                          <hr />
-                          <p>Username: {user.username}</p>
-                          <p>Email: {user.email}</p>
+                          <hr className="profile" />
+                          <p>
+                            <span className="profile">Username:</span>{" "}
+                            {user.username}
+                          </p>
+                          <p>
+                            <span className="profile">Email:</span> {user.email}
+                          </p>
 
                           <div className="d-flex justify-content-between">
-                            <h3>Meal Preferences</h3>
+                            <h3 className="profile">Meal Preferences</h3>
                             <div>
-                              <i class="fas fa-edit"></i>
+                              <Link to="#" className="profile-link">
+                                <i class="fas fa-edit"></i>
+                              </Link>
                             </div>
                           </div>
-                          <hr />
+                          <hr className="profile" />
                           <div className="row">
                             <div className="col-6">
                               <h4>Intolerances</h4>
-                              <ul>
+                              <ul className="profile">
                                 {store.user.mealPrefs.intolerances.map(
                                   (intolerance) => (
-                                    <li>{intolerance}</li>
+                                    <li>
+                                      <i class="fas fa-times intolerance-icon"></i>{" "}
+                                      {intolerance}
+                                    </li>
                                   )
                                 )}
                               </ul>
@@ -116,7 +127,10 @@ export const ProfilePage = (props) => {
                               <h4>Diet</h4>
                               <ul>
                                 {store.user.mealPrefs.diets.map((diet) => (
-                                  <li>{diet}</li>
+                                  <li>
+                                    <i class="fas fa-utensils diets-icon"></i>{" "}
+                                    {diet}
+                                  </li>
                                 ))}
                               </ul>
                             </div>

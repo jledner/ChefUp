@@ -28,10 +28,47 @@ div.tab-content {
 }
 
 div.profile-content {
-  padding-top: 60px !important;
-  padding-bottom: 60px !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
 }
 
 .tab-content {
-  padding: 80px 60px 80px;
+  padding: 40px 20px 40px;
+}
+
+h2.profile,
+h3.profile {
+  color: #7dcfb6;
+}
+
+a.profile-link {
+  color: #f79256;
+}
+
+hr.profile {
+  border: 0 !important;
+  height: 3px !important;
+  background-image: linear-gradient(
+    to right,
+    #fbd1a2,
+    #f79256,
+    #fbd1a2
+  ) !important;
+}
+
+ul {
+  list-style: none;
+}
+
+i.intolerance-icon {
+  color: #971d12;
+}
+
+i.diets-icon {
+  color: #afce88;
+}
+
+span.profile {
+  color: var(--primary-color);
+  font-weight: 600;
 }

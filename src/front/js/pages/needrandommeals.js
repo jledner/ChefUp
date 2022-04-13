@@ -147,16 +147,14 @@ export const NeedRandomMeals = (props) => {
           <br></br>
 
           <form
-            class="m-0"
+            class="m-0 random-meals"
             style={{
               borderRadius: "8px",
               borderWidth: "1px",
-              border: "#fbd1a2",
-              borderStyle: "solid",
-              backgroundColor: "#fbd1a2",
+              // border: "#fbd1a2",
+              // borderStyle: "solid",
               color: "black",
               padding: "3%",
-              boxShadow: "rgb(100 100 111 / 20%) 0px 7px 29px 0px",
             }}
             onSubmit={(e) => {
               SubmitCheckboxForm(e);
@@ -164,7 +162,7 @@ export const NeedRandomMeals = (props) => {
           >
             <div class="d-flex justify-content-center">
               <div>
-                <h2>Random Meals Generator</h2>
+                <h2>Meals for you!</h2>
               </div>
             </div>
             <div class="d-flex justify-content-center">
