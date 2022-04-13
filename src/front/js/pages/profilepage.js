@@ -25,14 +25,14 @@ export const ProfilePage = (props) => {
   return (
     <div>
       {user ? (
-        <div className="secondary-bg">
+        <div className="profile-bg">
           <MainHeader sizeClass={"landing-header-small"} />
           <div className="container profile-content">
             <section className="main">
               <div className="user-profile">
                 <div className="row">
                   <div className="col-12 col-md-4">
-                    <div className="profile-nav p-3 bg-light ">
+                    <div className="profile-nav p-3 bg-light">
                       <div className="profile-nav-head d-flex flex-wrap  justify-content-center align-content-center align-items-center mb-3">
                         <div className="avatar me-3">
                           <img src={avatar} alt="" className="img-responsive" />
@@ -75,7 +75,7 @@ export const ProfilePage = (props) => {
                     </div>
                   </div>
                   <div className="col-12 col-md-8">
-                    <div class="tab-content bg-light" id="v-pills-tabContent">
+                    <div class="tab-content bg-light " id="v-pills-tabContent">
                       <div
                         class="tab-pane fade show active"
                         id="v-pills-home"
@@ -138,7 +138,7 @@ export const ProfilePage = (props) => {
                         </div>
                       </div>
                       <div
-                        class="tab-pane fade"
+                        class="tab-pane fad"
                         id="v-pills-profile"
                         role="tabpanel"
                         aria-labelledby="v-pills-profile-tab"

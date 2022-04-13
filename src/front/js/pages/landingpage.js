@@ -57,9 +57,9 @@ export const LandingPage = (props) => {
   }, []);
 
   return (
-    <div class="position-relative">
+    <div class="position-relative alt-bg">
       <MainHeader />
-      <div className="container landing">
+      <div className="container landing trend-wrap">
         <div>
           <div>
             {user ? (

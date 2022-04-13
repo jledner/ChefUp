@@ -8,6 +8,22 @@
   --primary-color: #fe9c03;
 }
 
+.alt-bg {
+  background-color: rgba(125, 207, 182, 0.2);
+}
+
+.chef-border {
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(
+      90deg,
+      rgba(254, 156, 3, 0.5) 0%,
+      rgba(254, 156, 3, 0.5) 16%,
+      rgba(251, 209, 162, 0.5) 100%
+    )
+    1;
+}
+
 .secondary-bg {
   background-color: var(--secondary-bg-color) !important;
 }

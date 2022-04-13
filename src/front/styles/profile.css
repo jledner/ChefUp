@@ -36,6 +36,18 @@ div.profile-content {
   padding: 40px 20px 40px;
 }
 
+.chef-border {
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(
+      90deg,
+      rgba(254, 156, 3, 0.5) 0%,
+      rgba(254, 156, 3, 0.5) 16%,
+      rgba(251, 209, 162, 0.5) 100%
+    )
+    1;
+}
+
 h2.profile,
 h3.profile {
   color: #7dcfb6;
