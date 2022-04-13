@@ -104,9 +104,21 @@ export const ProfilePage = (props) => {
                           <div className="row">
                             <div className="col-6">
                               <h4>Intolerances</h4>
+                              <ul>
+                                {store.user.mealPrefs.intolerances.map(
+                                  (intolerance) => (
+                                    <li>{intolerance}</li>
+                                  )
+                                )}
+                              </ul>
                             </div>
                             <div className="col-6">
                               <h4>Diet</h4>
+                              <ul>
+                                {store.user.mealPrefs.diets.map((diet) => (
+                                  <li>{diet}</li>
+                                ))}
+                              </ul>
                             </div>
                           </div>
                         </div>
