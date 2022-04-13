@@ -47,7 +47,7 @@ export const Tutorial = (props) => {
           ></button>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="0">
+          <div class="carousel-item active" data-bs-interval="99999">
             <div className="container">
               <div className="tutorial-content">
                 <div className="tutorial-head">
@@ -67,7 +67,25 @@ export const Tutorial = (props) => {
             </div>
           </div>
 
-          <div class="carousel-item" data-bs-interval="0">
+          <div class="carousel-item" data-bs-interval="99999">
+            <div className="container">
+              <div className="tutorial-content">
+                <div className="tutorial-head">
+                  <h5>Choose what's best for you!</h5>
+                  <p>See prep time, calories, and cost for each item</p>
+                </div>
+                <div className="Featured-Content">
+                  <div class="row gy-4">
+                    {trending.map((meal, index) => {
+                      return <CartCard meal={meal} />;
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
             <div className="container">
               <div className="tutorial-content">
                 <div className="tutorial-head">
@@ -139,24 +157,6 @@ export const Tutorial = (props) => {
                   We assume you have all household ingredients like butter,
                   salt, etc.
                 </i>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" data-bs-interval="0">
-            <div className="container">
-              <div className="tutorial-content">
-                <div className="tutorial-head">
-                  <h5>Choose what's best for you!</h5>
-                  <p>See prep time, calories, and cost for each item</p>
-                </div>
-                <div className="Featured-Content">
-                  <div class="row gy-4">
-                    {trending.map((meal, index) => {
-                      return <CartCard meal={meal} />;
-                    })}
-                  </div>
-                </div>
               </div>
             </div>
           </div>
