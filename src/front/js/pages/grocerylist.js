@@ -14,35 +14,43 @@ export const GroceryList = () => {
 
   let ingred = []; //
   
+  useEffect(() => {
+    store.cart.forEach((meal, i) => {
+      let filtered = meal.nutrition.ingredients.filter((ingredient) => {
+        // console.log(!store.excludedIngredients.includes(`${ingredient.id}`));
+        return !store.excludedIngredients.includes(`${ingredient.id}`);
+      });
+      filtered.map((ingredient, index) => {
+        console.log('flag for useeffect')
+       ingred.push(ingredient);
+       actions.addIngredientsToGroceryList(ingredient)
+       //setGroceryList([...groceryList,ingredient]) 
+       //4/12/22 error message below - Jeff
+       //Error Message: Uncaught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
   
-  store.cart.forEach((meal, i) => {
-    let filtered = meal.nutrition.ingredients.filter((ingredient) => {
-      // console.log(!store.excludedIngredients.includes(`${ingredient.id}`));
-      return !store.excludedIngredients.includes(`${ingredient.id}`);
-    });
-    filtered.map((ingredient, index) => {
-     ingred.push(ingredient);
-     //setGroceryList([...groceryList,ingredient]) 
-     //4/12/22 error message below - Jeff
-     //Error Message: Uncaught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
+         
+      });
+  });
+  }, []);
 
-       
-    });
-});
+  
+  
+
   
   return (
     <div className="container">
       <h1>Grocery List</h1>
       <ul className="list-group">
-        {ingred.map((ingredient,ingredientIndex) => (
+        {store.groceryListIngredients.map((ingredient,ingredientIndex) => (
           
           <li class="list-group-item d-flex justify-content-between align-items-center">
             {ingredient.name}
             <div class="d-flex justify-content-between"><span class="badge bg-primary rounded-pill">{`${ingredient.amount} ${ingredient.unit}`}</span>
               <span onClick={(e) => {
-                ingred = ingred.filter((ingredient,index)=> {
+                let modifiedGroceryList = store.groceryListIngredients.filter((ingredient,index)=> {
                   return index != ingredientIndex})
-                console.log(ingred)
+                console.log(modifiedGroceryList)
+                actions.deleteIngredientsInGroceryList(modifiedGroceryList)
                 
                 
                 }
@@ -67,7 +75,7 @@ export const GroceryList = () => {
 };
  
 
-
+//addIngredientsToGroceryList: (ingredient) => { const store = getStore(); let cart = [...store.groceryListIngredients, ingredient]; setStore({ groceryListIngredients: cart }); console.log(store.groceryListIngredients) },
 
 /* 
 {store.trending.forEach((item, i) => {

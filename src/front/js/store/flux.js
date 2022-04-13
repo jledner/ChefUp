@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      groceryListIngredients:[],
       isLoggedIn: true,
       message: null,
       productsResponseJSON: null,
@@ -9099,6 +9100,17 @@ const getState = ({ getStore, getActions, setStore }) => {
             localStorage.setItem("user", JSON.stringify(resp));
           });
       },
+      addIngredientsToGroceryList: (ingredient) => { 
+        const store = getStore(); 
+        let cart = [...store.groceryListIngredients, ingredient]; 
+        setStore({ groceryListIngredients: cart }); 
+        console.log(store.groceryListIngredients) },
+
+      deleteIngredientsInGroceryList: (moddedIngredientsArray) => { 
+          const store = getStore(); 
+           
+          setStore({ groceryListIngredients: moddedIngredientsArray }); 
+          console.log(store.groceryListIngredients) },
     },
   };
 };
