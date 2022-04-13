@@ -33,8 +33,14 @@ export const GroceryList = () => {
         {ingred.map((ingredient) => (
           <li class="list-group-item d-flex justify-content-between align-items-center">
             {ingredient.name}
-            <span class="badge bg-primary rounded-pill">{`${ingredient.amount} ${ingredient.unit}`}</span>
+            <div class="d-flex justify-content-between"><span class="badge bg-primary rounded-pill">{`${ingredient.amount} ${ingredient.unit}`}</span>
+            <span><i
+className="fa fa-trash"></i></span>
+            </div>
+
           </li>
+
+
         ))}
       </ul>
       <br />
@@ -45,6 +51,26 @@ export const GroceryList = () => {
   );
 };
 
+
+let oldexample = `<i
+className="fa fa-trash"
+onClick={(e) =>
+  props.modlist(
+    props.tlist.filter(
+      (
+        eachtask,
+        eachtaskindex
+      ) => {
+        //this is where I think I will delete one task from the todo list
+        //(PUT request?)
+        return (
+          eachtaskindex !=
+          makespanIDtheindex
+        );
+      }
+    )
+  )
+}></i>`
 /* 
 {store.trending.forEach((item, i) => {
           store.trending[i].nutrition.ingredients.map((item, index) => {
