@@ -19,10 +19,9 @@ export const Login = (props) => {
   return (
     <>
       <div class="container h-100 ">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="row d-flex justify-content-center my-5 h-100">
           <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-            <div class="card my-5" style={{ borderRadius: "15px" }}>
-              <h2 class="text-center text-black mt-5">Login Form</h2>
+            <div class="card" style={{ borderRadius: "15px" }}>
               <form
                 class="card-body cardbody-color p-lg-5"
                 onSubmit={async (e) => {
@@ -31,10 +30,10 @@ export const Login = (props) => {
                   props.history.push("/");
                 }}
               >
-                <div class="text-center">
+                <div class="text-center mb-5">
                   <img
                     src={logo}
-                    class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                    class="img-fluid profile-image-pic img-thumbnail rounded-circle"
                     width="200px"
                     alt="profile"
                   />
