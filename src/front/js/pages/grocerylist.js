@@ -14,7 +14,7 @@ export const GroceryList = () => {
 
   let ingred = []; //
   
-
+  
   store.cart.forEach((meal, i) => {
     let filtered = meal.nutrition.ingredients.filter((ingredient) => {
       // console.log(!store.excludedIngredients.includes(`${ingredient.id}`));
@@ -22,16 +22,20 @@ export const GroceryList = () => {
     });
     filtered.map((ingredient, index) => {
      ingred.push(ingredient);
-     //setGroceryList([...groceryList,ingredient])
+     //setGroceryList([...groceryList,ingredient]) 
+     //4/12/22 error message below - Jeff
+     //Error Message: Uncaught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
+
        
     });
-  });
+});
   
   return (
     <div className="container">
       <h1>Grocery List</h1>
       <ul className="list-group">
         {ingred.map((ingredient,ingredientIndex) => (
+          
           <li class="list-group-item d-flex justify-content-between align-items-center">
             {ingredient.name}
             <div class="d-flex justify-content-between"><span class="badge bg-primary rounded-pill">{`${ingredient.amount} ${ingredient.unit}`}</span>
@@ -61,27 +65,10 @@ export const GroceryList = () => {
     </div>
   );
 };
+ 
 
 
-let oldexample = `<i
-className="fa fa-trash"
-onClick={(e) =>
-  props.modlist(
-    props.tlist.filter(
-      (
-        eachtask,
-        eachtaskindex
-      ) => {
-        //this is where I think I will delete one task from the todo list
-        //(PUT request?)
-        return (
-          eachtaskindex !=
-          makespanIDtheindex
-        );
-      }
-    )
-  )
-}></i>`
+
 /* 
 {store.trending.forEach((item, i) => {
           store.trending[i].nutrition.ingredients.map((item, index) => {
