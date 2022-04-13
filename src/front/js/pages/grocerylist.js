@@ -13,6 +13,7 @@ export const GroceryList = () => {
   const [groceryList, setGroceryList] = useState([]); // wip
 
   let ingred = []; //
+  
 
   store.cart.forEach((meal, i) => {
     let filtered = meal.nutrition.ingredients.filter((ingredient) => {
@@ -20,22 +21,32 @@ export const GroceryList = () => {
       return !store.excludedIngredients.includes(`${ingredient.id}`);
     });
     filtered.map((ingredient, index) => {
-      ingred.push(ingredient);
-      //setGroceryList
+     ingred.push(ingredient);
+     //setGroceryList([...groceryList,ingredient])
+       
     });
   });
-  // setMealIngredients(ingred);
-
+  
   return (
     <div className="container">
       <h1>Grocery List</h1>
       <ul className="list-group">
-        {ingred.map((ingredient) => (
+        {ingred.map((ingredient,ingredientIndex) => (
           <li class="list-group-item d-flex justify-content-between align-items-center">
             {ingredient.name}
             <div class="d-flex justify-content-between"><span class="badge bg-primary rounded-pill">{`${ingredient.amount} ${ingredient.unit}`}</span>
-            <span><i
-className="fa fa-trash"></i></span>
+              <span onClick={(e) => {
+                ingred = ingred.filter((ingredient,index)=> {
+                  return index != ingredientIndex})
+                console.log(ingred)
+                
+                
+                }
+                
+                  
+                
+              }><i
+                className="fa fa-trash"></i></span>
             </div>
 
           </li>
