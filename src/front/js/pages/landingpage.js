@@ -59,30 +59,33 @@ export const LandingPage = (props) => {
   return (
     <div class="position-relative alt-bg">
       <MainHeader />
-      <div className="container landing trend-wrap">
-        <div>
+      <div className="trend-wrap">
+        <div className="container landing">
           <div>
-            {user ? (
-              <section className="Featured">
-                <div className="Featured-Content p-5">
-                  <div className="trending-wrap d-inline-block position-relative mb-3">
-                    <h2>
-                      <span className="highlight">#</span>Trending
-                    </h2>
+            <div>
+              {user ? (
+                <section className="Featured">
+                  <div className="Featured-Content p-5">
+                    <div className="trending-wrap d-inline-block position-relative mb-3">
+                      <h2>
+                        <span className="highlight">#</span>Trending
+                      </h2>
+                    </div>
+                    <div className="row gy-3">
+                      {trending.map((meal) => {
+                        return <Card meal={meal} />;
+                      })}
+                    </div>
                   </div>
-                  <div className="row gy-3">
-                    {trending.map((meal) => {
-                      return <Card meal={meal} />;
-                    })}
-                  </div>
-                </div>
-              </section>
-            ) : (
-              ""
-            )}
+                </section>
+              ) : (
+                ""
+              )}
+            </div>
           </div>
         </div>
       </div>
+
       <section className="category secondary-bg px-5 py-5">
         <div className="container">
           <div className="category-content landing">

@@ -13,7 +13,7 @@ export const GroceryList = () => {
   const [groceryList, setGroceryList] = useState([]); // wip
 
   let ingred = []; //
-  
+
   useEffect(() => {
     store.cart.forEach((meal, i) => {
       let filtered = meal.nutrition.ingredients.filter((ingredient) => {
@@ -21,59 +21,60 @@ export const GroceryList = () => {
         return !store.excludedIngredients.includes(`${ingredient.id}`);
       });
       filtered.map((ingredient, index) => {
-        console.log(ingredient)
-       ingred.push(ingredient);
-       actions.addIngredientsToGroceryList(ingredient)
-       //setGroceryList([...groceryList,ingredient]) 
-       //4/12/22 error message below - Jeff
-       //Error Message: Uncaught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
-  
-         
+        console.log(ingredient);
+        ingred.push(ingredient);
+        actions.addIngredientsToGroceryList(ingredient);
+        //setGroceryList([...groceryList,ingredient])
+        //4/12/22 error message below - Jeff
+        //Error Message: Uncaught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
       });
-  });
+    });
   }, []);
 
-  
-  
-
-  
   return (
-    <div className="container">
-      <h1>Grocery List</h1>
-      <ul className="list-group">
-        {store.groceryListIngredients.map((ingredient,ingredientIndex) => (
-          
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            {ingredient.name}
-            <div class="d-flex justify-content-between"><span class="badge bg-primary rounded-pill">{`${ingredient.amount} ${ingredient.unit}`}</span>
-              <span onClick={(e) => {
-                let modifiedGroceryList = store.groceryListIngredients.filter((ingredient,index)=> {
-                  return index != ingredientIndex})
-                console.log(modifiedGroceryList)
-                actions.deleteIngredientsInGroceryList(modifiedGroceryList)
-                
-                
-                }
-                
-                  
-                
-              }><i
-                className="fa fa-trash"></i></span>
-            </div>
-
-          </li>
-
-
-        ))}
-      </ul>
-      <br />
-      <Link to="/">
-        <button className="btn btn-primary">Back home</button>
-      </Link>
-    </div>
+    <section>
+      <div className="container">
+        <div className="row">
+          <div className="col-8 mx-auto">
+            <h1>Grocery List</h1>
+            <ul className="list-group">
+              {store.groceryListIngredients.map(
+                (ingredient, ingredientIndex) => (
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {ingredient.name}
+                    <div class="d-flex justify-content-between">
+                      <span class="badge bg-primary rounded-pill">{`${ingredient.amount} ${ingredient.unit}`}</span>
+                      <span
+                        onClick={(e) => {
+                          let modifiedGroceryList =
+                            store.groceryListIngredients.filter(
+                              (ingredient, index) => {
+                                return index != ingredientIndex;
+                              }
+                            );
+                          console.log(modifiedGroceryList);
+                          actions.deleteIngredientsInGroceryList(
+                            modifiedGroceryList
+                          );
+                        }}
+                      >
+                        <i className="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                )
+              )}
+            </ul>
+            <br />
+            <Link to="/">
+              <button className="btn btn-primary">Back home</button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
- 
 
 //addIngredientsToGroceryList: (ingredient) => { const store = getStore(); let cart = [...store.groceryListIngredients, ingredient]; setStore({ groceryListIngredients: cart }); console.log(store.groceryListIngredients) },
 

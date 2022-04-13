@@ -25,7 +25,7 @@ export const ProfilePage = (props) => {
   return (
     <div>
       {user ? (
-        <div className="profile-bg">
+        <div className="alt-bg">
           <MainHeader sizeClass={"landing-header-small"} />
           <div className="container profile-content">
             <section className="main">
@@ -75,7 +75,7 @@ export const ProfilePage = (props) => {
                     </div>
                   </div>
                   <div className="col-12 col-md-8">
-                    <div class="tab-content bg-light " id="v-pills-tabContent">
+                    <div class="tab-content bg-light" id="v-pills-tabContent">
                       <div
                         class="tab-pane fade show active"
                         id="v-pills-home"

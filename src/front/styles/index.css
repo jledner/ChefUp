@@ -24,6 +24,21 @@
     1;
 }
 
+.trend-wrap {
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(
+      90deg,
+      rgba(254, 156, 3, 0.5) 0%,
+      rgba(254, 156, 3, 0.5) 16%,
+      rgba(251, 209, 162, 0.5) 100%
+    )
+    1;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
 .secondary-bg {
   background-color: var(--secondary-bg-color) !important;
 }
