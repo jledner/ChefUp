@@ -57,6 +57,7 @@
 body {
   background: var(--secondary-bg-color);
   color: rgba(0, 0, 0, 0.7);
+  font-family: "Work Sans", sans-serif !important;
 }
 
 .btn-primary {
@@ -413,4 +414,35 @@ form.random-meals {
     1; */
 
   border-left: 3px solid var(--primary-color) !important;
+}
+
+span.gl {
+  background-color: #7ec3b4 !important;
+}
+
+ul.grocery-list-ul :nth-child(even) {
+  background-color: rgba(255, 141, 2, 0.1) !important;
+}
+
+ul.grocery-list-ul {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.card-btn {
+  background-color: rgb(245, 190, 130);
+  color: var(--main-bg-color);
+}
+
+.card-btn:hover {
+  background-color: rgba(245, 190, 130, 0.6);
+  color: var(--main-bg-color);
+}
+
+.card-btn:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

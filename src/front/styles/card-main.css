@@ -52,11 +52,15 @@ div.cart {
 }
 
 .card-main hr {
-  width: 50%;
+  width: 20%;
   border: 2px solid #f5be82;
   opacity: 100%;
   margin: auto;
   margin-bottom: 5px;
+}
+
+.card-main i:not(.fa-heart) {
+  font-size: 1.3rem;
 }
 
 p.card-text {

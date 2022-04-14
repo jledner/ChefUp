@@ -34,16 +34,16 @@ export const GroceryList = () => {
   return (
     <section>
       <div className="container">
-        <div className="row">
+        <div className="row mt-5">
           <div className="col-8 mx-auto">
-            <h1>Grocery List</h1>
-            <ul className="list-group">
+            <h1 className="mb-3 text-center">Grocery List</h1>
+            <ul className="list-group grocery-list-ul content-border">
               {store.groceryListIngredients.map(
                 (ingredient, ingredientIndex) => (
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     {ingredient.name}
                     <div class="d-flex justify-content-between">
-                      <span class="badge bg-primary rounded-pill">{`${ingredient.amount} ${ingredient.unit}`}</span>
+                      <span class="badge rounded-pill gl d-block me-2">{`${ingredient.amount} ${ingredient.unit}`}</span>
                       <span
                         onClick={(e) => {
                           let modifiedGroceryList =
