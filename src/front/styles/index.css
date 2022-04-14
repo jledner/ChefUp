@@ -12,6 +12,10 @@
   background-color: rgba(125, 207, 182, 0.2);
 }
 
+.h-100vh {
+  min-height: 100vh;
+}
+
 .chef-border {
   border-width: 1px;
   border-style: solid;
@@ -395,4 +399,18 @@ form.random-meals {
   background-color: rgba(248, 209, 162, 0.4);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.content-border {
+  /* border-width: 3px;
+  border-bottom: solid;
+  border-image: linear-gradient(
+      90deg,
+      rgba(254, 156, 3, 0.5) 0%,
+      rgba(254, 156, 3, 0.5) 16%,
+      rgba(251, 209, 162, 0.5) 100%
+    )
+    1; */
+
+  border-left: 3px solid var(--primary-color) !important;
 }

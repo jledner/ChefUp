@@ -25,14 +25,14 @@ export const ProfilePage = (props) => {
   return (
     <div>
       {user ? (
-        <div className="alt-bg">
+        <div className="alt-bg h-100vh">
           <MainHeader sizeClass={"landing-header-small"} />
           <div className="container profile-content">
             <section className="main">
               <div className="user-profile">
                 <div className="row">
                   <div className="col-12 col-md-4">
-                    <div className="profile-nav p-3 bg-light">
+                    <div className="profile-nav p-3 bg-light content-border">
                       <div className="profile-nav-head d-flex flex-wrap  justify-content-center align-content-center align-items-center mb-3">
                         <div className="avatar me-3">
                           <img src={avatar} alt="" className="img-responsive" />
@@ -75,7 +75,10 @@ export const ProfilePage = (props) => {
                     </div>
                   </div>
                   <div className="col-12 col-md-8">
-                    <div class="tab-content bg-light" id="v-pills-tabContent">
+                    <div
+                      class="tab-content bg-light content-border"
+                      id="v-pills-tabContent"
+                    >
                       <div
                         class="tab-pane fade show active"
                         id="v-pills-home"
@@ -143,7 +146,7 @@ export const ProfilePage = (props) => {
                         role="tabpanel"
                         aria-labelledby="v-pills-profile-tab"
                       >
-                        <div className="row justify-content-center gy-2 gx-2">
+                        <div className="row justify-content-center gy-3 gx-3">
                           {store.user.favorites.length > 0
                             ? store.user.favorites.map((fav) => (
                                 <Card meal={fav} favorite={true} />

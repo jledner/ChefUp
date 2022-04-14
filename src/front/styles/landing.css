@@ -54,6 +54,7 @@ section.category {
 }
 
 .trending-wrap h2:after {
+  background-color: transparent;
   content: "";
   position: absolute;
   top: 43px;

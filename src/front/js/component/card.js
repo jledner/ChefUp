@@ -14,7 +14,7 @@ export const Card = (props) => {
     return (
       <div className="col-12 col-lg-4 card-wrap">
         <div
-          className="card card-main h-100 position-relative justify-content-between"
+          className="card card-main h-100 position-relative justify-content-between fav-card-content"
           id="testid"
         >
           <div className="fav position-absolute" id="transparent">
@@ -28,9 +28,9 @@ export const Card = (props) => {
           >
             <img src={props.meal.image} className="card-img-top" alt="..." />
           </Link>
-          <div className="d-flex justify-content-center align-items-center">
+          <div className="d-flex justify-content-center align-items-center p-3 ">
             <div className="d-flex align-items-center justify-content-between p-3 text-center">
-              <div className="d-flex justify-content-center align-items-center icon-wrap text-center me-2">
+              <div className="d-flex justify-content-center align-items-center icon-wrap text-center">
                 <i class="fas fa-utensils"></i>
               </div>
               <div>

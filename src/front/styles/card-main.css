@@ -6,6 +6,7 @@
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  background-color: var(--main-bg-color);
 }
 
 .card-wrap .card {
@@ -21,7 +22,7 @@
 }
 .fancy-title-wrap {
   max-width: 90%;
-  background-color: #ffff;
+  background-color: var(--main-bg-color);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   /* border: 1px solid #7ec3b4; */
@@ -66,4 +67,20 @@ p.card-text {
 }
 p i {
   color: var(--primary-color);
+}
+
+.fav-card-bg {
+  background-color: rgba(245, 190, 130, 0.1);
+}
+
+.fav-card-content img {
+  border-width: 1px;
+  border-bottom: solid;
+  border-image: linear-gradient(
+      90deg,
+      rgba(254, 156, 3, 0.5) 0%,
+      rgba(254, 156, 3, 0.5) 16%,
+      rgba(251, 209, 162, 0.5) 100%
+    )
+    1;
 }
