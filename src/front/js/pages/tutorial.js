@@ -95,62 +95,299 @@ export const Tutorial = (props) => {
                     show up here
                   </p>
                 </div>
-                <ul className="list-group">
+                <ul class="list-group grocery-list-ul content-border">
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     shrimp
-                    <span class="badge bg-primary rounded-pill">{`14`}</span>
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">7 </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     zucchini
-                    <span class="badge bg-primary rounded-pill">{`2`}</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                    parsley
-                    <span class="badge bg-primary rounded-pill">{`1 tsp`}</span>
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">1 </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     garlic powder
-                    <span class="badge bg-primary rounded-pill">{`1 tsp`}</span>
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.5 tsp
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    parsley
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.5 tsp
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     red pepper flakes
-                    <span class="badge bg-primary rounded-pill">{`1/2 tsp`}</span>
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.25 tsp
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                    lemon
-                    <span class="badge bg-primary rounded-pill">{`1`}</span>
+                    lemon zest
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.13 tsp
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    black beans from the instant pot
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.25 serving
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     jalapeño
-                    <span class="badge bg-primary rounded-pill">{`1 serving`}</span>
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.25{" "}
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     tomato
-                    <span class="badge bg-primary rounded-pill">{`1`}</span>
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.25{" "}
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     onion
-                    <span class="badge bg-primary rounded-pill">{`1`}</span>
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.08 cup
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     garlic
-                    <span class="badge bg-primary rounded-pill">{`2 cloves`}</span>
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.5 cloves
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     cilantro
-                    <span class="badge bg-primary rounded-pill">{`1/3 cup`}</span>
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.25 tbsp
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    cumin
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.13 tsp
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     cheddar cheese
-                    <span class="badge bg-primary rounded-pill">{`1 cup`}</span>
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.25 cup
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     lime
-                    <span class="badge bg-primary rounded-pill">{`1/2`}</span>
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.13{" "}
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     chips
-                    <span class="badge bg-primary rounded-pill">{`1 serving`}</span>
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.25 serving
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    hanger steak
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.5 lb
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    rice wine vinegar
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.13 c
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    cornstarch
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.5 Tbsp
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    peanut oil
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.13 c
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    broccoli
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        6 oz
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    soy sauce
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        3 Tbsp
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    hoisin sauce
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.13 c
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    sambal oelek
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.5 Tbsp
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    butter
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        1 Tbsp
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    ginger
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        0.5 Tbsp
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    rice
+                    <div class="d-flex justify-content-between">
+                      <span class="badge rounded-pill gl d-block me-2">
+                        1 c
+                      </span>
+                      <span>
+                        <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
                   </li>
                 </ul>
                 <i>

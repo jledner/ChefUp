@@ -15,7 +15,7 @@ export const LandingPage = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { store, actions } = useContext(Context);
   const [user, setUser] = useState({});
-  const [trending, setTrending] = useState([]);
+  const [trending2, setTrending] = useState([]);
   // const trending = store.trending;
   let cuisine = store.cuisine;
 
@@ -24,8 +24,8 @@ export const LandingPage = (props) => {
   }, [store.user]);
 
   useEffect(() => {
-    setTrending(store.trending);
-  }, [store.trending]);
+    setTrending(store.trending2);
+  }, [store.trending2]);
 
   const toastStyles = {
     position: "fixed",
@@ -72,7 +72,7 @@ export const LandingPage = (props) => {
                       </h2>
                     </div>
                     <div className="row gy-3">
-                      {trending.map((meal) => {
+                      {trending2.map((meal) => {
                         return <Card meal={meal} />;
                       })}
                     </div>
@@ -90,11 +90,6 @@ export const LandingPage = (props) => {
         <div className="container">
           <div className="category-content landing">
             <h2>Meals By Cuisine</h2>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Voluptatum delectus sint deleniti. Excepturi et vitae eum cumque
-              nostrum adipisci at.
-            </p>
             <div className="row">
               <ul>
                 <div className="row gx-2 gy-2">
