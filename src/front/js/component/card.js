@@ -146,23 +146,23 @@ export const Card = (props) => {
           {!store.cart.map((meal) => meal.id).includes(props.meal.id) ? (
             <button
               type="button"
-              className="btn card-btn"
+              className="btn card-btn w-50 mx-auto mb-2"
               onClick={() => {
                 actions.AddMealToCart(props.meal);
               }}
             >
               {/* Add to cart */}
-              <i class="fas fa-cart-plus"></i>
+              <i class="fas fa-cart-plus fa-10x"></i>
             </button>
           ) : (
             <button
               type="button"
-              className="btn card-btn"
+              className="btn card-btn w-50 mx-auto mb-2"
               onClick={() => {
                 actions.deleteAMeal(props.meal.id);
               }}
             >
-              <i class="fas fa-cart-arrow-down"></i>
+              <i class="fas fa-cart-arrow-down fa-10x"></i>
               {/* Remove from cart */}
             </button>
           )}

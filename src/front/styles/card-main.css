@@ -88,3 +88,8 @@ p i {
     )
     1;
 }
+
+i.fas.fa-cart-arrow-down,
+i.fas.fa-cart-plus {
+  font-size: 1.7rem;
+}
