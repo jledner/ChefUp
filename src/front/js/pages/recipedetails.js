@@ -23,7 +23,7 @@ export const RecipeDetails = (props) => {
   let ingredients = meal.nutrition.ingredients;
 
   return (
-    <section className="details py-3 alt-bg h-100vh">
+    <section className="details alt-bg h-100vh">
       {/* <h1>{meal.title}</h1>
       <div className="row">
         <div className="col-2">
@@ -49,8 +49,9 @@ export const RecipeDetails = (props) => {
           </div>
         </div>
       </div> */}
+      <MainHeader sizeClass={"landing-header-small"} />
       <div className="container mt-5">
-        <div className="details-content bg-light p-4 content-border">
+        <div className="details-content bg-light p-4 content-border p-5">
           <div className="row">
             <div className="col-12 col-lg-4">
               <div className="card mb-3">

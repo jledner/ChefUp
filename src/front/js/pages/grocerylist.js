@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import foodImg from "../../img/foods/pls.jpg";
 import "../../styles/landing.css";
+import { MainHeader } from "../component/MainHeader";
 
 export const GroceryList = () => {
   const { store, actions } = useContext(Context);
@@ -33,6 +34,7 @@ export const GroceryList = () => {
 
   return (
     <section>
+      <MainHeader sizeClass={"landing-header-small"} />
       <div className="container">
         <div className="row mt-5">
           <div className="col-8 mx-auto">

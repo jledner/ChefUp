@@ -6,6 +6,7 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { Demo } from "./demo";
 import { FeaturedCard } from "../component/FeaturedCard";
+import { MainHeader } from "../component/MainHeader";
 
 export const NeedRandomMeals = (props) => {
   let newobj = JSON.parse(localStorage.getItem("user"));
@@ -120,6 +121,7 @@ export const NeedRandomMeals = (props) => {
 
   return (
     <>
+      <MainHeader sizeClass={"landing-header-small"} />
       <br></br>
 
       <br></br>
