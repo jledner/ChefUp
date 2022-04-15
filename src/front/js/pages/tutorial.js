@@ -85,7 +85,7 @@ export const Tutorial = (props) => {
             </div>
           </div>
 
-          <div class="carousel-item">
+          <div class="carousel-item" data-bs-interval="99999">
             <div className="container">
               <div className="tutorial-content">
                 <div className="tutorial-head">

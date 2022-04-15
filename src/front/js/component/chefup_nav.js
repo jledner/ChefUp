@@ -192,7 +192,13 @@ export const ChefNavbar = (props) => {
                       </div>
                       <div className="modal-footer">Total: {cartTotal} </div>
                       <div class="modal-footer">
-                        <Link className="btn btn-chef" to="/grocerylist">
+                        <Link
+                          className="btn btn-chef"
+                          data-bs-dismiss="modal"
+                          onClick={() => {
+                            history.push("/grocerylist");
+                          }}
+                        >
                           Grocery List
                         </Link>
                         <button
