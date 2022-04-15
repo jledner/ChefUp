@@ -309,9 +309,9 @@ body {
   padding: 0;
   margin: 0;
 }
-section.details {
+/* section.details {
   background-color: var(--secondary-bg-color);
-}
+} */
 
 section.details .details-content {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
@@ -443,4 +443,13 @@ ul.grocery-list-ul {
   outline: none;
   border: none;
   box-shadow: none;
+}
+
+details summary {
+  font-size: 1.7rem;
+}
+
+details ul li,
+details ol li {
+  font-size: 1.5rem;
 }

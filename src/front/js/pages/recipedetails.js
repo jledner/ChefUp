@@ -23,7 +23,7 @@ export const RecipeDetails = (props) => {
   let ingredients = meal.nutrition.ingredients;
 
   return (
-    <section className="details py-3">
+    <section className="details py-3 alt-bg h-100vh">
       {/* <h1>{meal.title}</h1>
       <div className="row">
         <div className="col-2">
@@ -50,7 +50,7 @@ export const RecipeDetails = (props) => {
         </div>
       </div> */}
       <div className="container mt-5">
-        <div className="details-content bg-light p-4">
+        <div className="details-content bg-light p-4 content-border">
           <div className="row">
             <div className="col-12 col-lg-4">
               <div className="card mb-3">
@@ -61,15 +61,17 @@ export const RecipeDetails = (props) => {
             <div className="col-12 col-lg-8">
               <details>
                 <summary>Meal Details</summary>
-                <ul>
-                  <li>Prep time: {meal.readyInMinutes} minutes</li>
-                  <li>Servings: {meal.servings}</li>
-                  <li>
-                    Price: {`$${Math.floor(meal.pricePerServing) / 100}`} per
-                    serving
-                  </li>
-                  <li>Calories: {meal.nutrition.nutrients[0].amount}</li>
-                </ul>
+                <p className="card-text">
+                  <ul>
+                    <li>Prep time: {meal.readyInMinutes} minutes</li>
+                    <li>Servings: {meal.servings}</li>
+                    <li>
+                      Price: {`$${Math.floor(meal.pricePerServing) / 100}`} per
+                      serving
+                    </li>
+                    <li>Calories: {meal.nutrition.nutrients[0].amount}</li>
+                  </ul>
+                </p>
               </details>
               <details>
                 <summary>Ingredients</summary>
